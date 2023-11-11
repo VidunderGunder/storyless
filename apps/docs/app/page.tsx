@@ -5,9 +5,9 @@ export default function Page(): JSX.Element {
     <main className={styles.main}>
       <div className={styles.hero}>
         <h1>Storyless</h1>
-        <div>
-          <span>Where Your App is the Canvas</span>
-          <span>Focus on Features – Not Fluff</span>
+        <div className={styles.main}>
+          <div>Where Your App is the Canvas</div>
+          {/* <div>Focus on Features, Not Fluff</div> */}
         </div>
       </div>
     </main>
