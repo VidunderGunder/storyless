@@ -8,10 +8,15 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean:modules": "turbo run clean",
+    "clean:root": "rm -rf node_modules && rm -rf .turbo",
+    "clean": "bun clean:modules && bun clean:root",
+    "reset": "turbo run clean && bun install",
+    "reset:hard": "bun clean && rm -rf && rm -rf bun.lockb && bun install"
   },
   "devDependencies": {
-    "eslint": "^8.48.0",
+    "eslint": "^8.53.0",
     "prettier": "^3.0.3",
     "@storyless/tsconfig": "*",
     "turbo": "latest"
