@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Card } from "ui";
+import { Card } from "@storyless/react";
 import styles from "./page.module.css";
 
 function Gradient({
