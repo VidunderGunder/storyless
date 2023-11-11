@@ -8,6 +8,7 @@
   "packageManager": "bun@1.0.11",
   "scripts": {
     "build": "turbo run build",
+    "build:docs": "turbo run build --filter={/apps/docs}...",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "test": "turbo run test --",
