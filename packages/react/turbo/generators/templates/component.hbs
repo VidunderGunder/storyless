@@ -1,20 +1,17 @@
-import * as React, { type ComponentPropsWithoutRef } from "react";
+import * as React from "react";
 import { forwardRef } from "react";
 
-export type Props = {
+export type {{ pascalCase name }}Props = {
   // Custom props here
-} & ComponentPropsWithoutRef<"div">; // Extend the props of the component you're wrapping here
+} & React.ComponentPropsWithoutRef<"{{ element }}">;
 
-const {{ pascalCase name }} = forwardRef<HTMLDivElement, Props>(function {{ pascalCase name }}(
+export const {{ pascalCase name }} = forwardRef<HTML{{ pascalCase name }}Element, {{ pascalCase name }}Props>(function {{ pascalCase name }}(
   { children, ...props },
   ref
 ) {
   return (
-    <div ref={ref} {...props}>
-      <h1>{{ name }}</h1>
+    <{{ element }} ref={ref} {...props}>
       {children}
-    </div>
+    </{{ element }}>
   );
 });
-
-export default {{ pascalCase name }};

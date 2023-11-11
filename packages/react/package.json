@@ -7,16 +7,18 @@
   "scripts": {
     "lint": "eslint .",
     "generate:component": "turbo gen react-component",
-    "clean": "rm -rf dist && rm -rf node_modules"
+    "clean": "rm -rf build && rm -rf node_modules",
+    "build": "bun build ./index.tsx --outdir ./build"
   },
   "devDependencies": {
+    "@storyless/tsconfig": "*",
     "@turbo/gen": "^1.10.16",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "eslint-config-custom": "*",
+    "eslint-config-storyless": "*",
     "react": "^18.2.0",
-    "@storyless/tsconfig": "*",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "typescript-plugin-css-modules": "^5.0.2"
   }
 }

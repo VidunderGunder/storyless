@@ -13,6 +13,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         name: "name",
         message: "What is the name of the component?",
       },
+      {
+        type: "input",
+        name: "element",
+        message: "What is the HTML element of the component?",
+        default: "div",
+      },
     ],
     actions: [
       {

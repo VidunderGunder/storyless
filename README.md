@@ -1,14 +1,35 @@
-# Turborepo starter
+# 🎨 Storyless
 
-This is an official starter Turborepo.
+Where Your App is the Canvas  
+Focus on Features – Not Fluff
 
-## Using this example
+## 🚀 Getting Started
 
-Run the following command:
+*Note that all installs may require restarting the terminal – and in some cases a complete reboot – to work properly*
+
+Install [node](https://nodejs.org/en/) `>=20.0.0 <21.0.0`*
+
+> *Alternatively, you can use [Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating) with the included `.nvmrc` file
+>
+> ```sh
+> nvm use
+> ```
+
+Install [bun](https://bun.sh/) `>=1.0.11`
+
+Install dependencies:
 
 ```sh
-bunx create-turbo@latest
+bun i
 ```
+
+Start developing:
+
+```sh
+bun dev
+```
+
+It is *highly recommended* to read through the **🤯 Problems During Development?** section before starting development, as every single developer so far has run into at least one of the problems described there.
 
 ## What's inside?
 
@@ -16,60 +37,15 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+- `📂 apps/docs`: a [Next.js](https://nextjs.org/) app documenting the public `@storyless` packages
+- `📂 apps/web`: another [Next.js](https://nextjs.org/) app for developing and testing the `@storyless` packages for react and nextjs
+- `📂 packages/react`: a stub React component library shared by both `web` and `docs` applications
+- `📂 packages/eslint-config-storyless`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `📂 packages/tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-bunx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-bunx turbo link
-```
-
-## Useful Links
+## Useful TurboRepo Links
 
 Learn more about the power of Turborepo:
 
@@ -79,3 +55,111 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+## 🤯 Problems During Development?
+
+Below are ways to solve them.
+
+As of now we only support VSCode running on MacOS, Linux and WSL.
+
+You are free to use anything else, but we can't guarantee that it will work.  
+Please document your findings if you try something else <3
+
+### Generally
+
+Restart your IDE (VSCode) and/or terminal
+
+Restart your computer
+
+### Permission errors when running commands (MacOS/Linux)
+
+Prefix the command with `sudo`, e.g.:
+
+```bash
+sudo whatever you were trying to run
+```
+
+### Pulling changes from the repository
+
+Always check for and install new dependecies when you pull changes from the repository:
+
+```bash
+bun i
+```
+
+### Wrong version of Node
+
+- Check your version with
+  ```bash
+  node -v
+  ```
+- Install the correct version according to `engines` in `package.json`
+
+### Wrong version of bun
+
+Check your version with
+
+```bash
+bun -v
+```
+
+Install the correct version according to `engines` in `package.json`
+
+### Using 32-bit version of Node (Windows)
+
+Getting `error Command failed with exit code 3221225477` or something similar?
+
+Check if you're using 32-bit Node.js:
+
+```bash
+node -p "process.arch"
+```
+
+If so, ensure you're running on a 64-bit system, then install the 64-bit version instead.
+
+### Divergent git branches
+
+```bash
+git config pull.rebase false
+```
+
+### Ports already in use
+
+Kill the processes running on relevant ports:
+
+```bash
+bun run killports
+```
+
+### Weird TypeScript or ESLint errors
+
+First, make sure you're running the workspace version of TypeScript and ESLint:
+
+Open up any TypeScript file in the project and press...
+
+<ul>
+  <li>
+    <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac  
+  </li>
+  <li>
+    <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Windows
+  </li>
+</ul>
+
+Then ask VSCode to use the workspace TypeScript version:
+
+```
+> TypeScript: Select TypeScript Version
+```
+
+Then restart the TypeScript server:
+
+```
+> TypeScript: Restart TS server
+```
+
+Same for ESLint:
+
+```
+> ESLint: Restart ESLint server
+```

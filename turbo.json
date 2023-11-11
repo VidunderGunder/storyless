@@ -6,7 +6,17 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": []
+    },
     "clean": {
+      "cache": false
+    },
+    "pre-release": {
+      "cache": false
+    },
+    "post-release": {
       "cache": false
     },
     "lint": {},
