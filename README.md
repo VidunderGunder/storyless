@@ -29,7 +29,7 @@ Start developing:
 bun dev
 ```
 
-It is *highly recommended* to read through the **🤯 Problems During Development?** section before starting development, as every single developer so far has run into at least one of the problems described there.
+It is *highly recommended* to read through the [**🤯 Problems During Development?**](https://github.com/VidunderGunder/storyless#-problems-during-development) section before starting development, as every single developer so far has run into at least one of the problems described there.
 
 ## What's inside?
 
