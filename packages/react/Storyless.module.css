@@ -42,10 +42,24 @@
 
 .fixedButton {
   position: fixed;
-  bottom: 1.25rem; /* 20px in rem */
-  right: 1.25rem; /* 20px in rem */
+  bottom: 1rem; /* 20px in rem */
+  right: 2rem; /* 20px in rem */
   user-select: none;
   border-radius: 9999px;
-  background-color: white;
+  border: none;
+  border-width: none;
+  border-color: none;
+  outline: none;
+  box-shadow: none;
+  background-color: #12191f;
+  border: 2px solid #fff;
+  color: #fff;
+  /* color: #4b5563; */
   padding: 1rem; /* 16px in rem */
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

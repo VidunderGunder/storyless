@@ -33,12 +33,11 @@ It is *highly recommended* to read through the **🤯 Problems During Developmen
 
 ## What's inside?
 
-This Turborepo includes the following packages/apps:
+This Turborepo includes the following packages & apps:
 
 ### Apps and Packages
 
-- `📂 apps/docs`: a [Next.js](https://nextjs.org/) app documenting the public `@storyless` packages
-- `📂 apps/web`: another [Next.js](https://nextjs.org/) app for developing and testing the `@storyless` packages for react and nextjs
+- `📂 apps/docs`: a [Next.js](https://nextjs.org/) app documenting the public `@storyless` packages. It's also where we develop and test the `@storyless` packages for react and nextjs
 - `📂 packages/react`: a stub React component library shared by both `web` and `docs` applications
 - `📂 packages/eslint-config-storyless`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `📂 packages/tsconfig`: `tsconfig.json`s used throughout the monorepo

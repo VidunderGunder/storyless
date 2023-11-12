@@ -1,0 +1,8 @@
+{
+  "className with brackets": {
+    "prefix": ["cl"],
+    "body": ["className={styles$0}"],
+    "description": "Quicker way of creating CSS modules JSX-classes",
+    "scope": "javascript,typescript,javascriptreact,typescriptreact"
+  }
+}

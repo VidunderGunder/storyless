@@ -8,10 +8,9 @@
   "packageManager": "bun@1.0.11",
   "scripts": {
     "build": "turbo run build",
-    "build:@storyless/docs": "turbo run build --filter={/apps/docs}...",
-    "build:@storyless/web": "turbo run build --filter={/apps/web}...",
-    "build:@storyless/react": "turbo run build --filter={/packages/web}...",
-    "dev": "turbo run dev",
+    "build:@storyless/docs": "turbo run build --filter='@storyless/docs'",
+    "build:@storyless/react": "turbo run build --filter='@storyless/react'",
+    "dev": "cd apps/docs && bun run dev",
     "lint": "turbo run lint",
     "test": "turbo run test --",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",

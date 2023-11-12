@@ -1,12 +1,12 @@
-import * as React from "react";
-import { useState } from "react";
+"use client";
+import { forwardRef, useEffect, useState } from "react";
 import styles from "./Storyless.module.css";
 
 export type StorylessProps = {
   components: Record<string, React.ReactNode>;
 } & React.ComponentPropsWithoutRef<"div">;
 
-export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
+export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless({ components, className, children, ...props }, ref) {
     const [show, setShow] = useState(false);
 
@@ -21,6 +21,16 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
       ) : (
         <>Add components to see them here 👀</>
       );
+
+    useEffect(() => {
+      const handleKeyDown: typeof window.onkeydown = (event) => {
+        if (event.key === "Escape") setShow(false);
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => void window.removeEventListener("keydown", handleKeyDown);
+    }, []);
 
     return (
       <>
@@ -56,7 +66,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
           className={styles.fixedButton}
           onClick={() => setShow((prev) => !prev)}
         >
-          {show ? "Hide" : "Storyless"}
+          Toggle
         </button>
       </>
     );
