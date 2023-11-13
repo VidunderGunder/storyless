@@ -1,5 +1,5 @@
 "use client";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect } from "react";
 import styles from "./Storyless.module.css";
 import reset from "./reset.module.css";
 import { cn } from "./utils/cn";
