@@ -3,6 +3,8 @@
 Where Your App is the Canvas  
 Focus on Features – Not Fluff
 
+For where design system powerhouses like Storybook is just too much, or if you want direct interoperability with your app and main build tools.
+
 ## 🚀 Getting Started
 
 *Note that all installs may require restarting the terminal – and in some cases a complete reboot – to work properly*
