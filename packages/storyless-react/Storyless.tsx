@@ -1,7 +1,6 @@
 "use client";
 import { forwardRef, useEffect } from "react";
-import styles from "./Storyless.module.css";
-import reset from "./reset.module.css";
+import styles from "./Storyless.module.scss";
 import { cn } from "./utils/cn";
 import { useIsMounted, usePersistentState } from "./hooks";
 
@@ -43,7 +42,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
       <>
         {show ? (
           <div
-            className={cn(reset.reset, styles.container, className)}
+            className={cn(styles.storyless, styles.container, className)}
             {...props}
           >
             <div className={styles.fullHeightWidth}>
@@ -54,19 +53,21 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                     <div key={componentName}>
                       <button
                         onClick={() => setSelected(componentName)}
-                        className={cn(
+                        className={
                           isSelected
                             ? styles.selectedButton
                             : styles.unselectedButton
-                        )}
+                        }
                       >
                         {componentName}
+                        {/* TODO: Remove when styles look OK */}{" "}
+                        {isSelected ? "👈" : null}
                       </button>
                     </div>
                   );
                 })}
               </div>
-              <div className={cn(styles.content, reset.storylessPreview)}>
+              <div className={cn(styles.content, styles.preview)}>
                 <Selected />
               </div>
             </div>
