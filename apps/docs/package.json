@@ -13,7 +13,8 @@
     "next": "^14.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@storyless/react": "*"
+    "@storyless/react": "*",
+    "@storyless/ui": "*"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.2",

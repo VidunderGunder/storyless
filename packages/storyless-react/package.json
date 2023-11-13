@@ -1,0 +1,24 @@
+{
+  "name": "@storyless/react",
+  "version": "0.0.0",
+  "main": "./index.tsx",
+  "types": "./index.tsx",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "generate:component": "turbo gen react-component",
+    "clean": "rm -rf build && rm -rf node_modules",
+    "build": "bun build ./index.tsx --outdir ./build"
+  },
+  "devDependencies": {
+    "@turbo/gen": "^1.10.16",
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "bun-types": "^1.0.11",
+    "eslint-config-storyless": "*",
+    "react": "^18.2.0",
+    "typescript": "^5.2.2",
+    "typescript-plugin-css-modules": "^5.0.2"
+  }
+}

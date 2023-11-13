@@ -1,0 +1,87 @@
+/**
+ * Reset Module CSS
+ * ------------------
+ * This CSS module is designed to provide a consistent baseline for styling elements
+ * within the Storyless component framework. It neutralizes default browser styles 
+ * to ensure cross-browser consistency and prevent global style conflicts.
+ *
+ * Usage:
+ * - Apply the 'reset' class to the root element of your component to inherit these styles.
+ * - The reset styles are applied to all child elements of an element with the 'reset' class,
+ *   except for elements within a '.storylessPreview' class, ensuring that styles within 
+ *   Storyless previews remain unaffected.
+ */
+
+.reset > *:not(.storylessPreview) {
+  /* Box sizing to border-box for consistency */
+  box-sizing: border-box;
+
+  /* Remove margins and paddings */
+  margin: 0;
+  padding: 0;
+
+  /* Neutralize line height and font inheritance */
+  font-size: 100%;
+  font: inherit;
+  line-height: inherit;
+
+  /* Reset list styles */
+  list-style: none;
+
+  /* Reset border and outline */
+  border: 0;
+  outline: 0;
+}
+
+/* Reset text decoration and color inheritance for links */
+.reset a:not(.storylessPreview a) {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reset button and input styles */
+.reset button:not(.storylessPreview button),
+.reset input:not(.storylessPreview input),
+.reset select:not(.storylessPreview select),
+.reset textarea:not(.storylessPreview textarea) {
+  background: none;
+  background-color: none;
+  outline: none;
+  border: none;
+
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Reset table styles */
+.reset table:not(.storylessPreview table) {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Reset visual formatting for fieldsets */
+.reset fieldset:not(.storylessPreview fieldset) {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Optionally, reset specific HTML5 elements */
+.reset article:not(.storylessPreview article),
+.reset aside:not(.storylessPreview aside),
+.reset details:not(.storylessPreview details),
+.reset figcaption:not(.storylessPreview figcaption),
+.reset figure:not(.storylessPreview figure),
+.reset footer:not(.storylessPreview footer),
+.reset header:not(.storylessPreview header),
+.reset main:not(.storylessPreview main),
+.reset menu:not(.storylessPreview menu),
+.reset nav:not(.storylessPreview nav),
+.reset section:not(.storylessPreview section),
+.reset summary:not(.storylessPreview summary) {
+  display: block;
+}

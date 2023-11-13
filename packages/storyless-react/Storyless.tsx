@@ -1,6 +1,9 @@
 "use client";
 import { forwardRef, useEffect, useState } from "react";
 import styles from "./Storyless.module.css";
+import reset from "./reset.module.css";
+import { cn } from "./utils/cn";
+import { useIsMounted, usePersistentState } from "./hooks";
 
 export type StorylessProps = {
   components: Record<string, React.ReactNode>;
@@ -8,8 +11,11 @@ export type StorylessProps = {
 
 export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless({ components, className, children, ...props }, ref) {
-    const [show, setShow] = useState(false);
-
+    const isMounted = useIsMounted();
+    const [show, setShow] = usePersistentState<boolean>(
+      "storyless-show",
+      false
+    );
     const [selectedComponent, setSelectedComponent] = useState<
       keyof typeof components | undefined
     >(Object.keys(components)[0] ?? undefined);
@@ -32,10 +38,15 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
       return () => void window.removeEventListener("keydown", handleKeyDown);
     }, []);
 
+    if (!isMounted) return null;
+
     return (
       <>
         {show ? (
-          <div className={`${styles.container} ${className}`} {...props}>
+          <div
+            className={cn(reset.reset, styles.container, className)}
+            {...props}
+          >
             <div className={styles.fullHeightWidth}>
               <div className={styles.sidebar}>
                 {Object.keys(components).map((componentName) => {
@@ -44,11 +55,11 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                     <div key={componentName}>
                       <button
                         onClick={() => setSelectedComponent(componentName)}
-                        className={
+                        className={cn(
                           isSelected
                             ? styles.selectedButton
                             : styles.unselectedButton
-                        }
+                        )}
                       >
                         {componentName}
                       </button>
@@ -56,7 +67,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   );
                 })}
               </div>
-              <div className={styles.content}>
+              <div className={cn(styles.content, reset.storylessPreview)}>
                 <SelectedComponent />
               </div>
             </div>

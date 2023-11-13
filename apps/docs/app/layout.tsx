@@ -11,7 +11,12 @@ export const metadata: Metadata = {
   title: "Storyless",
   description: "Where Your App is the Canvas",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: "/favicon.ico",
+        href: "/favicon.ico",
+      },
+    ],
   },
 };
 

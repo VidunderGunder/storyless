@@ -5,7 +5,7 @@ export type {{ pascalCase name }}Props = {
   // Custom props here
 } & React.ComponentPropsWithoutRef<"{{ element }}">;
 
-export const {{ pascalCase name }} = forwardRef<HTML{{ pascalCase name }}Element, {{ pascalCase name }}Props>(function {{ pascalCase name }}(
+export const {{ pascalCase name }} = forwardRef<HTML{{ pascalCase element }}Element, {{ pascalCase name }}Props>(function {{ pascalCase name }}(
   { children, ...props },
   ref
 ) {

@@ -2,6 +2,9 @@
 
 import { SVGProps, Ref, forwardRef } from "react";
 
+/**
+ * TODO: Make the Icon scale properly
+ */
 export const Icon = forwardRef(function (
   props: SVGProps<SVGSVGElement>,
   ref: Ref<SVGSVGElement>
