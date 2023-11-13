@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
 
-export function usePersistentState<T>(
-  key: string,
-  defaultValue: T
-): [T, React.Dispatch<React.SetStateAction<T>>] {
+export function usePersistentState<
+  T extends string | number | boolean | null | undefined,
+>(key: string, defaultValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [state, setState] = useState<T>(() => {
-    if (typeof window === "undefined") return defaultValue;
+    if (typeof window === "undefined" || typeof localStorage === "undefined")
+      return defaultValue;
 
     const storedValue = localStorage.getItem(key);
-    return storedValue !== null ? JSON.parse(storedValue) : defaultValue;
+    const parsedValue =
+      storedValue !== null ? (JSON.parse(storedValue) as unknown) : null;
+
+    if (
+      typeof parsedValue === "string" ||
+      typeof parsedValue === "number" ||
+      typeof parsedValue === "boolean"
+    )
+      return parsedValue as T;
+
+    return defaultValue;
   });
 
   useEffect(() => {
