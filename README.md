@@ -37,12 +37,13 @@ This Turborepo includes the following packages & apps:
 
 ### Apps and Packages
 
-- `📂 apps/docs`: a [Next.js](https://nextjs.org/) app documenting the public `@storyless` packages. It's also where we develop and test the `@storyless` packages for react and nextjs
-- `📂 packages/react`: a stub React component library shared by both `web` and `docs` applications
-- `📂 packages/eslint-config-storyless`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `📂 packages/tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- 📂 **apps**
+  - 📖 **docs** - _Next.js app for Storyless docs._
+- 📂 **packages**
+  - 📚 **storyless-react** - _React (and Next.js) library for Storyless_
+  - 📚 **ui** - _Shared UI components for the monorepo_
+  - 🧙‍♂️ **tsconfig** - _Reusable TypeScript configurations_
+  - 🧙‍♂️ **eslint-config-storyless** - _Reusable ESLint configurations_
 
 ## Useful TurboRepo Links
 
