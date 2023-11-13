@@ -16,14 +16,13 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
       "storyless-show",
       false
     );
-    const [selectedComponent, setSelectedComponent] = useState<
+    const [selected, setSelected] = usePersistentState<
       keyof typeof components | undefined
-    >(Object.keys(components)[0] ?? undefined);
+    >("storyless-selected-component", Object.keys(components)[0] ?? undefined);
 
-    const SelectedComponent = () =>
-      typeof selectedComponent === "string" &&
-      selectedComponent in components ? (
-        components?.[selectedComponent] ?? null
+    const Selected = () =>
+      typeof selected === "string" && selected in components ? (
+        components?.[selected] ?? null
       ) : (
         <>Add components to see them here 👀</>
       );
@@ -50,11 +49,11 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
             <div className={styles.fullHeightWidth}>
               <div className={styles.sidebar}>
                 {Object.keys(components).map((componentName) => {
-                  const isSelected = componentName === selectedComponent;
+                  const isSelected = componentName === selected;
                   return (
                     <div key={componentName}>
                       <button
-                        onClick={() => setSelectedComponent(componentName)}
+                        onClick={() => setSelected(componentName)}
                         className={cn(
                           isSelected
                             ? styles.selectedButton
@@ -68,7 +67,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                 })}
               </div>
               <div className={cn(styles.content, reset.storylessPreview)}>
-                <SelectedComponent />
+                <Selected />
               </div>
             </div>
           </div>
