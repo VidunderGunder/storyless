@@ -12,7 +12,7 @@
  *   Storyless previews remain unaffected.
  */
 
-.reset > *:not(.storylessPreview) {
+.reset > *:not(.storylessPreview *) {
   /* Box sizing to border-box for consistency */
   box-sizing: border-box;
 
@@ -30,6 +30,7 @@
 
   /* Reset border and outline */
   border: 0;
+  border-radius: 0;
   outline: 0;
 }
 
@@ -84,4 +85,10 @@
 .reset section:not(.storylessPreview section),
 .reset summary:not(.storylessPreview summary) {
   display: block;
+}
+
+.storylessPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

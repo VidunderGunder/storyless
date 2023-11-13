@@ -27,9 +27,9 @@
     "publish-packages": "bun pre-release && turbo run build lint test --filter=@sectoralarm-cloud/react-jupiter && changeset version && changeset publish ; bun post-release"
   },
   "devDependencies": {
-    "kill-port": "^2.0.1",
     "@changesets/cli": "^2.26.2",
     "eslint": "^8.53.0",
+    "kill-port": "^2.0.1",
     "prettier": "^3.0.3",
     "turbo": "latest"
   },
