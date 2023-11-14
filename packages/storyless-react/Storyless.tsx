@@ -54,6 +54,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
         {show ? (
           <div
             className={cn(styles.storyless, styles.container, className)}
+            ref={ref}
             {...props}
           >
             <div className={styles.fullHeightWidth}>
