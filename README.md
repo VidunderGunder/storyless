@@ -9,6 +9,8 @@ For when design system powerhouses like [Storybook](https://storybook.com/) is j
 
 It also gives you direct interoperability with your app and main build tools. This means hard-to-integrate features like authentication, fetching, state management, etc. will just work when you need them.
 
+Drop it in your app and start developing. It is automatically removed from your production bundle.
+
 ## [👉 DEMO](https://storyless.vercel.app/)
 
 ![Example](example.png)
