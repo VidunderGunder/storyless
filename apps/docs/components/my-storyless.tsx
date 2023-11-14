@@ -13,7 +13,33 @@ const StorylessComponents: ComponentPropsWithoutRef<
   typeof Storyless
 >["components"] = {
   hello: <h1>Hello World!</h1>,
-  button: <button type="button">Button</button>,
+  button: (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <button
+        style={{
+          width: "120px",
+        }}
+        type="button"
+      >
+        Button
+      </button>
+      <button
+        disabled
+        style={{
+          width: "120px",
+        }}
+        type="button"
+      >
+        Disabled
+      </button>
+    </div>
+  ),
   typography: (
     <div
       style={{
