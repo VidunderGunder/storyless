@@ -26,10 +26,6 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
       "storyless-show",
       false
     );
-    const [theme, setTheme] = usePersistentState<"light" | "dark">(
-      "storyless-theme",
-      "dark"
-    );
     const [selected, setSelected] = usePersistentState<
       keyof typeof components | undefined
     >("storyless-selected-component", Object.keys(components)[0] ?? undefined);
@@ -92,7 +88,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
           className={cn(styles.fixedButton)}
           onClick={() => setShow((prev) => !prev)}
         >
-          {show ? "Hide" : "Show"} Storyless
+          {show ? " Hide" : "Show"} Storyless
         </button>
       </>
     );
