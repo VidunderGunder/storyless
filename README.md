@@ -7,7 +7,7 @@ Focus on Features – Not Fluff
 
 For when design system powerhouses like [Storybook](https://storybook.com/) is just too much.
 
-It also gives you direct interoperability with your app and main build tools. This means hard-to-intagrate features like authentication, fetching, state management, etc. will just work when you need them.
+It also gives you direct interoperability with your app and main build tools. This means hard-to-integrate features like authentication, fetching, state management, etc. will just work when you need them.
 
 ## [👉 DEMO](https://storyless.vercel.app/)
 
