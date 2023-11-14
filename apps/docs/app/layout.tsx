@@ -2,8 +2,7 @@ import "./pico.min.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Storyless } from "@storyless/react";
-import { type ComponentPropsWithoutRef } from "react";
+import { MyStoryless } from "../components/my-storyless";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,13 +19,6 @@ export const metadata: Metadata = {
   },
 };
 
-const StorylessComponents: ComponentPropsWithoutRef<
-  typeof Storyless
->["components"] = {
-  hello: <span>Hello World!</span>,
-  button: <button type="button">Button</button>,
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -35,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
-      <Storyless components={StorylessComponents} />
+      <MyStoryless />
     </html>
   );
 }

@@ -17,7 +17,7 @@
     "clean:modules": "turbo run clean",
     "clean:root": "rm -rf node_modules && rm -rf .turbo",
     "clean": "bun clean:modules && bun clean:root",
-    "killports": "bun kill-port 3000 3001",
+    "killports": "bun kill-port 3000",
     "reset": "bun killports && bun clean && bun install",
     "reset:hard": "bun killports && bun clean && rm -rf && rm -rf bun.lockb && bun install",
     "changeset": "changeset",

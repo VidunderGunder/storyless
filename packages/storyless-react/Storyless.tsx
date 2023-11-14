@@ -1,19 +1,34 @@
 "use client";
 import { forwardRef, useEffect } from "react";
-import styles from "./Storyless.module.scss";
+import styles from "./Storyless.module.css";
 import { cn } from "./utils/cn";
 import { useIsMounted, usePersistentState } from "./hooks";
 
 export type StorylessProps = {
   components: Record<string, React.ReactNode>;
+  wrapper?: (props: { children: React.ReactNode }) => JSX.Element;
 } & React.ComponentPropsWithoutRef<"div">;
 
 export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
-  function Storyless({ components, className, children, ...props }, ref) {
+  function Storyless(
+    {
+      components,
+      wrapper = ({ children }) => <>{children}</>,
+      className,
+      children,
+      ...props
+    },
+    ref
+  ) {
+    const Wrapper = wrapper;
     const isMounted = useIsMounted();
     const [show, setShow] = usePersistentState<boolean>(
       "storyless-show",
       false
+    );
+    const [theme, setTheme] = usePersistentState<"light" | "dark">(
+      "storyless-theme",
+      "dark"
     );
     const [selected, setSelected] = usePersistentState<
       keyof typeof components | undefined
@@ -60,24 +75,24 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                         }
                       >
                         {componentName}
-                        {/* TODO: Remove when styles look OK */}{" "}
-                        {isSelected ? "👈" : null}
                       </button>
                     </div>
                   );
                 })}
               </div>
-              <div className={cn(styles.content, styles.preview)}>
-                <Selected />
+              <div className={cn(styles.preview)}>
+                <Wrapper>
+                  <Selected />
+                </Wrapper>
               </div>
             </div>
           </div>
         ) : null}
         <button
-          className={styles.fixedButton}
+          className={cn(styles.fixedButton)}
           onClick={() => setShow((prev) => !prev)}
         >
-          Toggle
+          {show ? "Hide" : "Show"} Storyless
         </button>
       </>
     );

@@ -1,23 +1,4 @@
-
-$storyless-bg-color: #12191f;
-$storyless-white: #fff;
-$storyless-black: #000;
-
-/**
- * Reset Module CSS
- * ------------------
- * This CSS module is designed to provide a consistent baseline for styling elements
- * within the Storyless component framework. It neutralizes default browser styles 
- * to ensure cross-browser consistency and prevent global style conflicts.
- *
- * Usage:
- * - Apply the 'reset' class to the root element of your component to inherit these styles.
- * - The reset styles are applied to all child elements of an element with the 'reset' class,
- *   except for elements within a '.storylessPreview' class, ensuring that styles within 
- *   Storyless previews remain unaffected.
- */
-
- .storyless > *:not(.preview *) {
+.storyless > *:not(.preview *) {
   /* Box sizing to border-box for consistency */
   box-sizing: border-box;
 
@@ -54,6 +35,9 @@ $storyless-black: #000;
   background-color: none;
   outline: none;
   border: none;
+  border-radius: 0;
+
+  margin: 0;
 
   color: black;
   font: inherit;
@@ -98,9 +82,14 @@ $storyless-black: #000;
 }
 
 .preview {
+  border-radius: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #12191f;
+  padding: 0;
+  margin: 0;
 }
 
 .container {
@@ -110,7 +99,7 @@ $storyless-black: #000;
   right: 0;
   top: 0;
   overflow-y: hidden;
-  background-color: white;
+  background-color: #12191f;
 }
 
 .fullHeightWidth {
@@ -121,35 +110,52 @@ $storyless-black: #000;
 }
 
 .sidebar {
-  width: 8rem; /* 32px in rem */
+  width: 10rem;
+  max-height: 100%;
+  overflow-y: auto;
   border-right: 2px solid;
+  border-right-color: rgba(255, 255, 255, 0.1);
+  background-color: #12191f;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.content {
+.sidebar button {
+  text-align: right;
+}
+
+.storyless button.unselectedButton:not(.preview button) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
   width: 100%;
-  overflow-y: scroll;
-  padding: 1.25rem; /* 20px in rem */
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
-.unselectedButton {
-  background-color: $storyless-bg-color;
-  color: $storyless-white;
+.storyless button.unselectedButton:not(.preview button):hover {
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+.storyless button.selectedButton:not(.preview button) {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 1);
   width: 100%;
-  padding: 0.5rem; /* 8px in rem */
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
-
-.selectedButton {
-  background-color: $storyless-white;
-  color: $storyless-bg-color;
-  width: 100%;
-  padding: 0.5rem; /* 8px in rem */
-}
-
 
 .fixedButton {
   position: fixed;
-  bottom: 1rem; /* 20px in rem */
-  right: 2rem; /* 20px in rem */
+  bottom: 1rem;
+  right: 2rem;
   user-select: none;
   border-radius: 9999px;
   border: none;
@@ -157,12 +163,11 @@ $storyless-black: #000;
   border-color: none;
   outline: none;
   box-shadow: none;
-  background-color: $storyless-bg-color;
+  background-color: #12191f;
   border: 2px solid #fff;
   color: #fff;
-  /* color: #4b5563; */
-  padding: 1rem; /* 16px in rem */
-  width: fit-content;
+  padding: 1rem;
+  width: 10rem;
   height: fit-content;
   display: flex;
   align-items: center;
