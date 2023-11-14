@@ -11,7 +11,7 @@ For when design system powerhouses like Storybook is just too much. It also give
 
 ## 🚀 Getting Started (using Storyless)
 
-NPM package on its way.
+NPM package on its way, so sit tight 💺
 
 ## 🚀 Getting Started (for Contributors)
 
