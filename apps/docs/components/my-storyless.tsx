@@ -1,5 +1,7 @@
 "use client";
-import { Storyless } from "@storyless/react";
+
+// Transpilation and deep import allows bundling Storyless with your app
+import { Storyless } from "@storyless/react/Storyless";
 import { type ComponentPropsWithoutRef } from "react";
 import styles from "./my-storyless.module.css";
 
