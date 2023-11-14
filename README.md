@@ -3,7 +3,7 @@
 Where Your App is the Canvas  
 Focus on Features – Not Fluff
 
-For when design system powerhouses like Storybook is just too much. Also if you want direct interoperability with your app and main build tools.
+For when design system powerhouses like Storybook is just too much. It also gives you direct interoperability with your app and main build tools.
 
 ## 🚀 Getting Started
 
