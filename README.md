@@ -23,6 +23,8 @@ NPM package on its way, so sit tight 💺
 
 *Note that all installs may require restarting the terminal – and in some cases a complete reboot – to work properly*
 
+Clone this repo to your developing environment
+
 Install [node](https://nodejs.org/en/) `>=20.0.0 <21.0.0`*
 
 > *Alternatively, you can use [Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating) with the included `.nvmrc` file
