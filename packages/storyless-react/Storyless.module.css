@@ -155,9 +155,10 @@
 }
 
 .fixedButton {
+  margin: 0;
   position: fixed;
-  bottom: 1rem;
-  right: 2rem;
+  bottom: min(max(0.5rem, 2vw), 2rem);
+  right: min(max(0.5rem, 2.25vw), 3rem);
   user-select: none;
   border-radius: 9999px;
   border: none;
