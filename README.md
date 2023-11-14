@@ -9,7 +9,11 @@ Focus on Features – Not Fluff
 
 For when design system powerhouses like Storybook is just too much. It also gives you direct interoperability with your app and main build tools.
 
-## 🚀 Getting Started
+## 🚀 Getting Started (using Storyless)
+
+NPM package on its way.
+
+## 🚀 Getting Started (for Contributors)
 
 *Note that all installs may require restarting the terminal – and in some cases a complete reboot – to work properly*
 
