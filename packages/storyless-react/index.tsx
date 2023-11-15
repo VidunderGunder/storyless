@@ -8,7 +8,7 @@ const BUNDLE_STORYLESS =
   process.env.REACT_APP_BUNDLE_STORYLESS;
 
 export const Storyless: (typeof storyless)["Storyless"] =
-  process.env.NODE_ENV !== "development" || BUNDLE_STORYLESS
+  process.env.NODE_ENV !== "development" || !BUNDLE_STORYLESS
     ? forwardRef(function () {
         return null;
       })
