@@ -2,7 +2,7 @@
 import { forwardRef } from "react";
 import * as storyless from "./Storyless";
 
-let BUNDLE_STORYLESS =
+const BUNDLE_STORYLESS =
   process.env.BUNDLE_STORYLESS ||
   process.env.NEXT_PUBLIC_BUNDLE_STORYLESS ||
   process.env.REACT_APP_BUNDLE_STORYLESS;
