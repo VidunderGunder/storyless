@@ -23,7 +23,7 @@ NPM package on its way, so sit tight 💺
 
 *Note that all installs may require restarting the terminal – and in some cases a complete reboot – to work properly*
 
-Clone this repo to your developing environment
+Clone this repo to your development environment
 
 Install [node](https://nodejs.org/en/) `>=20.0.0 <21.0.0`*
 
