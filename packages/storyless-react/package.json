@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "generate:component": "turbo gen react-component",
     "clean": "rm -rf build && rm -rf node_modules",
-    "build": "bun build ./index.tsx --outdir ./build"
+    "build": "tsc --project ./tsconfig.production.json && bun build ./index.tsx --outdir ./build"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.16",
