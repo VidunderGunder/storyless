@@ -1,6 +1,6 @@
 "use client";
 
-// Transpilation and deep import allows bundling Storyless with your app
+// Transpilation and deep import allows bundling Storyless with our docs app
 import { Storyless } from "@storyless/react/Storyless";
 import { type ComponentPropsWithoutRef } from "react";
 import styles from "./my-storyless.module.css";
@@ -58,6 +58,55 @@ const StorylessComponents: ComponentPropsWithoutRef<
       <i>Italic</i>
       <b>Bold</b>
       <a href="/">Link</a>
+    </div>
+  ),
+  "Super Long": (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      {Array.from({ length: 100 }).map((_, index) => {
+        const opacity = 1 - index / (100 * 1.1);
+        return (
+          <div
+            key={opacity}
+            style={{
+              opacity,
+            }}
+          >
+            element {index + 1}
+          </div>
+        );
+      })}
+    </div>
+  ),
+  "Super Wide": (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        gap: "1rem",
+        alignItems: "center",
+      }}
+    >
+      {Array.from({ length: 50 }).map((_, index) => {
+        const opacity = 1 - index / (50 * 1.1);
+        return (
+          <div
+            key={opacity}
+            style={{
+              opacity,
+              // width: "100%",
+              width: "max-content",
+            }}
+          >
+            element {index + 1}
+          </div>
+        );
+      })}
     </div>
   ),
 };
