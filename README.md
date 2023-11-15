@@ -47,7 +47,7 @@ Start developing:
 bun dev
 ```
 
-Unless you're a veteran, it is *highly recommended* to read through the [**🤯 Problems During Development?**](https://github.com/VidunderGunder/storyless#-problems-during-development) section before starting development, as every single developer so far has run into at least one of the problems described there.
+Unless you're a veteran, it is *highly recommended* to read through the [**🤯 Problems During Development?**](https://github.com/VidunderGunder/storyless#-problems-during-development) section before starting development.
 
 ## What's inside?
 
