@@ -17,7 +17,15 @@ Drop it in your app and start developing. It is automatically removed from your 
 
 ## 🚀 Getting Started (using Storyless)
 
-NPM package on its way, so sit tight 💺
+Pick your package manager of choice:
+
+```
+npm i @storyless/react
+yarn add @storyless/react
+pnpm i @storyless/react
+bun i @storyless/react
+{the-new-thing} {add-package-command} @storyless/react
+```
 
 ## 🚀 Getting Started (for Contributors)
 
@@ -63,9 +71,12 @@ This Turborepo includes the following packages & apps:
   - 🧙‍♂️ **tsconfig** - _Reusable TypeScript configurations_
   - 🧙‍♂️ **eslint-config-storyless** - _Reusable ESLint configurations_
 
-## 🕊️ Releasing
+## 📦 Publish
+
+_Note: You need to be a member of the `@storyless` npm organization to publish packages_
 
 ```bash
+npm login
 bun publish-packages
 ```
 
