@@ -1,6 +1,7 @@
 "use client";
 // Transpilation and deep import allows bundling Storyless to production
 import { Storyless } from "@storyless/react/Storyless";
+import Link from "next/link";
 import { type ComponentPropsWithoutRef } from "react";
 
 function Wrapper({ children }: { children: React.ReactNode }): JSX.Element {
@@ -59,7 +60,7 @@ const StorylessComponents: ComponentPropsWithoutRef<
       <p>Pargraph</p>
       <i>Italic</i>
       <b>Bold</b>
-      <a href="/">Link</a>
+      <Link href="/">Link</Link>
     </div>
   ),
   "Super Long": (
