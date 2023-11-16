@@ -13,7 +13,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless(
     {
       components = {},
-      wrapper = ({ children }) => <>{children}</>,
+      wrapper = ({ children }) => children,
       className,
       ...props
     },

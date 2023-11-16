@@ -6,7 +6,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "lint": "eslint .",
+    "lint:oxlint": "oxlint .",
+    "lint:eslint": "eslint .",
+    "lint": "lint:eslint",
     "generate:component": "turbo gen react-component",
     "clean": "rm -rf build && rm -rf node_modules",
     "build": "bun build ./index.tsx --outdir ./build"
