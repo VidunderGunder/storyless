@@ -10,7 +10,7 @@
     "post-release": "bun override-package-json.ts -- --development"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.9.1",
     "bun-types": "^1.0.12",
     "@types/prettier": "2.7.3",
     "lodash": "^4.17.21",

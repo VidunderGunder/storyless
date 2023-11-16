@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.16",
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.9.1",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "bun-types": "^1.0.12",

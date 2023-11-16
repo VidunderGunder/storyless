@@ -29,13 +29,13 @@ bun i @storyless/react
 
 ## 🚀 Getting Started (for Contributors)
 
-*Note that all installs may require restarting the terminal – and in some cases a complete reboot – to work properly*
+_Note that all installs may require restarting the terminal – and in some cases a complete reboot – to work properly_
 
 Clone this repo to your development environment
 
-Install [node](https://nodejs.org/en/) `>=20.0.0 <21.0.0`*
+Install [node](https://nodejs.org/en/) `>=20.0.0 <21.0.0`\*
 
-> *Alternatively, you can use [Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating) with the included `.nvmrc` file
+> \*Alternatively, you can use [Node Version Manager](https://github.com/nvm-sh/nvm#installing-and-updating) with the included `.nvmrc` file
 >
 > ```sh
 > nvm use
@@ -55,7 +55,7 @@ Start developing:
 bun dev
 ```
 
-Unless you're a veteran, it is *highly recommended* to read through the [**🤯 Problems During Development?**](https://github.com/VidunderGunder/storyless#-problems-during-development) section before starting development.
+Unless you're a veteran, it is _highly recommended_ to read through the [**🤯 Problems During Development?**](https://github.com/VidunderGunder/storyless#-problems-during-development) section before starting development.
 
 ## What's inside?
 

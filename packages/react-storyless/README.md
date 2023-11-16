@@ -1,4 +1,3 @@
-
 ![Storyless](../../hero.png)
 
 # Storyless

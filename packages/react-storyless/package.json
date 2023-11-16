@@ -10,6 +10,11 @@
     "url": "https://github.com/VidunderGunder/storyless.git",
     "directory": "packages/react-storyless"
   },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.12"
+  },
+  "packageManager": "bun@1.0.12",
   "scripts": {
     "lint:oxlint": "oxlint .",
     "lint:eslint": "eslint .",
@@ -20,7 +25,7 @@
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.16",
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.9.1",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "bun-types": "^1.0.12",
