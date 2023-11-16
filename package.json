@@ -20,11 +20,11 @@
     "killports": "bun kill-port 3000",
     "reset": "bun killports && bun clean && bun install",
     "reset:hard": "bun killports && bun clean && rm -rf && rm -rf bun.lockb && bun install",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
     "pre-release": "turbo pre-release --filter='@storyless/scripts'",
+    "version-packages": "changeset version",
+    "changeset": "changeset",
     "post-release": "turbo post-release --filter='@storyless/scripts'",
-    "publish-packages": "bun pre-release && turbo run build lint test --filter=@storyless/react-storyless && changeset version && changeset publish ; bun post-release"
+    "publish-packages": "bun pre-release && turbo run build lint test --filter=@storyless/react && changeset version && changeset publish ; bun post-release"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
@@ -37,8 +37,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "dependencies": {
-    "@types/lodash": "^4.14.201"
-  }
+  ]
 }
