@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "main": "index.ts",
   "types": "index.ts",
+  "private": true,
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "pre-release": "bun override-package-json.ts -- --release",

@@ -58,7 +58,7 @@ This Turborepo includes the following packages & apps:
 - 📂 **apps**
   - 📖 **docs** - _Next.js app for Storyless docs._
 - 📂 **packages**
-  - 📚 **storyless-react** - _React (and Next.js) library for Storyless_
+  - 📚 **react-storyless** - _React (and Next.js) library for Storyless_
   - 📚 **ui** - _Shared UI components for the monorepo_
   - 🧙‍♂️ **tsconfig** - _Reusable TypeScript configurations_
   - 🧙‍♂️ **eslint-config-storyless** - _Reusable ESLint configurations_
@@ -66,10 +66,7 @@ This Turborepo includes the following packages & apps:
 ## 🕊️ Releasing
 
 ```bash
-bun pre-release
-bun changeset
 bun publish-packages
-bun post-release
 ```
 
 ## Useful TurboRepo Links

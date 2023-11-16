@@ -2,6 +2,7 @@
   "extends": "@storyless/tsconfig/base.json",
   "exclude": ["dist", "build", "node_modules", ".turbo"],
   "compilerOptions": {
+    "types": ["bun-types"],
     "rootDir": "../",
     "baseUrl": "../"
   }

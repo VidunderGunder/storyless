@@ -1,21 +1,20 @@
 "use client";
 import { forwardRef, useEffect } from "react";
-import styles from "./Storyless.module.css";
+import styles from "./storyless.module.css";
 import { cn } from "./utils/cn";
 import { useIsMounted, usePersistentState } from "./hooks";
 
 export type StorylessProps = {
   components: Record<string, React.ReactNode>;
   wrapper?: (props: { children: React.ReactNode }) => JSX.Element;
-} & React.ComponentPropsWithoutRef<"div">;
+} & Omit<React.ComponentPropsWithoutRef<"div">, "childen">;
 
 export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless(
     {
-      components,
+      components = {},
       wrapper = ({ children }) => <>{children}</>,
       className,
-      children,
       ...props
     },
     ref
@@ -30,13 +29,6 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
       keyof typeof components | undefined
     >("storyless-selected-component", Object.keys(components)[0] ?? undefined);
 
-    const Selected = () =>
-      typeof selected === "string" && selected in components ? (
-        components?.[selected] ?? null
-      ) : (
-        <>Add components to see them here 👀</>
-      );
-
     useEffect(() => {
       const handleKeyDown: typeof window.onkeydown = (event) => {
         if (event.key === "Escape") setShow(false);
@@ -44,7 +36,9 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
 
       window.addEventListener("keydown", handleKeyDown);
 
-      return () => void window.removeEventListener("keydown", handleKeyDown);
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
     }, []);
 
     if (!isMounted) return null;
@@ -64,12 +58,15 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   return (
                     <div key={componentName}>
                       <button
-                        onClick={() => setSelected(componentName)}
                         className={
                           isSelected
                             ? styles.selectedButton
                             : styles.unselectedButton
                         }
+                        onClick={() => {
+                          setSelected(componentName);
+                        }}
+                        type="button"
                       >
                         {componentName}
                       </button>
@@ -79,7 +76,11 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
               </div>
               <div className={cn(styles.preview)}>
                 <Wrapper>
-                  <Selected />
+                  {typeof selected === "string" && selected in components ? (
+                    components[selected] ?? null
+                  ) : (
+                    <>Add components to see them here 👀</>
+                  )}
                 </Wrapper>
               </div>
             </div>
@@ -87,7 +88,10 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
         ) : null}
         <button
           className={cn(styles.fixedButton)}
-          onClick={() => setShow((prev) => !prev)}
+          onClick={() => {
+            setShow((prev) => !prev);
+          }}
+          type="button"
         >
           {show ? " Hide" : "Show"} Storyless
         </button>

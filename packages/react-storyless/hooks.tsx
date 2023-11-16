@@ -8,8 +8,8 @@ export function usePersistentState<
       return defaultValue;
 
     const storedValue = localStorage.getItem(key);
-    const parsedValue =
-      storedValue !== null ? (JSON.parse(storedValue) as unknown) : null;
+    const parsedValue: unknown =
+      storedValue !== null ? JSON.parse(storedValue) : null;
 
     if (
       typeof parsedValue === "string" ||
@@ -29,7 +29,7 @@ export function usePersistentState<
   return [state, setState];
 }
 
-export function useIsMounted() {
+export function useIsMounted(): boolean {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {

@@ -1,9 +1,14 @@
 {
   "name": "@storyless/react",
   "version": "0.0.0",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "index.tsx",
+  "types": "index.tsx",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VidunderGunder/storyless.git",
+    "directory": "packages/react-storyless"
+  },
   "scripts": {
     "lint": "eslint .",
     "generate:component": "turbo gen react-component",

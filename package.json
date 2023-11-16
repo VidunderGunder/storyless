@@ -22,9 +22,9 @@
     "reset:hard": "bun killports && bun clean && rm -rf && rm -rf bun.lockb && bun install",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "pre-release": "turbo pre-release --filter='@sectoralarm-cloud/scripts'",
-    "post-release": "turbo post-release --filter='@sectoralarm-cloud/scripts'",
-    "publish-packages": "bun pre-release && turbo run build lint test --filter=@sectoralarm-cloud/react-jupiter && changeset version && changeset publish ; bun post-release"
+    "pre-release": "turbo pre-release --filter='@storyless/scripts'",
+    "post-release": "turbo post-release --filter='@storyless/scripts'",
+    "publish-packages": "bun pre-release && turbo run build lint test --filter=@storyless/react-storyless && changeset version && changeset publish ; bun post-release"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

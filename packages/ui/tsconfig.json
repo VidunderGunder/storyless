@@ -2,5 +2,7 @@
   "extends": "@storyless/tsconfig/react-library.json",
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"],
-  "compilerOptions": {}
+  "compilerOptions": {
+    "types": ["bun-types"]
+  }
 }
