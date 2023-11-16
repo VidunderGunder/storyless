@@ -10,6 +10,7 @@
   "ignore": [
     "@storyless/tsconfig",
     "@storyless/docs",
+    "@storyless/ui",
     "eslint-config-storyless"
   ]
 }

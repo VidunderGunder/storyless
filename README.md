@@ -63,6 +63,15 @@ This Turborepo includes the following packages & apps:
   - 🧙‍♂️ **tsconfig** - _Reusable TypeScript configurations_
   - 🧙‍♂️ **eslint-config-storyless** - _Reusable ESLint configurations_
 
+## 🕊️ Releasing
+
+```bash
+bun pre-release
+bun changeset
+bun publish-packages
+bun post-release
+```
+
 ## Useful TurboRepo Links
 
 Learn more about the power of Turborepo:

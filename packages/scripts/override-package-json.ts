@@ -78,6 +78,7 @@ async function getAllPackageJSONOverridePaths({
   }
 
   const packageArrays = await Promise.all(packagePromises);
+
   return packageArrays.flat();
 }
 
@@ -88,6 +89,13 @@ async function overridePackageJSON({
   packagePath: string;
   overridePath: string;
 }) {
+  console.log(
+    `⏳ Overriding ${packagePath.replace(
+      projectRoot,
+      ""
+    )} with ${overridePath.replace(projectRoot, "")}...`
+  );
+
   try {
     // Read the original package.json and its override
     const [originalPackage, overridePackage] = await Promise.all([
@@ -100,12 +108,22 @@ async function overridePackageJSON({
 
     // Write the merged object back to the original package.json file
     await fs.writeFile(packagePath, JSON.stringify(mergedPackage, null, 2));
+    console.log(
+      `✅ Successful ${packagePath.replace(projectRoot, "")} override`
+    );
   } catch (error) {
-    console.error(`Failed to override package.json: ${error}`);
+    console.error(
+      `❌ Failed to override package.json at ${packagePath.replace(
+        projectRoot,
+        ""
+      )}: ${error}`
+    );
   }
 }
 
 async function main() {
+  console.log("Overriding package.json files...\n");
+
   const args = process.argv.slice(2); // Skip the first two elements (paths to the runner and script)
   const isPreRelease = args.includes("--release");
   const isPostRelease = args.includes("--development");
