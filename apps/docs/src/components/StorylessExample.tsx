@@ -2,10 +2,13 @@
 // Transpilation and deep import allows bundling Storyless to production
 import { Storyless } from "@storyless/react/Storyless";
 import { type ComponentPropsWithoutRef } from "react";
-import styles from "./my-storyless.module.css";
 
-function Wrapper({ children }): JSX.Element {
-  return <div className={styles.storylessWrapper}>{children}</div>;
+function Wrapper({ children }: { children: React.ReactNode }): JSX.Element {
+  return (
+    <div className="grid h-full w-full place-items-center overflow-auto bg-white p-4 shadow-[0_0_0.5rem_rgba(0,0,0,0.1)] dark:bg-[#12191f]">
+      {children}
+    </div>
+  );
 }
 
 const StorylessComponents: ComponentPropsWithoutRef<
@@ -110,6 +113,6 @@ const StorylessComponents: ComponentPropsWithoutRef<
   ),
 };
 
-export function MyStoryless(): JSX.Element {
+export function StorylessExample(): JSX.Element {
   return <Storyless components={StorylessComponents} wrapper={Wrapper} />;
 }

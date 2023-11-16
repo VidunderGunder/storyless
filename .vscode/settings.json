@@ -16,5 +16,13 @@
     "*.module.styl"
   ],
   "reactTsScss.references": false,
-  "reactTsScss.codelens": true
+  "reactTsScss.codelens": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[prisma]": {
+    "editor.formatOnSave": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
