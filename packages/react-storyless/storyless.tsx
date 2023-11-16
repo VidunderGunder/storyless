@@ -19,6 +19,8 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
     },
     ref
   ) {
+    console.count("render");
+
     const Wrapper = wrapper;
     const isMounted = useIsMounted();
     const [show, setShow] = usePersistentState<boolean>(
@@ -39,7 +41,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
       return () => {
         window.removeEventListener("keydown", handleKeyDown);
       };
-    }, []);
+    }, [setShow]);
 
     if (!isMounted) return null;
 
