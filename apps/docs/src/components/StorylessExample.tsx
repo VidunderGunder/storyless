@@ -1,6 +1,6 @@
 "use client";
 // Transpilation and deep import allows bundling Storyless to production
-import { Storyless } from "@storyless/react/Storyless";
+import { Storyless } from "@storyless/react/storyless";
 import Link from "next/link";
 import { type ComponentPropsWithoutRef } from "react";
 
