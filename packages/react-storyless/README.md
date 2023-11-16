@@ -1,5 +1,5 @@
 
-![Storyless](hero.png)
+![Storyless](../../hero.png)
 
 # Storyless
 
@@ -14,7 +14,7 @@ Drop it in your app and start developing. It is automatically removed from your 
 
 ## [👉 DEMO](https://storyless.vercel.app/)
 
-![Example](example.png)
+![Example](../../example.png)
 
 ## 🚀 Getting Started
 
