@@ -15,7 +15,7 @@
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "bun-types": "^1.0.11",
+    "bun-types": "^1.0.12",
     "eslint-config-storyless": "*",
     "react": "^18.2.0",
     "typescript": "^5.2.2",

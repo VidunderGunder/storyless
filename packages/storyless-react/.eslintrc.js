@@ -1,3 +1,4 @@
+/** @type {import("eslint").Linter.Config} */
 module.exports = {
-  extends: ["custom/react-internal"],
+  extends: ["storyless/react-internal"],
 };

@@ -2,10 +2,10 @@
   "private": true,
   "engineStrict": true,
   "engines": {
-    "bun": ">=1.0.11",
+    "bun": ">=1.0.12",
     "node": ">=18.0.0 <19.0.0 >=20.0.0 <21.0.0"
   },
-  "packageManager": "bun@1.0.11",
+  "packageManager": "bun@1.0.12",
   "scripts": {
     "build": "turbo run build",
     "build:@storyless/docs": "turbo run build --filter='@storyless/docs'",
@@ -30,12 +30,15 @@
     "@changesets/cli": "^2.26.2",
     "eslint": "^8.53.0",
     "kill-port": "^2.0.1",
-    "prettier": "^3.0.3",
+    "prettier": "^3.1.0",
     "turbo": "latest"
   },
   "name": "storyless",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@types/lodash": "^4.14.201"
+  }
 }
