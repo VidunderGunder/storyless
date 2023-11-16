@@ -106,7 +106,7 @@ async function overridePackageJSON({
 }
 
 async function main() {
-  const args = process.argv.slice(2); // Skip the first two elements
+  const args = process.argv.slice(2); // Skip the first two elements (paths to the runner and script)
   const isPreRelease = args.includes("--release");
   const isPostRelease = args.includes("--development");
 
