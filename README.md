@@ -49,6 +49,7 @@ We've added a nifty `<Combinations />` component to help you test your component
 
 ```tsx
 import { Storyless, Combinations } from "@storyless/react";
+import { Button } from "./ButtonExample";
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -82,6 +83,7 @@ If you want to customize the preview window, you can add a `wrapper` prop to you
 
 ```tsx
 import { Storyless, Combinations } from "@storyless/react";
+import { Button } from "./ButtonExample";
 
 function Wrapper({ children }: { children: React.ReactNode }): JSX.Element {
   return (
