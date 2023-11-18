@@ -121,7 +121,7 @@ function App({ Component, pageProps }: AppProps) {
 
 That's it – now go nuts 🥜🐿️
 
-_And don't worry, it is automatically removed from your production bundle._
+_And don't worry, Storyless is automatically removed from your production bundle._
 
 ## 🚀 Getting Started (for Contributors)
 
