@@ -1,16 +1,27 @@
 {
   "name": "@storyless/react",
-  "version": "0.0.4",
-  "main": "index.tsx",
-  "types": "index.tsx",
+  "version": "0.0.5",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "license": "MIT",
   "private": false,
   "type": "module",
+  "author": "Kristian Gunder Kramås <kristiankramas@outlook.com> (https://github.com/VidunderGunder)",
   "repository": {
     "type": "git",
     "url": "https://github.com/VidunderGunder/storyless.git",
     "directory": "packages/react-storyless"
   },
+  "keywords": [
+    "storyless",
+    "ui",
+    "frontend",
+    "devtool",
+    "devtools",
+    "react",
+    "next",
+    "nextjs"
+  ],
   "files": [
     "build/**"
   ],

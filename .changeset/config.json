@@ -9,6 +9,7 @@
   "baseBranch": "main",
   "ignore": [
     "@storyless/tsconfig",
+    "@storyless/scripts",
     "@storyless/docs",
     "nextjs-app-router",
     "nextjs-pages-router",
