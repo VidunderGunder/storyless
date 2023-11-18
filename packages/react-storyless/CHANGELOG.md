@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.11
+
+### Patch Changes
+
+- Improved documentation
+
 ## 0.0.10
 
 ### Patch Changes
