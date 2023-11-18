@@ -19,6 +19,11 @@
     "post-release": {
       "cache": false
     },
+    "dev:release": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^dev:release"]
+    },
     "lint": {},
     "dev": {
       "cache": false,

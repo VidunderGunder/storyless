@@ -1,6 +1,6 @@
 {
   "name": "@storyless/react",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "main": "index.tsx",
   "types": "index.tsx",
   "license": "MIT",
@@ -10,6 +10,9 @@
     "url": "https://github.com/VidunderGunder/storyless.git",
     "directory": "packages/react-storyless"
   },
+  "files": [
+    "build/**"
+  ],
   "engines": {
     "node": ">=18.0.0",
     "bun": ">=1.0.12"
@@ -18,10 +21,11 @@
   "scripts": {
     "lint:oxlint": "oxlint .",
     "lint:eslint": "eslint .",
-    "lint": "lint:eslint",
+    "lint": "bun lint:eslint",
     "generate:component": "turbo gen react-component",
-    "clean": "rm -rf build && rm -rf node_modules",
-    "build": "tsc --project ./tsconfig.production.json && bun build ./index.tsx --outdir ./build"
+    "clean": "rm -rf build && rm -rf node_modules && rm -rf .turbo",
+    "build": "tsc --project ./tsconfig.production.json && bun build ./index.tsx --outdir ./build --external react --external react-dom",
+    "dev:release": "bun build --watch ./index.tsx --outdir ./build --external='react' --external='react-dom'"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.16",
@@ -30,7 +34,12 @@
     "@types/react-dom": "^18.2.15",
     "bun-types": "^1.0.12",
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "typescript": "^5.2.2",
     "typescript-plugin-css-modules": "^5.0.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

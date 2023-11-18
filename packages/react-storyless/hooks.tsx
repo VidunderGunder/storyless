@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 
 export function usePersistentState<
@@ -8,8 +9,11 @@ export function usePersistentState<
       return defaultValue;
 
     const storedValue = localStorage.getItem(key);
+
     const parsedValue: unknown =
-      storedValue !== null ? JSON.parse(storedValue) : null;
+      typeof storedValue === "string" && storedValue !== "undefined"
+        ? JSON.parse(storedValue)
+        : null;
 
     if (
       typeof parsedValue === "string" ||
