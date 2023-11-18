@@ -6,14 +6,6 @@ import Link from "next/link";
 import { type ComponentPropsWithoutRef } from "react";
 import { Button, buttonColorKeys } from "./ButtonExample";
 
-// function Wrapper({ children }: { children: React.ReactNode }): JSX.Element {
-//   return (
-//     <div className="grid h-full w-full place-items-center overflow-auto bg-white p-4 dark:bg-black">
-//       {children}
-//     </div>
-//   );
-// }
-
 const StorylessComponents: ComponentPropsWithoutRef<
   typeof Storyless
 >["components"] = {
