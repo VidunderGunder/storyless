@@ -1,6 +1,6 @@
 {
   "name": "@storyless/react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.tsx",
   "types": "index.tsx",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "lint:eslint": "eslint .",
     "lint": "bun lint:eslint",
     "generate:component": "turbo gen react-component",
-    "clean": "rm -rf build && rm -rf node_modules && rm -rf .turbo",
+    "clean": "rm -rf build && rm -rf node_modules && rm -rf .turbo && rm -rf tsconfig.release.tsbuildinfo",
     "build:dts": "tsc --project ./tsconfig.release.json",
     "build:js": "bun build ./index.tsx --outdir ./build --external='react' --external='react-dom'",
     "build": "bun build:dts & bun build:js"

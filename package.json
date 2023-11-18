@@ -8,7 +8,7 @@
   "packageManager": "bun@1.0.12",
   "scripts": {
     "preinstall": "bunx only-allow bun",
-    "build": "turbo run build",
+    "build": "bun pre-release && turbo run build && bun post-release",
     "build:@storyless/docs": "turbo run build --filter='@storyless/docs'",
     "build:@storyless/react": "turbo run build --filter='@storyless/react'",
     "dev": "bun post-release && bun i && cd apps/docs && bun run dev",

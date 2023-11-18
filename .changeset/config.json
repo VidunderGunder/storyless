@@ -10,6 +10,8 @@
   "ignore": [
     "@storyless/tsconfig",
     "@storyless/docs",
+    "nextjs-app-router",
+    "nextjs-pages-router",
     "@storyless/ui",
     "eslint-config-storyless"
   ]
