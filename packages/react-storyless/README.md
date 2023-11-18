@@ -10,6 +10,9 @@ Storyless is a UI DevTool that lets you build and test components in isolation i
 
 Direct interoperability with your app and main build tools means hard-to-integrate features like authentication, fetching, state management, themes, etc. will just work when you need them.
 
+> [!CAUTION]  
+> Storyless is currently in alpha and is not recommended for production use.
+
 ## 🚀 Getting Started
 
 Install using your project's package manager:
@@ -76,6 +79,38 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 ```
+
+> [!TIP]  
+> _Here's the `<Combinations />` documentation:_
+>
+> ---
+>
+> Display all combinations of props for a component.
+>
+> Main props:
+>
+> - `component` - The component to display.
+> - `propsToCombine` - The props to display all combinations for.
+> - `componentProps` - Props to pass to all instances of the component.
+> - `columns` - Override the number of columns to display the combinations in.
+> - `componentBackgroundColor` - Override the background color of the combinations.
+>
+> @example
+>
+> ```tsx
+> <AllCombinations
+>   component={Button} // props => <Button {...props} />
+>   propsToCombine={{
+>     color: ["slate", "emerald", "sky", "rose"],
+>     size: ["lg", "sm"],
+>     square: [false, true],
+>     disabled: [false, true],
+>     children: ["Button"],
+>   }}
+>   backgroundColor="#13191f"
+>   columns={2} // Auto-calculated by default
+> />
+> ```
 
 ![Button](../../button.png)
 

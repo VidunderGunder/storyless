@@ -10,7 +10,10 @@ Storyless is a UI DevTool that lets you build and test components in isolation i
 
 Direct interoperability with your app and main build tools means hard-to-integrate features like authentication, fetching, state management, themes, etc. will just work when you need them.
 
-## 🚀 Getting Started (using Storyless)
+> [!CAUTION]  
+> Storyless is currently in alpha and is not recommended for production use.
+
+## 🚀 Getting Started
 
 Install using your project's package manager:
 
@@ -77,8 +80,7 @@ function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-> [!TIP]
->
+> [!TIP]  
 > _Here's the `<Combinations />` documentation:_
 >
 > ---
