@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.3
+
+### Patch Changes
+
+- Package explicitly is module & housecleaning
+
 ## 0.0.2
 
 ### Patch Changes

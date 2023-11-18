@@ -26,7 +26,7 @@ const fontFamilies = [
 
 export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless(
-    { components = {}, wrapper = ({ children }) => children, ...props },
+    { components = {}, wrapper = ({ children }) => children, style, ...props },
     ref
   ) {
     const Wrapper = wrapper;
@@ -66,9 +66,8 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
               top: 0,
               overflowY: "hidden",
               backgroundColor: "#12191f",
-              // Tailwind font styles
               fontFamily: fontFamilies,
-              // Add other styles that were in styles.storyless and styles.container
+              ...style,
             }}
             {...props}
           >
@@ -78,7 +77,6 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                 height: "100%",
                 width: "100%",
                 maxHeight: "100vh",
-                // Add other styles that were in styles.fullHeightWidth
               }}
             >
               <div
@@ -92,7 +90,6 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   display: "flex",
                   flexDirection: "column",
                   gap: "0.25rem",
-                  // Add other styles that were in styles.sidebar
                 }}
               >
                 {Object.keys(components).map((componentName) => {
@@ -118,7 +115,6 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
-                          // Add other styles that were in styles.selectedButton or styles.unselectedButton
                         }}
                         type="button"
                       >
@@ -139,14 +135,20 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   backgroundColor: "#12191f",
                   padding: 0,
                   margin: 0,
-                  // Add other styles that were in styles.preview
                 }}
               >
                 <Wrapper>
                   {typeof selected === "string" && selected in components ? (
                     components[selected] ?? null
                   ) : (
-                    <>Add components to see them here 👀</>
+                    <div
+                      style={{
+                        color: "#fff",
+                        fontSize: "2rem",
+                      }}
+                    >
+                      Add components to see them here 👀
+                    </div>
                   )}
                 </Wrapper>
               </div>
