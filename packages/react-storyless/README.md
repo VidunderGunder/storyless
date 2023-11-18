@@ -80,6 +80,8 @@ function App({ Component, pageProps }: AppProps) {
 }
 ```
 
+![Button](../../button.png)
+
 > [!TIP]  
 > _Here's the `<Combinations />` documentation:_
 >
@@ -112,17 +114,37 @@ function App({ Component, pageProps }: AppProps) {
 > />
 > ```
 
-![Button](../../button.png)
-
-If you want to customize the preview window, you can add a `wrapper` prop to your `<Storyless />` component. Here's a nice starter wrapper using [Tailwind CSS](https://tailwindcss.com/):
+If you want to customize the preview window, you can replace the original Wrapper by passing a `wrapper` prop to your `<Storyless />` component. Here's a style agnostic starter wrapper you can use:
 
 ```tsx
 import { Storyless, Combinations } from "@storyless/react";
 import { Button } from "./ButtonExample";
 
-function Wrapper({ children }: { children: React.ReactNode }): JSX.Element {
+function Wrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="grid h-full w-full place-items-center overflow-auto bg-white p-4 dark:bg-black">
+    <div
+      style={{
+        borderRadius: "0.5rem",
+        width: "100%",
+        height: "100%",
+        maxWidth: "100%",
+        display: "grid",
+        placeItems: "center",
+        backgroundColor: "rgba(239, 239, 239, 0.1)",
+        boxShadow: `
+          inset 0 1px 0px 0px rgba(255, 255, 255, 0.1),
+          inset 0 -2px 0px 0px rgba(0, 0, 0, 0.125),
+          0 1px 0 7px rgba(0, 0, 0, 0.1)
+        `,
+        backdropFilter: "blur(30px)",
+        padding: "1rem 2rem",
+        margin: 0,
+      }}
+    >
       {children}
     </div>
   );
