@@ -132,7 +132,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   overflow: "auto",
                   display: "grid",
                   placeItems: "center",
-                  backgroundColor: "#12191f",
+                  backgroundColor: "#fff",
                   padding: 0,
                   margin: 0,
                 }}
@@ -143,7 +143,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   ) : (
                     <div
                       style={{
-                        color: "#fff",
+                        color: "#12191f",
                         fontSize: "2rem",
                       }}
                     >
