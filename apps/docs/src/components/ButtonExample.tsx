@@ -44,17 +44,15 @@ export function Button({
 }
 
 export const buttonColors = {
-  "#42556B": ["bg-[#42556B]", "text-white"],
-  "#57799F": ["bg-[#57799F]", "text-white"],
-  "#43577E": ["bg-[#43577E]", "text-white"],
-  "#313851": ["bg-[#313851]", "text-white"],
-  "#D4D195": ["bg-[#D4D195]", "text-black"],
-  "#A7C2D1": ["bg-[#A7C2D1]", "text-black"],
+  slate: ["bg-slate-700", "text-white"],
+  emerald: ["bg-emerald-600", "text-white"],
+  sky: ["bg-sky-600", "text-white"],
+  rose: ["bg-rose-600", "text-white"],
 } as const;
-export const buttonColorKeys = [
-  ...Object.keys(buttonColors),
-  ...Object.keys(buttonColors),
-] as Exclude<ButtonVariantProps["color"], undefined | null>[];
+export const buttonColorKeys = [...Object.keys(buttonColors)] as Exclude<
+  ButtonVariantProps["color"],
+  undefined | null
+>[];
 
 export const button = cva(
   [
@@ -63,6 +61,8 @@ export const button = cva(
     "justify-center",
     "text-center",
     "transition-colors",
+    "hover:[box-shadow:_0_0_0_3px_rgba(255,_255,_255,_0.2)]",
+    "active:[box-shadow:_0_0_0_3px_rgba(255,_255,_255,_0.1)]",
   ],
   {
     variants: {
@@ -73,7 +73,15 @@ export const button = cva(
       },
       square: { true: ["rounded", "py-1", "px-5"], false: [] },
       disabled: {
-        true: ["cursor-not-allowed"],
+        true: [
+          "cursor-not-allowed",
+          "hover:bg-gray-400",
+          "hover:text-gray-500",
+          "bg-gray-300",
+          "text-gray-500",
+          "hover:[box-shadow:_0_0_0_3px_rgba(255,_255,_255,_0)]",
+          "active:[box-shadow:_0_0_0_3px_rgba(255,_255,_255,_0)]",
+        ],
         false: [],
       },
     },

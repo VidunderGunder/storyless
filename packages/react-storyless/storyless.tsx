@@ -24,9 +24,39 @@ const fontFamilies = [
   "Noto Color Emoji",
 ].join(", ");
 
+function DefaultWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
+  return (
+    <div
+      style={{
+        borderRadius: "0.5rem",
+        width: "100%",
+        height: "100%",
+        maxWidth: "100%",
+        display: "grid",
+        placeItems: "center",
+        backgroundColor: "rgba(239, 239, 239, 0.1)",
+        boxShadow: `
+          inset 0 1px 0px 0px rgba(255, 255, 255, 0.1),
+          inset 0 -2px 0px 0px rgba(0, 0, 0, 0.125),
+          0 1px 0 7px rgba(0, 0, 0, 0.1)
+        `,
+        backdropFilter: "blur(30px)",
+        padding: "1rem 2rem",
+        margin: 0,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless(
-    { components = {}, wrapper = ({ children }) => children, style, ...props },
+    { components = {}, wrapper = DefaultWrapper, style, ...props },
     ref
   ) {
     const Wrapper = wrapper;
@@ -77,64 +107,115 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                 height: "100%",
                 width: "100%",
                 maxHeight: "100vh",
+                position: "relative",
               }}
             >
               <div
                 style={{
                   width: "10rem",
                   maxHeight: "100%",
-                  overflowY: "auto",
-                  borderRight: "2px solid rgba(255, 255, 255, 0.1)",
+                  borderRight: "1px solid rgba(255, 255, 255, 0.025)",
+                  boxShadow: `
+                    0px 0px 10px 0px rgba(0, 0, 0, 0.5)
+                  `,
                   backgroundColor: "#12191f",
-                  padding: "0.5rem",
                   display: "flex",
                   flexDirection: "column",
+                  justifyContent: "space-between",
                   gap: "0.25rem",
                 }}
               >
-                {Object.keys(components).map((componentName) => {
-                  const isSelected = componentName === selected;
-                  return (
-                    <div key={componentName}>
-                      <button
-                        onClick={() => {
-                          setSelected(componentName);
-                        }}
-                        style={{
-                          textAlign: "right",
-                          backgroundColor: isSelected
-                            ? "rgba(255, 255, 255, 0.1)"
-                            : "transparent",
-                          color: isSelected
-                            ? "rgba(255, 255, 255, 1)"
-                            : "rgba(255, 255, 255, 0.5)",
-                          width: "100%",
-                          padding: "0.5rem 0.75rem",
-                          borderRadius: "0.5rem",
-                          fontSize: "0.75rem",
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                        }}
-                        type="button"
-                      >
-                        {componentName}
-                      </button>
-                    </div>
-                  );
-                })}
+                <div
+                  style={{
+                    width: "100%",
+                    maxHeight: "100%",
+                    overflowY: "auto",
+                    backgroundColor: "#12191f",
+                    padding: "0.5rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.25rem",
+                  }}
+                >
+                  {Object.keys(components).map((componentName) => {
+                    const isSelected = componentName === selected;
+                    return (
+                      <div key={componentName}>
+                        <button
+                          onClick={() => {
+                            setSelected(componentName);
+                          }}
+                          style={{
+                            textAlign: "right",
+                            backgroundColor: isSelected
+                              ? "rgba(255, 255, 255, 0.1)"
+                              : "transparent",
+                            color: isSelected
+                              ? "rgba(255, 255, 255, 1)"
+                              : "rgba(255, 255, 255, 0.5)",
+                            width: "100%",
+                            padding: "0.5rem 0.75rem",
+                            borderRadius: "0.5rem",
+                            fontSize: "0.75rem",
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                          type="button"
+                        >
+                          {componentName}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div
+                  style={{
+                    width: "100%",
+                    maxHeight: "100%",
+                    overflowY: "auto",
+                    backgroundColor: "#12191f",
+                    padding: "0.5rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.25rem",
+                  }}
+                >
+                  <button
+                    onClick={() => {
+                      setShow(false);
+                    }}
+                    style={{
+                      backgroundColor: "rgba(255, 255, 255, 0.01)",
+                      boxShadow: `
+                        inset 0 1px 0px 0px rgba(255, 255, 255, 0.05),
+                        inset 0 -2px 0px 0px rgba(0, 0, 0, 0.75),
+                        0 0 0 3.5px rgba(0, 0, 0, 0.25)
+                        `,
+                      color: "rgba(255, 255, 255, 0.675)",
+                      width: "100%",
+                      padding: "0.675rem 0.75rem",
+                      borderRadius: "0.5rem",
+                      fontSize: "0.75rem",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                    type="button"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
+
               <div
                 style={{
-                  borderRadius: 0,
-                  width: "100%",
-                  maxWidth: "100%",
-                  overflow: "auto",
                   display: "grid",
                   placeItems: "center",
-                  backgroundColor: "#fff",
-                  padding: 0,
-                  margin: 0,
+                  width: "100%",
+                  height: "100%",
+                  padding: "2rem",
+                  overflow: "auto",
                 }}
               >
                 <Wrapper>
@@ -152,38 +233,64 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   )}
                 </Wrapper>
               </div>
+              <div
+                style={{
+                  position: "absolute",
+                  display: "grid",
+                  placeItems: "center",
+                  width: "100%",
+                  height: "100%",
+                  pointerEvents: "none",
+                }}
+              >
+                <img
+                  alt="Storyless Background"
+                  src="https://raw.githubusercontent.com/VidunderGunder/storyless/main/wallpaper.jpg"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    zIndex: -1,
+                  }}
+                />
+              </div>
             </div>
           </div>
         ) : null}
-        <button
-          onClick={() => {
-            setShow((prev) => !prev);
-          }}
-          style={{
-            position: "fixed",
-            bottom: "min(max(0.5rem, 2vw), 2rem)",
-            right: "min(max(0.5rem, 2.25vw), 3rem)",
-            backgroundColor: "#12191f",
-            color: "#fff",
-            border: "2px solid #fff",
-            borderRadius: "9999px",
-            padding: "0.75rem",
-            width: "9rem",
-            height: "fit-content",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            zIndex: 9999,
-            fontSize: "0.875rem",
-            userSelect: "none",
+        {show ? null : (
+          <button
+            onClick={() => {
+              setShow((prev) => !prev);
+            }}
+            style={{
+              position: "fixed",
+              bottom: "min(max(0.5rem, 2vw), 2rem)",
+              right: "min(max(0.5rem, 2.25vw), 3rem)",
+              backgroundColor: "#12191f",
+              color: "#fff",
+              border: "2px solid #fff",
+              borderRadius: "9999px",
+              padding: "0.75rem",
+              width: "9rem",
+              height: "fit-content",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              zIndex: 9999,
+              fontSize: "0.875rem",
+              userSelect: "none",
 
-            fontFamily: fontFamilies,
-          }}
-          type="button"
-        >
-          {show ? " Hide" : "Show"} Storyless
-        </button>
+              fontFamily: fontFamilies,
+            }}
+            type="button"
+          >
+            Show Storyless
+          </button>
+        )}
       </>
     );
   }

@@ -11,9 +11,9 @@
     "build": "bun pre-release && turbo run build && bun post-release",
     "build:@storyless/docs": "turbo run build --filter='@storyless/docs'",
     "build:@storyless/react": "turbo run build --filter='@storyless/react'",
-    "dev": "bun post-release && bun i && cd apps/docs && bun run dev",
+    "dev:docs": "bun pre-release && bun i && cd apps/docs && bun run dev",
     "dev:release": "bun pre-release && bun i && turbo run dev",
-    "dev:docs": "cd apps/docs && bun run dev",
+    "dev": "bun dev:docs",
     "lint": "turbo run lint",
     "test": "turbo run test --",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
@@ -27,7 +27,7 @@
     "version-packages": "changeset version",
     "changeset": "changeset",
     "post-release": "turbo post-release --filter='@storyless/scripts'",
-    "publish-packages": "bun pre-release && turbo run build lint test --filter=@storyless/react && changeset && changeset version && changeset publish ; bun post-release"
+    "publish-packages": "bun pre-release && bun i && turbo run build lint test --filter=@storyless/react && changeset && changeset version && changeset publish ; bun post-release"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

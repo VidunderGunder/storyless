@@ -37,6 +37,10 @@ type AllCombinationsProps<C extends ComponentType> = {
    * Default: Length of the first prop to combine.
    */
   columns?: number;
+  /**
+   * Override the background color of the combinations.
+   */
+  componentBackgroundColor?: string;
 } & React.ComponentPropsWithoutRef<"div">;
 
 function truncateValue<V>(value: V, truncateAt = 25): string {
@@ -51,16 +55,55 @@ function truncateValue<V>(value: V, truncateAt = 25): string {
  * Modulate the number of columns to display the combinations in.
  *
  * If the value is greater than the maximum number of columns (default 5), it will be divided by 2 and rounded up.
+ *
+ * If the value is greater than the maximum number of columns times two, it will be divided by 3 and rounded up and so on.
  */
 export function modulateGridCols(value: number, maxCols = 5): number {
-  return value > maxCols ? Math.ceil(value / 2) : value;
+  if (value <= maxCols) {
+    return value;
+  }
+  return modulateGridCols(Math.ceil(value / 2), maxCols);
 }
 
+const backgroundColor = "#fdfdfd";
+const fontColor = "rgb(19, 24, 30)";
+
+/**
+ * Display all combinations of props for a component.
+ *
+ * Main props:
+ *
+ * - `component` - The component to display.
+ * - `propsToCombine` - The props to display all combinations for.
+ * - `componentProps` - Props to pass to all instances of the component.
+ * - `columns` - Override the number of columns to display the combinations in.
+ * - `componentBackgroundColor` - Override the background color of the combinations.
+ * 
+ * @example
+ *
+ * ```tsx
+ * <AllCombinations
+ *   component={Button} // props => <Button {...props} />
+ *   propsToCombine={{
+ *     color: ["slate", "emerald", "sky", "rose"],
+ *     size: ["lg", "sm"],
+ *     square: [false, true],
+ *     disabled: [false, true],
+ *     children: ["Button"],
+ *   }}
+ *   backgroundColor="#13191f"
+ *   columns={2} // Auto-calculated by default
+ * />
+ * ```
+ *
+
+ */
 export function Combinations<C extends ComponentType>({
   component,
   propsToCombine,
   componentProps,
   columns,
+  componentBackgroundColor,
   ...props
 }: AllCombinationsProps<C>): JSX.Element | null {
   const combinations = getCombinations(propsToCombine);
@@ -69,7 +112,9 @@ export function Combinations<C extends ComponentType>({
     firstPropKey === "" ? 1 : propsToCombine[firstPropKey]?.length ?? 1;
   let _columns = columns ?? firstPropLength;
 
-  if (columns === undefined) _columns = modulateGridCols(_columns);
+  if (columns === undefined) {
+    _columns = modulateGridCols(_columns);
+  }
 
   return (
     <div
@@ -98,7 +143,12 @@ export function Combinations<C extends ComponentType>({
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              width: "100%",
               justifyContent: "center",
+              borderRadius: "1rem",
+              boxShadow: `
+                0px 0px 0px 4px ${backgroundColor}
+              `,
             }}
           >
             <div
@@ -107,7 +157,15 @@ export function Combinations<C extends ComponentType>({
                 width: "100%",
                 alignItems: "center",
                 justifyContent: "center",
-                padding: "1rem",
+                borderRadius: "1rem",
+                boxShadow: `
+                  0px 5px 0px 4px ${backgroundColor}
+                `,
+                // backdropFilter: "blur(10px)",
+                // backgroundColor: "rgba(255, 255, 255, 0.25)",
+                backgroundColor: componentBackgroundColor,
+                padding: "1.5rem",
+                overflow: "hidden",
               }}
             >
               <Component {...comboProps} {...componentProps}>
@@ -117,13 +175,38 @@ export function Combinations<C extends ComponentType>({
             {typeof label === "string" && label.length > 0 ? (
               <pre
                 style={{
-                  borderRadius: "0.5rem",
-                  border: "1px solid",
+                  width: "100%",
+                  backgroundColor,
+                  borderRadius: "1rem",
+                  borderTopRightRadius: "0",
+                  borderTopLeftRadius: "0",
                   padding: "0.5rem",
-                  fontSize: "0.75rem",
+                  fontSize: "0.625rem",
+                  fontWeight: "bold",
+                  overflow: "hidden",
+                  // scale font size down if label is too long
                 }}
               >
-                {label}
+                {Object.entries(comboProps).map(([prop, value]) => (
+                  <div key={[prop, value].join("-")}>
+                    <span
+                      style={{
+                        color: fontColor,
+                        opacity: 0.375,
+                      }}
+                    >
+                      {prop}:{" "}
+                    </span>
+                    <span
+                      style={{
+                        color: fontColor,
+                        opacity: 0.8,
+                      }}
+                    >
+                      {truncateValue(value)}
+                    </span>
+                  </div>
+                ))}
               </pre>
             ) : null}
           </div>
