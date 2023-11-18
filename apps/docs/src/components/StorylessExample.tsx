@@ -102,5 +102,5 @@ const StorylessComponents: ComponentPropsWithoutRef<
 };
 
 export function StorylessExample(): JSX.Element {
-  return <Storyless components={StorylessComponents} wrapper={Wrapper} />;
+  return <Storyless components={StorylessComponents} />;
 }

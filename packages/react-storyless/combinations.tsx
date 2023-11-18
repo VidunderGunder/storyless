@@ -78,6 +78,7 @@ export function Combinations<C extends ComponentType>({
         width: "100%",
         placeItems: "center",
         gap: "1rem",
+        padding: "1rem 3rem",
         gridTemplateColumns: `repeat(${_columns}, minmax(0, 1fr))`,
         ...props.style,
       }}
