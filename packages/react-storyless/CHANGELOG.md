@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.10
+
+### Patch Changes
+
+- New design and feel, no added sugars
+
 ## 0.0.9
 
 ### Patch Changes

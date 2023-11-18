@@ -1,8 +1,8 @@
 {
   "name": "@storyless/react",
-  "version": "0.0.9",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "version": "0.0.10",
+  "main": "index.tsx",
+  "types": "index.tsx",
   "license": "MIT",
   "private": false,
   "type": "module",
