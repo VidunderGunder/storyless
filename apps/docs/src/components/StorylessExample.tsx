@@ -17,7 +17,11 @@ import { Button, buttonColorKeys } from "./ButtonExample";
 const StorylessComponents: ComponentPropsWithoutRef<
   typeof Storyless
 >["components"] = {
-  Hello: <h1>Hello World!</h1>,
+  Hello: (
+    <h1 className="text-[min(max(3rem,12vw),7rem)] font-black leading-none text-slate-800 drop-shadow-sm">
+      Hello World!
+    </h1>
+  ),
   Button: (
     <Combinations
       component={Button}

@@ -10,7 +10,7 @@ export const buttonDefaultVariants: StrictIntersection<
   ButtonVariantProps,
   ButtonProps
 > = {
-  color: "slate",
+  color: "pink",
   size: "lg",
 };
 
@@ -44,10 +44,11 @@ export function Button({
 }
 
 export const buttonColors = {
-  slate: ["bg-slate-700", "text-white"],
-  emerald: ["bg-emerald-600", "text-white"],
-  sky: ["bg-sky-600", "text-white"],
-  rose: ["bg-rose-600", "text-white"],
+  pink: ["bg-pink-700", "text-white"],
+  amber: ["bg-amber-600", "text-white"],
+  emerald: ["bg-emerald-500", "text-white"],
+  cyan: ["bg-cyan-500", "text-white"],
+  indigo: ["bg-indigo-700", "text-white"],
 } as const;
 export const buttonColorKeys = [...Object.keys(buttonColors)] as Exclude<
   ButtonVariantProps["color"],

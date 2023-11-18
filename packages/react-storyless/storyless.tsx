@@ -5,58 +5,12 @@ import { useIsMounted, usePersistentState } from "./hooks";
 export type StorylessProps = {
   components: Record<string, React.ReactNode>;
   wrapper?: (props: { children: React.ReactNode }) => JSX.Element;
+  buttonProps?: React.ComponentPropsWithoutRef<"button">;
 } & Omit<React.ComponentPropsWithoutRef<"div">, "childen">;
-
-const fontFamilies = [
-  "ui-sans-serif",
-  "system-ui",
-  "-apple-system",
-  "BlinkMacSystemFont",
-  "Segoe UI",
-  "Roboto",
-  "Helvetica Neue",
-  "Arial",
-  "Noto Sans",
-  "sans-serif",
-  "Apple Color Emoji",
-  "Segoe UI Emoji",
-  "Segoe UI Symbol",
-  "Noto Color Emoji",
-].join(", ");
-
-function DefaultWrapper({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
-  return (
-    <div
-      style={{
-        borderRadius: "0.5rem",
-        width: "100%",
-        height: "100%",
-        maxWidth: "100%",
-        display: "grid",
-        placeItems: "center",
-        backgroundColor: "rgba(239, 239, 239, 0.1)",
-        boxShadow: `
-          inset 0 1px 0px 0px rgba(255, 255, 255, 0.1),
-          inset 0 -2px 0px 0px rgba(0, 0, 0, 0.125),
-          0 1px 0 7px rgba(0, 0, 0, 0.1)
-        `,
-        backdropFilter: "blur(30px)",
-        padding: "1rem 2rem",
-        margin: 0,
-      }}
-    >
-      {children}
-    </div>
-  );
-}
 
 export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless(
-    { components = {}, wrapper = DefaultWrapper, style, ...props },
+    { components = {}, wrapper = DefaultWrapper, style, buttonProps, ...props },
     ref
   ) {
     const Wrapper = wrapper;
@@ -95,7 +49,6 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
               right: 0,
               top: 0,
               overflowY: "hidden",
-              backgroundColor: "#12191f",
               fontFamily: fontFamilies,
               ...style,
             }}
@@ -116,7 +69,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   maxHeight: "100%",
                   borderRight: "1px solid rgba(255, 255, 255, 0.025)",
                   boxShadow: `
-                    0px 0px 10px 0px rgba(0, 0, 0, 0.5)
+                    0 1px 0 6px rgba(0, 0, 0, 0.05)
                   `,
                   backgroundColor: "#12191f",
                   display: "flex",
@@ -233,30 +186,6 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                   )}
                 </Wrapper>
               </div>
-              <div
-                style={{
-                  position: "absolute",
-                  display: "grid",
-                  placeItems: "center",
-                  width: "100%",
-                  height: "100%",
-                  pointerEvents: "none",
-                }}
-              >
-                <img
-                  alt="Storyless Background"
-                  src="https://raw.githubusercontent.com/VidunderGunder/storyless/main/wallpaper.jpg"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    zIndex: -1,
-                  }}
-                />
-              </div>
             </div>
           </div>
         ) : null}
@@ -267,8 +196,8 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
             }}
             style={{
               position: "fixed",
-              bottom: "min(max(0.5rem, 2vw), 2rem)",
-              right: "min(max(0.5rem, 2.25vw), 3rem)",
+              bottom: "min(max(0.5rem, 1.75vw), 2rem)",
+              left: "min(max(0.5rem, 2vw), 3rem)",
               backgroundColor: "#12191f",
               color: "#fff",
               border: "2px solid #fff",
@@ -283,10 +212,10 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
               zIndex: 9999,
               fontSize: "0.875rem",
               userSelect: "none",
-
               fontFamily: fontFamilies,
             }}
             type="button"
+            {...buttonProps}
           >
             Show Storyless
           </button>
@@ -295,3 +224,50 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
     );
   }
 );
+
+const fontFamilies = [
+  "ui-sans-serif",
+  "system-ui",
+  "-apple-system",
+  "BlinkMacSystemFont",
+  "Segoe UI",
+  "Roboto",
+  "Helvetica Neue",
+  "Arial",
+  "Noto Sans",
+  "sans-serif",
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol",
+  "Noto Color Emoji",
+].join(", ");
+
+function DefaultWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}): JSX.Element {
+  return (
+    <div
+      style={{
+        borderRadius: "0.5rem",
+        width: "100%",
+        height: "100%",
+        maxWidth: "100%",
+        display: "grid",
+        placeItems: "center",
+        backgroundColor: "rgba(255, 255, 255, 1)",
+        boxShadow: `
+          inset 0 1px 0px 0px rgba(255, 255, 255, 0.1),
+          inset 0 -2px 0px 0px rgba(0, 0, 0, 0.125),
+          0 1px 0 6px rgba(0, 0, 0, 0.05)
+        `,
+        backdropFilter: "blur(100px)",
+        padding: "1rem 2rem",
+        margin: 0,
+      }}
+    >
+      {children}
+    </div>
+  );
+}

@@ -78,7 +78,7 @@ const fontColor = "rgb(19, 24, 30)";
  * - `componentProps` - Props to pass to all instances of the component.
  * - `columns` - Override the number of columns to display the combinations in.
  * - `componentBackgroundColor` - Override the background color of the combinations.
- * 
+ *
  * @example
  *
  * ```tsx
@@ -95,15 +95,14 @@ const fontColor = "rgb(19, 24, 30)";
  *   columns={2} // Auto-calculated by default
  * />
  * ```
- *
-
  */
 export function Combinations<C extends ComponentType>({
   component,
   propsToCombine,
   componentProps,
   columns,
-  componentBackgroundColor,
+  componentBackgroundColor = "#e7e7e7",
+  style,
   ...props
 }: AllCombinationsProps<C>): JSX.Element | null {
   const combinations = getCombinations(propsToCombine);
@@ -125,7 +124,7 @@ export function Combinations<C extends ComponentType>({
         gap: "1rem",
         padding: "1rem 3rem",
         gridTemplateColumns: `repeat(${_columns}, minmax(0, 1fr))`,
-        ...props.style,
+        ...style,
       }}
       {...props}
     >
@@ -147,7 +146,7 @@ export function Combinations<C extends ComponentType>({
               justifyContent: "center",
               borderRadius: "1rem",
               boxShadow: `
-                0px 0px 0px 4px ${backgroundColor}
+                0px 0px 0px 4px ${backgroundColor},
               `,
             }}
           >
