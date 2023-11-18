@@ -1,8 +1,10 @@
 "use client";
 // Transpilation and deep import allows bundling Storyless to production
 import { Storyless } from "@storyless/react/storyless";
+import { Combinations } from "@storyless/react/combinations";
 import Link from "next/link";
 import { type ComponentPropsWithoutRef } from "react";
+import { Button, buttonColorKeys } from "./ButtonExample";
 
 function Wrapper({ children }: { children: React.ReactNode }): JSX.Element {
   return (
@@ -17,31 +19,16 @@ const StorylessComponents: ComponentPropsWithoutRef<
 >["components"] = {
   hello: <h1>Hello World!</h1>,
   button: (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+    <Combinations
+      component={Button}
+      propsToCombine={{
+        color: buttonColorKeys,
+        size: ["lg", "sm"],
+        square: [false, true],
+        disabled: [false, true],
+        children: ["Button"],
       }}
-    >
-      <button
-        style={{
-          width: "120px",
-        }}
-        type="button"
-      >
-        Button
-      </button>
-      <button
-        disabled
-        style={{
-          width: "120px",
-        }}
-        type="button"
-      >
-        Disabled
-      </button>
-    </div>
+    />
   ),
   typography: (
     <div

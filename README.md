@@ -65,6 +65,7 @@ This Turborepo includes the following packages & apps:
 
 - 📂 **apps**
   - 📖 **docs** - _Next.js app for Storyless docs._
+  - ...A bunch of framework-specific examples
 - 📂 **packages**
   - 📚 **react-storyless** - _React (and Next.js) library for Storyless_
   - 📚 **ui** - _Shared UI components for the monorepo_
