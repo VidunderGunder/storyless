@@ -77,6 +77,39 @@ function App({ Component, pageProps }: AppProps) {
 }
 ```
 
+> [!TIP]
+>
+> _Here's the `<Combinations />` documentation:_
+>
+> ---
+>
+> Display all combinations of props for a component.
+>
+> Main props:
+>
+> - `component` - The component to display.
+> - `propsToCombine` - The props to display all combinations for.
+> - `componentProps` - Props to pass to all instances of the component.
+> - `columns` - Override the number of columns to display the combinations in.
+> - `componentBackgroundColor` - Override the background color of the combinations.
+>
+> @example
+>
+> ```tsx
+> <AllCombinations
+>   component={Button} // props => <Button {...props} />
+>   propsToCombine={{
+>     color: ["slate", "emerald", "sky", "rose"],
+>     size: ["lg", "sm"],
+>     square: [false, true],
+>     disabled: [false, true],
+>     children: ["Button"],
+>   }}
+>   backgroundColor="#13191f"
+>   columns={2} // Auto-calculated by default
+> />
+> ```
+
 ![Button](button.png)
 
 If you want to customize the preview window, you can add a `wrapper` prop to your `<Storyless />` component. Here's a nice starter wrapper using [Tailwind CSS](https://tailwindcss.com/):

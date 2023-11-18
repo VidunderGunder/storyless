@@ -10,7 +10,7 @@ export const buttonDefaultVariants: StrictIntersection<
   ButtonVariantProps,
   ButtonProps
 > = {
-  color: "#57799F",
+  color: "slate",
   size: "lg",
 };
 
