@@ -4,12 +4,11 @@
 
 **[👉 LIVE DEMO](https://storyless.vercel.app/)**
 
-Where Your App is the Canvas  
-Focus on Features – Not Fluff
-
 For when design system powerhouses like [Storybook](https://storybook.com/) is just too much.
 
-Direct interoperability with your app and main build tools means hard-to-integrate features like authentication, fetching, state management, etc. will just work when you need them.
+Storyless is a UI DevTool that lets you build and test components in isolation inside of your app.
+
+Direct interoperability with your app and main build tools means hard-to-integrate features like authentication, fetching, state management, themes, etc. will just work when you need them.
 
 ## 🚀 Getting Started (using Storyless)
 
