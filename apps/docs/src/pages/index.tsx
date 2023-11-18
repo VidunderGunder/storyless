@@ -23,6 +23,7 @@ export default function Page(): JSX.Element {
         }}
       >
         <Image
+          priority
           alt="Storyless Background"
           src="/wallpaper.jpg"
           width={1683}
