@@ -10,7 +10,7 @@
     "lint:eslint": "eslint .",
     "lint": "bun lint:eslint",
     "generate:component": "turbo gen react-component",
-    "clean": "rm -rf build && rm -rf node_modules",
+    "clean": "rm -rf build node_modules",
     "build": "bun build ./index.tsx --outdir ./build"
   },
   "devDependencies": {

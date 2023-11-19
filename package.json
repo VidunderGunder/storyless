@@ -2,10 +2,10 @@
   "private": true,
   "engineStrict": true,
   "engines": {
-    "bun": ">=1.0.12",
+    "bun": ">=1.0.13",
     "node": ">=18.0.0 <19.0.0 >=20.0.0 <21.0.0"
   },
-  "packageManager": "bun@1.0.12",
+  "packageManager": "bun@1.0.13",
   "scripts": {
     "preinstall": "bunx only-allow bun",
     "build": "bun pre-release && turbo run build && bun post-release",
@@ -18,7 +18,7 @@
     "test": "turbo run test --",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean:modules": "turbo run clean",
-    "clean:root": "rm -rf node_modules && rm -rf .turbo",
+    "clean:root": "rm -rf node_modules .turbo",
     "clean": "bun clean:modules && bun clean:root",
     "killports": "bun kill-port 3000 4200 4300 4400",
     "reset": "bun killports && bun clean && bun install",

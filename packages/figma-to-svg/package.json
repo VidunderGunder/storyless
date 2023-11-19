@@ -1,0 +1,44 @@
+{
+  "name": "@storyless/figma-to-svg",
+  "license": "MIT",
+  "version": "0.0.0",
+  "module": "index.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "description": "CLI Tool for Figma to SVGs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VidunderGunder/storyless.git",
+    "directory": "packages/figma-to-svg"
+  },
+  "keywords": [
+    "cli",
+    "figma",
+    "svg",
+    "sync",
+    "storyless",
+    "ui"
+  ],
+  "files": [
+    "build/**"
+  ],
+  "scripts": {
+    "clean": "rm -rf node_modules .turbo",
+    "lint": "oxlint .",
+    "build:dts": "tsc --project ./tsconfig.release.json",
+    "build:js": "bun build ./index.ts --outdir ./build --target node",
+    "build": "bun build:dts & bun build:js"
+  },
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@clack/core": "^0.3.3",
+    "@clack/prompts": "^0.7.0",
+    "commander": "^11.1.0",
+    "picocolors": "^1.0.0",
+    "bun": "1.0.13"
+  }
+}

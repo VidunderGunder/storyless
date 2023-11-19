@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": ["dist", "build", "node_modules", "turbo", ".turbo"],
+  "compilerOptions": {
+    "noEmit": false,
+    "allowJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "build",
+    "declarationMap": false
+  }
+}

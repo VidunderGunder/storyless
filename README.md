@@ -192,7 +192,7 @@ Install [node](https://nodejs.org/en/) `>=20.0.0 <21.0.0`\*
 > nvm use
 > ```
 
-Install [bun](https://bun.sh/) `>=1.0.12`
+Install [bun](https://bun.sh/) `>=1.0.13`
 
 Install dependencies:
 

@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "pre-release": "bun override-package-json.ts -- --release",
-    "post-release": "bun override-package-json.ts -- --development"
+    "post-release": "bun override-package-json.ts -- --development",
+    "lint": "oxlint ."
   },
   "devDependencies": {
     "@types/node": "^20.9.1",
