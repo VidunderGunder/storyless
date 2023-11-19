@@ -1,4 +1,4 @@
-![Storyless](hero.png)
+![Storyless](packages/react-storyless/hero.png)
 
 # Storyless
 
@@ -44,7 +44,7 @@ function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-![Hello](hello.png)
+![Hello](packages/react-storyless/hello.png)
 
 ### 🎭 Combinations
 
@@ -80,7 +80,7 @@ function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-![Button](button.png)
+![Button](packages/react-storyless/button.png)
 
 > _Here's the `<Combinations />` documentation:_
 >
@@ -177,6 +177,44 @@ function App({ Component, pageProps }: AppProps) {
 That's it – now go nuts 🥜🐿️
 
 _And don't worry, Storyless is automatically removed from your production bundle._
+
+# 🥷 [Figma to SVG](https://github.com/VidunderGunder/storyless/tree/main/packages/figma-to-svg#readme)
+
+Figma to SVG is a CLI tool that allows you to download SVGs from a specific frame in Figma
+
+_it probably works for entire files too, but that's not our use case – so feel free to try it out and let us know!_
+
+## 📋 You'll need
+
+1. A Figma API token (see the guide [here](https://www.figma.com/developers/api#access-tokens))
+2. A Figma file URL (you can get one by opening a file in Figma, selecting a frame and copying the URL)
+3. Optionally, a path to save the SVGs to (defaults to `./svgs/`)
+
+## 🚀 Usage
+
+Prepare your icons and copy the frame's URL:
+
+![Figma frame URL](./packages/figma-to-svg/frame.png)
+
+Then, run the CLI:
+
+```bash
+npx @storyless/figma-to-svg # npm
+yarn dlx @storyless/figma-to-svg # yarn
+pnpx @storyless/figma-to-svg # pnpm
+bunx @storyless/figma-to-svg # bun
+```
+
+![Figma to SVG CLI](./packages/figma-to-svg/cli.png)
+
+You can also pass parameters to the CLI, to skip the prompts:
+
+```bash
+bunx @storyless/figma-to-svg --url "https://www.figma.com/file/yourfileidhere/Project-Name?node-id=69%3A420&mode=dev" --token "figd_23eredgfEegdf-0910g2ojsDjjek-kPbbzmmo6twXG4" --out "./some/folder/"
+```
+
+> [!NOTE]  
+> The example uses `bunx`, but you can also use `npx`, `yarn dlx`, `pnpx` or any other package runner.
 
 ## 🚀 Getting Started (for Contributors)
 

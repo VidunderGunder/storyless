@@ -1,4 +1,4 @@
-![Storyless](../../hero.png)
+![Storyless](hero.png)
 
 # Storyless
 
@@ -44,7 +44,7 @@ function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-![Hello](../../hello.png)
+![Hello](hello.png)
 
 ### 🎭 Combinations
 
@@ -80,7 +80,7 @@ function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-![Button](../../button.png)
+![Button](button.png)
 
 > [!TIP]  
 > _Here's the `<Combinations />` documentation:_

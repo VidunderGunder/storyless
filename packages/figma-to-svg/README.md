@@ -1,4 +1,4 @@
-# 🥷 Figma to SVG (by Storyless)
+# 🥷 Figma to SVG
 
 Figma to SVG is a CLI tool that allows you to download SVGs from a specific frame in Figma
 
