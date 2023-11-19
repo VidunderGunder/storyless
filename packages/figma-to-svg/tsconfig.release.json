@@ -1,6 +1,13 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["dist", "build", "node_modules", "turbo", ".turbo"],
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules",
+    "turbo",
+    ".turbo",
+    "post-build.ts"
+  ],
   "compilerOptions": {
     "noEmit": false,
     "allowJs": true,

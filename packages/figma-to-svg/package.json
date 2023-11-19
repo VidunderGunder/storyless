@@ -1,7 +1,7 @@
 {
   "name": "@storyless/figma-to-svg",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "private": false,
   "module": "index.ts",
   "main": "build/index.js",
@@ -31,7 +31,7 @@
     "clean": "rm -rf node_modules .turbo",
     "lint": "oxlint .",
     "build:dts": "tsc --project ./tsconfig.release.json",
-    "build:js": "bun build ./index.ts --outdir ./build --target node",
+    "build:js": "bun build ./index.ts --outdir ./build --target node && bun run post-build.ts",
     "build": "bun build:dts & bun build:js"
   },
   "type": "module",

@@ -20,6 +20,6 @@
     ],
     "resolveJsonModule": true
   },
-  "include": ["index.ts", "./package.json"],
+  "include": ["index.ts", "./package.json", "post-build.ts"],
   "exclude": ["node_modules", "build"]
 }

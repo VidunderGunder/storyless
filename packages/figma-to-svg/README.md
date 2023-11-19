@@ -35,3 +35,8 @@ bunx @storyless/figma-to-svg --url "https://www.figma.com/file/yourfileidhere/Pr
 
 > [!NOTE]  
 > The example uses `bunx`, but you can also use `npx`, `yarn dlx`, `pnpx` or any other package runner.
+
+> [!TIP]  
+> If the command fails, try specifying the exact version of the package, e.g. `bunx @storyless/figma-to-svg@x.x.x`
+>
+> Find the latest version [here](https://www.npmjs.com/package/@storyless/figma-to-svg?activeTab=versions)
