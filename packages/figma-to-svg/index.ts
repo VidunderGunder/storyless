@@ -436,9 +436,3 @@ async function main() {
 }
 
 main().catch(console.error);
-
-// https://www.figma.com/file/cdigx3rPzZGy3bPk9wm1uq/Real-estate?node-id=1111%3A724&mode=dev
-// figd_6d5tiFDns8c_VHni4zkTaZW9u-kPbmmo6twbzXG4
-// ./svgs/
-
-// bun run index.ts --url "https://www.figma.com/file/cdigx3rPzZGy3bPk9wm1uq/Real-estate?node-id=1111%3A724&mode=dev" --token "figd_6d5tiFDns8c_VHni4zkTaZW9u-kPbmmo6twbzXG4" --out "./svgs/"

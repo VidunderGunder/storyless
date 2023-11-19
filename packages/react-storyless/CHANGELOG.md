@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.14
+
+### Patch Changes
+
+- Initial release of Figma to SVG
+
 ## 0.0.13
 
 ### Patch Changes
