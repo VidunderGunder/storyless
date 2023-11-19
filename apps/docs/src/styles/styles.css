@@ -11,7 +11,20 @@ body,
   min-height: 100%;
   max-width: 100vw;
   overflow-x: hidden;
-  /* background-color: #13191f; */
+}
+
+html {
+  background-color: #13191e;
+  background-image: linear-gradient(0deg, #2f4353 40%, #ff9e6a 100%);
+}
+
+body {
+  background-image: linear-gradient(
+    -135deg,
+    #dd6071d5 0%,
+    #14273600 50%,
+    #091247ab 100%
+  );
 }
 
 a {
