@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+"use strict";
+
 import { mkdir, readdir, stat, unlink, writeFile } from "node:fs/promises";
 import path from "path";
 import * as prompt from "@clack/prompts";
