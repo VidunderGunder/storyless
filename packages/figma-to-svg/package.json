@@ -13,9 +13,7 @@
     "url": "https://github.com/VidunderGunder/storyless.git",
     "directory": "packages/figma-to-svg"
   },
-  "bin": {
-    "figma-to-svg": "./build/index.js"
-  },
+  "bin": "./build/index.js",
   "keywords": [
     "cli",
     "figma",
