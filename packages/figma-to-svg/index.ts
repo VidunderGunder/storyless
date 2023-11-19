@@ -5,11 +5,6 @@ import color from "picocolors";
 import { program } from "commander";
 import packageJson from "./package.json";
 
-// const url =
-//   "https://www.figma.com/file/cdigx3rPzZGy3bPk9wm1uq/Real-estate?node-id=1111%3A724&mode=dev";
-// const token = "figd_6d5tiFDns8c_VHni4zkTaZW9u-kPbmmo6twbzXG4";
-// const outputPath = path.join(import.meta.dir, "/svgs/");
-
 const programName = "@storyless/figma-to-svg";
 
 type Component = {
