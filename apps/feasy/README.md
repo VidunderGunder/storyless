@@ -18,10 +18,6 @@ To get started with Feasy, follow these steps:
 1. Wait for it to be released
 2. That's it for now
 
-## Documentation
-
-For detailed documentation on installation, configuration, and usage, visit our [documentation page](#).
-
 ## Contributing
 
 We welcome contributions to Feasy! Create an issue or create a pull request to get our attention. For more information, don't see our non-existent [contributing guidelines](#).
