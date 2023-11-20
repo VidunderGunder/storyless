@@ -1,5 +1,11 @@
 # @storyless/figma-to-svg
 
+## 0.0.7
+
+### Patch Changes
+
+- Replace colons with underscores
+
 ## 0.0.6
 
 ### Patch Changes
