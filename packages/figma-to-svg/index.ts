@@ -140,11 +140,11 @@ async function fetchComponentsAsSvgs({
   return json;
 }
 
-const slashesRegex = /\//g;
-const allSymbolsExceptReservedRegex = /[^a-zA-Z0-9-_:]/g;
+const replaceWithUnderscoreRegex = /\/:/g;
+const allSymbolsExceptReservedRegex = /[^a-zA-Z0-9-_]/g;
 function formatFileName(originalName: string) {
   return originalName
-    .replaceAll(slashesRegex, "_")
+    .replaceAll(replaceWithUnderscoreRegex, "_")
     .replace(allSymbolsExceptReservedRegex, "-")
     .replace(/-+/g, "-");
 }
