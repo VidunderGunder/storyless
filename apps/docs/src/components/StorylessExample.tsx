@@ -38,6 +38,16 @@ const StorylessComponents: ComponentPropsWithoutRef<
       }}
     />
   ),
+  "3D Cat (Cute)": (
+    <div className="h-full w-full py-3">
+      <iframe
+        src="https://catagotchi.vercel.app/"
+        width="100%"
+        height="100%"
+        className="rounded-xl border-2 border-slate-300 "
+      />
+    </div>
+  ),
   Typography: (
     <div
       style={{
