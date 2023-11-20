@@ -26,7 +26,7 @@ const StorylessComponents: ComponentPropsWithoutRef<
       }}
     />
   ),
-  "Regular <div />": (
+  "HTML Tag": (
     <Combinations
       component="div"
       propsToCombine={{
@@ -38,7 +38,7 @@ const StorylessComponents: ComponentPropsWithoutRef<
       }}
     />
   ),
-  "3D Cat (Cute)": (
+  Catagotchi: (
     <div className="h-full w-full py-3">
       <iframe
         src="https://catagotchi.vercel.app/"
