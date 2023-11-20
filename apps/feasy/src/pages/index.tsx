@@ -1,16 +1,9 @@
-import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useState } from "react";
-// import { usePersistentState } from "~/hooks/usePersistentState";
+import { Navigation } from "~/components/Navigation";
 import { cn } from "~/styles/utils";
 
-import { api } from "~/utils/api";
-
 export default function Home() {
-  // const [checked, setChecked] = usePersistentState(
-  //   "feasy-flip-the-bird",
-  //   false,
-  // );
   const [checked, setChecked] = useState(false);
 
   return (
@@ -20,6 +13,12 @@ export default function Home() {
         <meta name="description" content="Heckin' Easy Feature Toggles" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navigation
+        className={cn(
+          "fixed transition-all delay-500 duration-1000",
+          checked ? "bg-base-200" : "bg-transparent",
+        )}
+      />
       <main className="flex min-h-screen flex-col items-center">
         <div
           className={cn(
@@ -43,17 +42,7 @@ export default function Home() {
               >
                 🦩
               </h1>
-              <h1 className="mb-5 text-8xl font-black">
-                F
-                {/* <span
-                  className={cn(
-                    "transition-all duration-500",
-                    checked ? "" : "animate-pulse text-red-300",
-                  )}
-                > */}
-                easy
-                {/* </span> */}
-              </h1>
+              <h1 className="mb-5 text-8xl font-black">Feasy</h1>
               <p className="text-md font-bold">Feature Toggles</p>
               <p className="text-md mb-4 font-bold">made heckin&apos; easy</p>
               <div className="flex w-fit items-center justify-self-center">
@@ -72,20 +61,14 @@ export default function Home() {
         </div>
         <div className="mx-auto mb-48 w-fit py-16">
           {checked ? (
-            <>
-              <article className="prose">
-                <h2>Congrats.</h2>
-                <p>You just flipped a feature toggle in live production.</p>
+            <article className="prose">
+              <h2>Congrats.</h2>
+              <p>You just flipped a feature toggle in live production.</p>
 
-                <p>Felt nice, right?</p>
-              </article>
-            </>
+              <p>Felt nice, right?</p>
+            </article>
           ) : (
-            <>
-              <p>
-                Why don&apos;t you flick that lil&apos; toggle up there, no?
-              </p>
-            </>
+            <p>Why don&apos;t you flick that lil&apos; toggle up there, no?</p>
           )}
           {/* <div className="flex flex-col items-center gap-2">
             <AuthShowcase />
@@ -93,29 +76,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  );
-}
-
-function AuthShowcase() {
-  const { data: sessionData } = useSession();
-
-  const { data: secretMessage } = api.post.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined },
-  );
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
-      </p>
-      <button
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-        onClick={sessionData ? () => void signOut() : () => void signIn()}
-      >
-        {sessionData ? "Sign out" : "Sign in"}
-      </button>
-    </div>
   );
 }

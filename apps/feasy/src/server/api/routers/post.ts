@@ -19,12 +19,15 @@ export const postRouter = createTRPCRouter({
   create: protectedProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
+      const createdById = ctx.auth?.user?.id;
+      if (!createdById) throw new Error("Not authenticated");
+
       // simulate a slow db call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       await ctx.db.insert(posts).values({
         name: input.name,
-        createdById: ctx.session.user.id,
+        createdById,
       });
     }),
 

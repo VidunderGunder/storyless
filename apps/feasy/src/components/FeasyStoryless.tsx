@@ -1,4 +1,4 @@
-import { Combinations, Storyless } from "@storyless/react";
+import { Storyless } from "@storyless/react";
 
 export function FeasyStoryless() {
   return <Storyless components={{}} />;

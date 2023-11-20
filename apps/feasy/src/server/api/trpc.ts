@@ -6,15 +6,23 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-
 import { initTRPC, TRPCError } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
-import { type Session } from "next-auth";
 import superjson from "superjson";
 import { ZodError } from "zod";
+import {
+  getAuth,
+  type SignedInAuthObject,
+  type SignedOutAuthObject,
+} from "@clerk/nextjs/server";
 
-import { getServerAuthSession } from "~/server/auth";
 import { db } from "~/server/db";
+
+/**
+ * ! Deviates from vanilla implementation, as we use Clerk for auth
+ *
+ * https://clerk.com/docs/references/nextjs/trpc#using-clerk-in-your-t-rpc-context
+ */
 
 /**
  * 1. CONTEXT
@@ -24,9 +32,9 @@ import { db } from "~/server/db";
  * These allow you to access things when processing a request, like the database, the session, etc.
  */
 
-interface CreateContextOptions {
-  session: Session | null;
-}
+type CreateContextOptions = {
+  auth: SignedInAuthObject | SignedOutAuthObject;
+};
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use it, you can export
@@ -38,10 +46,10 @@ interface CreateContextOptions {
  *
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
-const createInnerTRPCContext = (opts: CreateContextOptions) => {
+const createInnerTRPCContext = ({ auth, ..._opts }: CreateContextOptions) => {
   return {
-    session: opts.session,
     db,
+    auth,
   };
 };
 
@@ -51,14 +59,9 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  *
  * @see https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-  const { req, res } = opts;
-
-  // Get the session from the server using the getServerSession wrapper function
-  const session = await getServerAuthSession({ req, res });
-
+export const createTRPCContext = ({ req }: CreateNextContextOptions) => {
   return createInnerTRPCContext({
-    session,
+    auth: getAuth(req),
   });
 };
 
@@ -107,25 +110,15 @@ export const createTRPCRouter = t.router;
  */
 export const publicProcedure = t.procedure;
 
-/** Reusable middleware that enforces users are logged in before running the procedure. */
-const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.session?.user) {
+const isAuthed = t.middleware(({ next, ctx }) => {
+  if (!ctx.auth.userId) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
     ctx: {
-      // infers the `session` as non-nullable
-      session: { ...ctx.session, user: ctx.session.user },
+      auth: ctx.auth,
     },
   });
 });
 
-/**
- * Protected (authenticated) procedure
- *
- * If you want a query or mutation to ONLY be accessible to logged in users, use this. It verifies
- * the session is valid and guarantees `ctx.session.user` is not null.
- *
- * @see https://trpc.io/docs/procedures
- */
-export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
+export const protectedProcedure = t.procedure.use(isAuthed);
