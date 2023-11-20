@@ -40,3 +40,13 @@ bunx @storyless/figma-to-svg --url "https://www.figma.com/file/yourfileidhere/Pr
 > If the command fails, try specifying the exact version of the package, e.g. `bunx @storyless/figma-to-svg@x.x.x`
 >
 > Find the latest version [here](https://www.npmjs.com/package/@storyless/figma-to-svg?activeTab=versions)
+
+## ⚛️ SVGR
+
+If you want to turn these into React components, you can use [SVGR](https://react-svgr.com/).
+
+Here's an example command to get you started:
+
+```bash
+bunx @svgr/cli --replace-attr-values=#000=currentColor --out-dir svgr --ext tsx --typescript -- svgs
+```
