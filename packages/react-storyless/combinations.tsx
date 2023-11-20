@@ -21,6 +21,8 @@ type AllCombinationsProps<C extends ComponentType> = {
   /**
    * The props to display all combinations for.
    *
+   * The first prop array's length will be used to calculate the number of columns to display the combinations in.
+   *
    * _Note: For polymorphic components, auto-complete will only work if you specify the component type to `component`, e.g.:_
    *
    * ```tsx
