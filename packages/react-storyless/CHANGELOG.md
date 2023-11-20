@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.16
+
+### Patch Changes
+
+- Added support for HTML tags using strings
+
 ## 0.0.15
 
 ### Patch Changes

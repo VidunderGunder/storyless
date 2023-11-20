@@ -26,6 +26,18 @@ const StorylessComponents: ComponentPropsWithoutRef<
       }}
     />
   ),
+  "Regular <div />": (
+    <Combinations
+      component="div"
+      propsToCombine={{
+        children: ["This is a div", "This is another div"],
+        className: [
+          "bg-slate-300 p-5 rounded-xl",
+          "bg-pink-200 p-5 rounded-xl",
+        ],
+      }}
+    />
+  ),
   Typography: (
     <div
       style={{
