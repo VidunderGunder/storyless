@@ -16,7 +16,7 @@ export default function Page(): JSX.Element {
 
   const getRotation = () => {
     if (windowWidth <= 600) return 45;
-    if (windowWidth >= 900) return 60;
+    if (windowWidth >= 600) return 60;
   };
   return (
     <main className="relative flex h-full min-h-full flex-col items-center justify-center">
