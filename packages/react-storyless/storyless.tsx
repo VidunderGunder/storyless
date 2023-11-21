@@ -49,7 +49,6 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
               right: 0,
               top: 0,
               overflowY: "hidden",
-              fontFamily: fontFamilies,
               ...style,
             }}
             {...props}
@@ -139,6 +138,7 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
                       setShow(false);
                     }}
                     style={{
+                      fontFamily: fontFamilies,
                       backgroundColor: "rgba(255, 255, 255, 0.01)",
                       boxShadow: `
                         inset 0 1px 0px 0px rgba(255, 255, 255, 0.05),
@@ -236,10 +236,6 @@ const fontFamilies = [
   "Arial",
   "Noto Sans",
   "sans-serif",
-  "Apple Color Emoji",
-  "Segoe UI Emoji",
-  "Segoe UI Symbol",
-  "Noto Color Emoji",
 ].join(", ");
 
 function DefaultWrapper({
