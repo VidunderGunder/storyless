@@ -11,6 +11,7 @@
     "@storyless/tsconfig",
     "@storyless/scripts",
     "@storyless/docs",
+    "@feasy/web",
     "nextjs-app-router",
     "nextjs-pages-router",
     "@storyless/ui",

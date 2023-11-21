@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.17
+
+### Patch Changes
+
+- Fixed font families being overriden
+
 ## 0.0.16
 
 ### Patch Changes
