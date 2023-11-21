@@ -1,3 +1,5 @@
+import React from "react";
+
 type ComponentType =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is fine for now 🔥🙂🔥
   | React.ComponentType<any>

@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.18
+
+### Patch Changes
+
+- Fix Storyless JSX in Production
+
 ## 0.0.17
 
 ### Patch Changes

@@ -1,5 +1,5 @@
 "use client";
-import React, { forwardRef, useEffect } from "react";
+import React from "react";
 import { useIsMounted, usePersistentState } from "./hooks";
 
 export type StorylessProps = {
@@ -8,7 +8,8 @@ export type StorylessProps = {
   buttonProps?: React.ComponentPropsWithoutRef<"button">;
 } & Omit<React.ComponentPropsWithoutRef<"div">, "childen">;
 
-export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
+// eslint-disable-next-line import/no-named-as-default-member -- We want to export the component as default
+export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless(
     { components = {}, wrapper = DefaultWrapper, style, buttonProps, ...props },
     ref
@@ -23,7 +24,8 @@ export const Storyless = forwardRef<HTMLDivElement, StorylessProps>(
       keyof typeof components | undefined
     >("storyless-selected-component", Object.keys(components)[0] ?? undefined);
 
-    useEffect(() => {
+    // eslint-disable-next-line import/no-named-as-default-member -- We want to export the component as default
+    React.useEffect(() => {
       const handleKeyDown: typeof window.onkeydown = (event) => {
         if (event.key === "Escape") setShow(false);
       };

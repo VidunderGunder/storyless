@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+// eslint-disable-next-line @typescript-eslint/consistent-type-imports -- React may be needed
+import React, { useEffect, useState } from "react";
 
 export function usePersistentState<
   T extends string | number | boolean | null | undefined,
