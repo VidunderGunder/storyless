@@ -2,7 +2,8 @@ type ComponentType =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is fine for now 🔥🙂🔥
   | React.ComponentType<any>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- This is fine for now 🔥🙂🔥
-  | React.ForwardRefExoticComponent<any>;
+  | React.ForwardRefExoticComponent<any>
+  | keyof JSX.IntrinsicElements;
 type PropsToCombine<C extends ComponentType> = {
   [K in keyof React.ComponentPropsWithoutRef<C>]?: React.ComponentPropsWithoutRef<C>[K][];
 };
@@ -19,6 +20,8 @@ type AllCombinationsProps<C extends ComponentType> = {
   component: C;
   /**
    * The props to display all combinations for.
+   *
+   * The first prop array's length will be used to calculate the number of columns to display the combinations in.
    *
    * _Note: For polymorphic components, auto-complete will only work if you specify the component type to `component`, e.g.:_
    *
@@ -59,9 +62,7 @@ function truncateValue<V>(value: V, truncateAt = 25): string {
  * If the value is greater than the maximum number of columns times two, it will be divided by 3 and rounded up and so on.
  */
 export function modulateGridCols(value: number, maxCols = 5): number {
-  if (value <= maxCols) {
-    return value;
-  }
+  if (value <= maxCols) return value;
   return modulateGridCols(Math.ceil(value / 2), maxCols);
 }
 
@@ -73,13 +74,13 @@ const fontColor = "rgb(19, 24, 30)";
  *
  * Main props:
  *
- * - `component` - The component to display.
+ * - `component` - The component to display (string or Component).
  * - `propsToCombine` - The props to display all combinations for.
  * - `componentProps` - Props to pass to all instances of the component.
  * - `columns` - Override the number of columns to display the combinations in.
  * - `componentBackgroundColor` - Override the background color of the combinations.
  *
- * @example
+ * @example Using a `<Button />` component:
  *
  * ```tsx
  * <AllCombinations
@@ -93,6 +94,18 @@ const fontColor = "rgb(19, 24, 30)";
  *   }}
  *   backgroundColor="#13191f"
  *   columns={2} // Auto-calculated by default
+ * />
+ * ```
+ *
+ * @example You can also pass any HTML tag as a string to `component`:
+ *
+ * ```tsx
+ * <Combinations
+ *   component="input"
+ *   propsToCombine={{
+ *     placeholder: ["Placeholder"],
+ *     className: ["bg-slate-200", "bg-pink-100"],
+ *   }}
  * />
  * ```
  */

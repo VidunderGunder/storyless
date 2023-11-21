@@ -26,6 +26,28 @@ const StorylessComponents: ComponentPropsWithoutRef<
       }}
     />
   ),
+  "HTML Tag": (
+    <Combinations
+      component="div"
+      propsToCombine={{
+        children: ["This is a div", "This is another div"],
+        className: [
+          "bg-slate-300 p-5 rounded-xl",
+          "bg-pink-200 p-5 rounded-xl",
+        ],
+      }}
+    />
+  ),
+  Catagotchi: (
+    <div className="h-full w-full py-3">
+      <iframe
+        src="https://catagotchi.vercel.app/"
+        width="100%"
+        height="100%"
+        className="rounded-xl border-2 border-slate-300 "
+      />
+    </div>
+  ),
   Typography: (
     <div
       style={{
