@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.9.1",
-    "bun-types": "^1.0.12",
+    "bun-types": "^1.0.13",
     "@types/prettier": "2.7.3",
     "lodash": "^4.17.21",
     "@types/lodash": "^4.14.201",

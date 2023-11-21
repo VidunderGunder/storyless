@@ -9,7 +9,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "clean": "rm -rf .next node_modules next-end.d.ts"
+    "clean": "rm -rf .next node_modules .turbo .vercel next-end.d.ts"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^0.3.7",

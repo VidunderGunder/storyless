@@ -36,7 +36,7 @@
   },
   "type": "module",
   "devDependencies": {
-    "bun-types": "latest",
+    "bun-types": "^1.0.13",
     "typescript": "^5.2.2"
   },
   "dependencies": {
@@ -44,6 +44,6 @@
     "@clack/prompts": "^0.7.0",
     "commander": "^11.1.0",
     "picocolors": "^1.0.0",
-    "bun": "1.0.13"
+    "bun": "^1.0.13"
   }
 }

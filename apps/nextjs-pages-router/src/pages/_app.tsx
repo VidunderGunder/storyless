@@ -7,7 +7,11 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <>
       <Component {...pageProps} />
-      <Storyless components={{}} />
+      <Storyless
+        components={{
+          Button: <button>Hello</button>,
+        }}
+      />
     </>
   );
 };

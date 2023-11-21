@@ -37,7 +37,7 @@
     "generate:component": "turbo gen react-component",
     "clean": "rm -rf build node_modules .turbo tsconfig.release.tsbuildinfo",
     "build:dts": "tsc --project ./tsconfig.release.json",
-    "build:js": "bun build ./index.tsx --outdir ./build --external='react' --external='react-dom'",
+    "build:js": "bun run build.ts",
     "build": "bun build:dts & bun build:js"
   },
   "devDependencies": {
@@ -45,13 +45,13 @@
     "@types/node": "^20.9.1",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "bun-types": "^1.0.12",
+    "bun-types": "^1.0.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }
