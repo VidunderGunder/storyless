@@ -1,6 +1,23 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Page(): JSX.Element {
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowWidth(window.innerWidth);
+    }
+    const handleResizeWidth = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResizeWidth);
+    return () => window.removeEventListener("resize", handleResizeWidth);
+  }, []);
+
+  const getRotation = () => {
+    if (windowWidth <= 600) return 45;
+    if (windowWidth >= 600) return 60;
+  };
   return (
     <main className="relative flex h-full min-h-full flex-col items-center justify-center">
       <div
@@ -37,8 +54,21 @@ export default function Page(): JSX.Element {
           Storyless
         </h1>
         <h2 className="text-[min(max(0.75rem,2vw),1.5rem)] leading-none text-white drop-shadow-sm">
-          👇 Press the button
+          Press the button
         </h2>
+        <motion.span
+          className="text-3xl"
+          initial={{ scale: 1.5, rotate: 0 }}
+          animate={{ rotate: getRotation() }}
+          transition={{
+            type: "spring",
+            damping: 10,
+            delay: 1,
+            mass: 3,
+          }}
+        >
+          👇
+        </motion.span>
       </div>
     </main>
   );
