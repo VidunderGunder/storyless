@@ -13,6 +13,7 @@
     "build:@feasy/web": "turbo run build --filter='@feasy/web'",
     "build:nextjs-pages-router": "turbo run build --filter='nextjs-pages-router'",
     "build:nextjs-app-router": "turbo run build --filter='nextjs-app-router'",
+    "start": "turbo run start --concurrency=20",
     "start:@storyless/docs": "turbo run start --filter='@storyless/docs'",
     "start:@storyless/react": "turbo run start --filter='@storyless/react'",
     "start:@feasy/web": "turbo run start --filter='@feasy/web'",
