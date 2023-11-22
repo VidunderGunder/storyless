@@ -1,3 +1,5 @@
 *.tsbuildinfo
 .turbo
-build
+!build
+build/*
+!build/index.js

@@ -7,6 +7,6 @@ const external = Object.keys(
 
 await Bun.build({
   entrypoints: [path.join(__dirname, "./index.tsx")],
-  outdir: path.join(__dirname, "./build"),
+  outdir: path.join(__dirname, "./build/bundle"),
   external,
 });
