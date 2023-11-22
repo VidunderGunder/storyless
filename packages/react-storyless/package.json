@@ -35,8 +35,8 @@
     "lint:eslint": "eslint .",
     "lint": "bun lint:eslint",
     "generate:component": "turbo gen react-component",
-    "clean": "rm -rf build node_modules .turbo tsconfig.release.tsbuildinfo",
-    "build:dts": "tsc --project ./tsconfig.release.json",
+    "clean": "rm -rf build node_modules .turbo tsconfig.dts.tsbuildinfo",
+    "build:dts": "tsc --project ./tsconfig.dts.json",
     "build:js": "bun run build.ts",
     "build": "bun build:dts & bun build:js"
   },
