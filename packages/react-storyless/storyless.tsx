@@ -114,6 +114,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
                             whiteSpace: "nowrap",
                             overflow: "hidden",
                             textOverflow: "ellipsis",
+                            fontFamily: fontFamilies,
                           }}
                           type="button"
                         >

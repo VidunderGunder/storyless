@@ -1,8 +1,8 @@
 import path from "node:path";
 import packageJson from "./package.json";
 
-process.env.NODE_ENV = "production";
-Bun.env.NODE_ENV = "production";
+// process.env.NODE_ENV = "production";
+// Bun.env.NODE_ENV = "production";
 
 // console.log(process.env.NODE_ENV); // development 👈 culprit?
 // console.log(Bun.env.NODE_ENV); // production
@@ -15,4 +15,5 @@ await Bun.build({
   entrypoints: [path.join(__dirname, "./index.tsx")],
   outdir: path.join(__dirname, "./build"),
   external,
+  target: "node",
 });
