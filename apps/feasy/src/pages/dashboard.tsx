@@ -2,10 +2,29 @@ import Head from "next/head";
 import { padNavTW } from "~/components/Navigation";
 import { cn } from "~/styles/utils";
 import { useAuth } from "@clerk/nextjs";
-import { type ComponentPropsWithoutRef } from "react";
+import { useState, type ComponentPropsWithoutRef } from "react";
+import { api } from "~/utils/api";
 
 export default function Home() {
   const { isSignedIn } = useAuth();
+
+  const [name, setName] = useState("Feature");
+
+  const { status: createStatus, mutateAsync: create } =
+    api.toggle.create.useMutation({
+      onSuccess: () => {
+        setName("");
+        void refetch();
+      },
+    });
+  const { status: deleteStatus, mutateAsync: deleteToggle } =
+    api.toggle.delete.useMutation({
+      onSuccess: () => void refetch(),
+    });
+  const { mutateAsync: toggle } = api.toggle.set.useMutation({
+    onSuccess: () => void refetch(),
+  });
+  const { data: toggles, refetch } = api.toggle.get.useQuery({});
 
   return (
     <>
@@ -23,21 +42,50 @@ export default function Home() {
       >
         {isSignedIn ? (
           <div className="flex flex-col items-center justify-center gap-10">
-            <article className="prose text-center">
-              <h2>{`👩‍🔬 Not yet 👨‍🔬`}</h2>
-
-              <p>
-                {`We're hard at work cooking up some`}
-                <br />
-                {`quality feature toggles for you.`}
-              </p>
-              <p>
-                {`But in the meantime,`}
-                <br />
-                {`you can still play with this:`}
-              </p>
-            </article>
-            <PretendDashboard />
+            <div>
+              <input
+                type="text"
+                placeholder="Feature Name..."
+                className="input input-bordered w-full max-w-xs"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <div>
+                <button
+                  className="btn btn-primary"
+                  disabled={createStatus === "pending" || name === ""}
+                  onClick={() => void create({ name })}
+                >
+                  Create
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  disabled={toggles?.[0]?.id === undefined}
+                  onClick={() => {
+                    if (typeof toggles?.[0]?.id !== "string") return;
+                    void toggle({
+                      id: toggles?.[0]?.id,
+                      enabled: !toggles?.[0]?.enabled,
+                    });
+                  }}
+                >
+                  Toggle
+                </button>
+                <button
+                  className="btn btn-error"
+                  disabled={
+                    deleteStatus === "pending" || toggles?.[0]?.id === undefined
+                  }
+                  onClick={() => {
+                    if (typeof toggles?.[0]?.id !== "string") return;
+                    void deleteToggle({ id: toggles?.[0]?.id });
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+              <pre>{JSON.stringify(toggles, null, 2)}</pre>
+            </div>
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center gap-10">

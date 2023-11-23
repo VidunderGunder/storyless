@@ -35,14 +35,11 @@ export function Navigation({ className, ...props }: NavigationProps) {
     >
       <div className="flex-1 gap-1">
         <NavLink
-          icon="fluent-emoji-high-contrast:flamingo"
+          icon="fa6-solid:house"
           href="/"
           className={cn("btn btn-ghost gap-2 text-xl")}
         >
-          <span className="inline sm:hidden">
-            <Icon icon="fluent-emoji-high-contrast:flamingo" />
-          </span>
-          <span className="hidden sm:inline">Home</span>
+          Home
         </NavLink>
         <NavLink
           icon="bi:github"
@@ -60,7 +57,22 @@ export function Navigation({ className, ...props }: NavigationProps) {
         </NavLink>
         {/* {isSignedIn ? ( */}
         <NavLink
-          icon="bi:toggles"
+          icon={
+            <span className="flex flex-col items-center justify-center text-center">
+              <span className="ju relative flex items-center text-[0.725em]">
+                <span className="absolute -top-[6px] left-[2px] h-0">
+                  <Icon icon="line-md:switch" />
+                </span>
+                <Icon
+                  icon="line-md:switch"
+                  className="relative right-[2px] rotate-180"
+                />
+                <span className="absolute left-[2px] top-[6px] h-0">
+                  <Icon icon="line-md:switch" />
+                </span>
+              </span>
+            </span>
+          }
           href="/dashboard"
           className="btn btn-ghost text-xl"
         >
@@ -85,9 +97,9 @@ export function Navigation({ className, ...props }: NavigationProps) {
           </div>
         ) : (
           <SignInButton mode="modal">
-            <button className="btn btn-ghost text-xl">
+            <button className="btn btn-ghost text-2xl">
               <span className="inline sm:hidden">
-                <Icon icon="mdi:user-heart" />
+                <Icon icon="line-md:account" />
               </span>
               <span className="hidden sm:flex">Sign In</span>
             </button>
@@ -100,12 +112,14 @@ export function Navigation({ className, ...props }: NavigationProps) {
 
 const navLinkVariations = cva(["btn", "btn-ghost", "text-xl", "relative"], {
   variants: {
-    disabled: { true: "opacity-50 hover:bg-transparent" },
+    disabled: {
+      true: "opacity-20 hover:bg-transparent hover:cursor-default",
+    },
   },
 });
 
 type NavLinkProps = {
-  icon: string;
+  icon: string | JSX.Element;
 } & ComponentPropsWithoutRef<typeof Link> &
   VariantProps<typeof navLinkVariations>;
 
@@ -130,7 +144,7 @@ function NavLink({
       {...props}
     >
       <span className="inline sm:hidden">
-        <Icon icon={icon} />
+        {typeof icon === "string" ? <Icon icon={icon} /> : icon}
       </span>
       <span className="hidden sm:inline">{children}</span>
       {isExternal ? (

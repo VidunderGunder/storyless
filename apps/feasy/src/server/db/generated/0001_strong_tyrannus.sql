@@ -1,0 +1,1 @@
+DROP TABLE `feasy-t3-drizzle_post`;

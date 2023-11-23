@@ -1,11 +1,11 @@
 import { relations, sql } from "drizzle-orm";
 import {
-  bigint,
   index,
   mysqlTableCreator,
   primaryKey,
   timestamp,
   varchar,
+  boolean,
 } from "drizzle-orm/mysql-core";
 
 /**
@@ -18,20 +18,21 @@ export const mysqlTable = mysqlTableCreator(
   (name) => `feasy-t3-drizzle_${name}`,
 );
 
-export const posts = mysqlTable(
-  "post",
+export const toggles = mysqlTable(
+  "toggle",
   {
-    id: bigint("id", { mode: "number" }).primaryKey().autoincrement(),
-    name: varchar("name", { length: 256 }),
+    id: varchar("id", { length: 255 }).primaryKey(),
+    name: varchar("name", { length: 255 }).notNull(),
+    enabled: boolean("enabled").notNull().default(false),
     createdById: varchar("createdById", { length: 255 }).notNull(),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: timestamp("updatedAt").onUpdateNow(),
   },
-  (example) => ({
-    createdByIdIdx: index("createdById_idx").on(example.createdById),
-    nameIndex: index("name_idx").on(example.name),
+  (toggle) => ({
+    nameIdx: index("name_idx").on(toggle.name),
+    createdByIdIdx: index("createdById_idx").on(toggle.createdById),
   }),
 );
 
@@ -56,7 +57,7 @@ export const sessions = mysqlTable(
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
   (session) => ({
-    userIdIdx: index("userId_idx").on(session.userId),
+    userIdIndex: index("userId_idx").on(session.userId),
   }),
 );
 
