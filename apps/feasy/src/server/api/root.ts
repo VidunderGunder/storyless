@@ -1,4 +1,4 @@
-import { toggle } from "~/server/api/routers/post";
+import { toggle } from "~/server/api/routers/toggle";
 import { createTRPCRouter } from "~/server/api/trpc";
 
 /**
