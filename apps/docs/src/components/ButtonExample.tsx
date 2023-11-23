@@ -6,6 +6,10 @@ export type ButtonVariantProps = VariantProps<typeof button>;
 export type ButtonProps = React.ComponentPropsWithoutRef<"button"> &
   ButtonVariantProps;
 
+/**
+ * To be able to use defaults programmatically,
+ * we need them separated from the component.
+ */
 export const buttonDefaultVariants: StrictIntersection<
   ButtonVariantProps,
   ButtonProps

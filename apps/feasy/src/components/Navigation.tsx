@@ -1,6 +1,19 @@
 import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
+import { useAtomValue } from "jotai";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { transparentNavbarAtom } from "~/state";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "~/styles/utils";
+import { Icon } from "@iconify/react";
+import { type ComponentPropsWithoutRef } from "react";
+
+export const navHeightPx = 64;
+export const navHeightTW = "h-16";
+/**
+ * For pages that have a navbar, we need to pad the top of the page
+ */
+export const padNavTW = "pt-16";
 
 type NavigationProps = {
   // props
@@ -8,26 +21,56 @@ type NavigationProps = {
 
 export function Navigation({ className, ...props }: NavigationProps) {
   const { isSignedIn } = useAuth();
+  const transparent = useAtomValue(transparentNavbarAtom);
 
   return (
-    <div className={cn("navbar", className)} {...props}>
-      <div className="flex-1 gap-2">
-        <Link
-          href="https://github.com/VidunderGunder/storyless"
-          className="btn btn-ghost text-xl"
+    <div
+      className={cn(
+        "navbar fixed z-10 transition-all delay-500 duration-1000",
+        navHeightTW,
+        transparent ? "bg-transparent" : "bg-base-100",
+        className,
+      )}
+      {...props}
+    >
+      <div className="flex-1 gap-1">
+        <NavLink
+          icon="fluent-emoji-high-contrast:flamingo"
+          href="/"
+          className={cn("btn btn-ghost gap-2 text-xl")}
         >
-          <span className="hidden sm:flex">GitHub</span>
-        </Link>
-        <Link
+          <span className="inline sm:hidden">
+            <Icon icon="fluent-emoji-high-contrast:flamingo" />
+          </span>
+          <span className="hidden sm:inline">Home</span>
+        </NavLink>
+        <NavLink
+          icon="bi:github"
+          href="https://github.com/VidunderGunder/storyless"
+          className="btn btn-ghost gap-2 text-xl"
+        >
+          GitHub
+        </NavLink>
+        <NavLink
+          icon="icon-park-solid:doc-search"
           href="https://github.com/VidunderGunder/storyless/tree/main/apps/feasy#readme"
           className="btn btn-ghost text-xl"
         >
-          <span className="hidden sm:flex">Docs</span>
-        </Link>
+          Docs
+        </NavLink>
+        {/* {isSignedIn ? ( */}
+        <NavLink
+          icon="bi:toggles"
+          href="/dashboard"
+          className="btn btn-ghost text-xl"
+        >
+          Dashboard
+        </NavLink>
+        {/*) : null} */}
       </div>
-      <div className="flex-none gap-2">
+      <div className="flex gap-1">
         {isSignedIn ? (
-          <div className="mr-3">
+          <div className="mx-3">
             <UserButton
               afterSignOutUrl="/"
               appearance={{
@@ -43,40 +86,58 @@ export function Navigation({ className, ...props }: NavigationProps) {
         ) : (
           <SignInButton mode="modal">
             <button className="btn btn-ghost text-xl">
+              <span className="inline sm:hidden">
+                <Icon icon="mdi:user-heart" />
+              </span>
               <span className="hidden sm:flex">Sign In</span>
             </button>
           </SignInButton>
         )}
-        {/* <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="avatar btn btn-circle btn-ghost">
-            <div className="w-10 rounded-full">
-              <Image
-                alt="Tailwind CSS Navbar component"
-                src="/avatar.jpg"
-                width={40}
-                height={40}
-              />
-            </div>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div> */}
       </div>
     </div>
+  );
+}
+
+const navLinkVariations = cva(["btn", "btn-ghost", "text-xl", "relative"], {
+  variants: {
+    disabled: { true: "opacity-50 hover:bg-transparent" },
+  },
+});
+
+type NavLinkProps = {
+  icon: string;
+} & ComponentPropsWithoutRef<typeof Link> &
+  VariantProps<typeof navLinkVariations>;
+
+function NavLink({
+  children,
+  className,
+  disabled,
+  icon,
+  href,
+  ...props
+}: NavLinkProps) {
+  const { pathname } = useRouter();
+  disabled = disabled ?? pathname === href;
+
+  const urlString = typeof href === "string" ? href : href.pathname;
+  const isExternal = urlString?.startsWith("http") ?? false;
+
+  return (
+    <Link
+      className={cn(navLinkVariations({ className, disabled }))}
+      href={href}
+      {...props}
+    >
+      <span className="inline sm:hidden">
+        <Icon icon={icon} />
+      </span>
+      <span className="hidden sm:inline">{children}</span>
+      {isExternal ? (
+        <span className="absolute right-2 top-1 text-[11px] opacity-100 sm:right-1 sm:top-2 sm:text-[13px]">
+          <Icon icon="mingcute:arrow-up-fill" className="rotate-45" />
+        </span>
+      ) : null}
+    </Link>
   );
 }

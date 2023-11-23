@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.20
+
+### Patch Changes
+
+- Added 9999 z-index to Storyless itself
+
 ## 0.0.19
 
 ### Patch Changes

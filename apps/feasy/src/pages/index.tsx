@@ -1,10 +1,18 @@
+import { Icon } from "@iconify/react";
+import { useAtom } from "jotai";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigation } from "~/components/Navigation";
+import { transparentNavbarAtom } from "~/state";
 import { cn } from "~/styles/utils";
 
 export default function Home() {
-  const [checked, setChecked] = useState(false);
+  console.count("render");
+
+  const [transparent, setTransparent] = useAtom(transparentNavbarAtom);
+
+  const checked = !transparent;
+  const setChecked = (checked: boolean) => setTransparent(!checked);
 
   return (
     <>
@@ -35,7 +43,7 @@ export default function Home() {
                   checked ? "rotate-0" : "rotate-180",
                 )}
               >
-                🦩
+                <Icon icon="fluent-emoji:flamingo" />
               </h1>
               <h1 className="mb-5 text-8xl font-black">Feasy</h1>
               <p className="text-md font-bold">Feature Toggles</p>
@@ -65,16 +73,7 @@ export default function Home() {
           ) : (
             <p>Why don&apos;t you flick that lil&apos; toggle up there, no?</p>
           )}
-          {/* <div className="flex flex-col items-center gap-2">
-            <AuthShowcase />
-          </div> */}
         </div>
-        <Navigation
-          className={cn(
-            "z-9999 fixed transition-all delay-500 duration-1000",
-            checked ? "bg-base-200" : "bg-transparent",
-          )}
-        />
       </main>
     </>
   );
