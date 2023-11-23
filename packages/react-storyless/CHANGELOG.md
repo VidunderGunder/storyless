@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.19
+
+### Patch Changes
+
+- Storyless is actually omitted in production now
+
 ## 0.0.18
 
 ### Patch Changes

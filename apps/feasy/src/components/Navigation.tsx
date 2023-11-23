@@ -22,7 +22,7 @@ export function Navigation({ className, ...props }: NavigationProps) {
           href="https://github.com/VidunderGunder/storyless/tree/main/apps/feasy#readme"
           className="btn btn-ghost text-xl"
         >
-          <span className="hidden sm:flex">Documentation</span>
+          <span className="hidden sm:flex">Docs</span>
         </Link>
       </div>
       <div className="flex-none gap-2">

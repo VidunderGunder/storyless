@@ -10,7 +10,7 @@
     "clean": "rm -rf .next node_modules .turbo .vercel next-end.d.ts"
   },
   "dependencies": {
-    "@storyless/react": "^0.0.18",
+    "@storyless/react": "^0.0.19",
     "@t3-oss/env-nextjs": "^0.7.0",
     "next": "^14.0.0",
     "react": "18.2.0",

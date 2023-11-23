@@ -13,12 +13,7 @@ export default function Home() {
         <meta name="description" content="Heckin' Easy Feature Toggles" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navigation
-        className={cn(
-          "fixed transition-all delay-500 duration-1000",
-          checked ? "bg-base-200" : "bg-transparent",
-        )}
-      />
+
       <main className="flex min-h-screen flex-col items-center">
         <div
           className={cn(
@@ -74,6 +69,12 @@ export default function Home() {
             <AuthShowcase />
           </div> */}
         </div>
+        <Navigation
+          className={cn(
+            "z-9999 fixed transition-all delay-500 duration-1000",
+            checked ? "bg-base-200" : "bg-transparent",
+          )}
+        />
       </main>
     </>
   );

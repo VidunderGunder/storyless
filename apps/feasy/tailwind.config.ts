@@ -8,6 +8,9 @@ export default {
   plugins: [typography, daisyui],
   daisyui: {
     darkTheme: "night",
-    themes: ["emerald", "night"],
+    themes: [
+      // "emerald",
+      "night",
+    ],
   },
 } satisfies Config & { daisyui: DaisyUIConfig };
