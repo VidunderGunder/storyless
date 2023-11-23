@@ -1,8 +1,7 @@
 import Head from "next/head";
 import { padNavTW } from "~/components/Navigation";
 import { cn } from "~/styles/utils";
-import { Icon } from "@iconify/react";
-import { SignInButton, useAuth } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs";
 import { type ComponentPropsWithoutRef } from "react";
 
 export default function Home() {

@@ -1,14 +1,10 @@
 import { Icon } from "@iconify/react";
 import { useAtom } from "jotai";
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import { Navigation } from "~/components/Navigation";
 import { transparentNavbarAtom } from "~/state";
 import { cn } from "~/styles/utils";
 
 export default function Home() {
-  console.count("render");
-
   const [transparent, setTransparent] = useAtom(transparentNavbarAtom);
 
   const checked = !transparent;
