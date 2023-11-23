@@ -21,7 +21,7 @@ export default function Home() {
     api.toggle.delete.useMutation({
       onSuccess: () => void refetch(),
     });
-  const { mutateAsync: toggle } = api.toggle.set.useMutation({
+  const { mutateAsync: toggle } = api.toggle.update.useMutation({
     onSuccess: () => void refetch(),
   });
   const { data: toggles, refetch } = api.toggle.get.useQuery({});

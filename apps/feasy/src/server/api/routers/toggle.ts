@@ -44,7 +44,7 @@ export const toggle = createTRPCRouter({
         AND createdById = ${userId}
       `);
     }),
-  set: protectedProcedure
+  update: protectedProcedure
     .input(z.object({ id: z.string().min(1), enabled: z.boolean() }))
     .mutation(async ({ ctx, input }) => {
       const userId = strictUserId(ctx);
