@@ -51,6 +51,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
               right: 0,
               top: 0,
               overflowY: "hidden",
+              zIndex: 9999,
               ...style,
             }}
             {...props}
