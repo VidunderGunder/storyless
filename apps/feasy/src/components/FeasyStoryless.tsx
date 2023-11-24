@@ -1,4 +1,5 @@
-import { Storyless } from "@storyless/react";
+import { Combinations, Storyless } from "@storyless/react";
+import { Toggle } from "./Toggle";
 
 export function FeasyStoryless() {
   return (
@@ -6,7 +7,28 @@ export function FeasyStoryless() {
       style={{
         zIndex: 1000,
       }}
-      components={{}}
+      components={{
+        Toggle: (
+          <Combinations
+            component={Toggle}
+            componentBackgroundColor="#111729"
+            propsToCombine={{
+              checked: [false, true],
+              label: ["World Peace 🕊️"],
+              color: [
+                "primary",
+                "secondary",
+                "accent",
+                "neutral",
+                "info",
+                "success",
+                "warning",
+                "error",
+              ],
+            }}
+          />
+        ),
+      }}
     />
   );
 }

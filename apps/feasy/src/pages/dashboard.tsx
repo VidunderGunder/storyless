@@ -4,6 +4,7 @@ import { cn } from "~/styles/utils";
 import { useAuth } from "@clerk/nextjs";
 import { useState, type ComponentPropsWithoutRef } from "react";
 import { api } from "~/utils/api";
+import { Toggle } from "~/components/Toggle";
 
 export default function Home() {
   const { isSignedIn } = useAuth();
@@ -21,10 +22,15 @@ export default function Home() {
     api.toggle.delete.useMutation({
       onSuccess: () => void refetch(),
     });
-  const { mutateAsync: toggle } = api.toggle.update.useMutation({
+  const { mutateAsync: updateToggle } = api.toggle.update.useMutation({
     onSuccess: () => void refetch(),
   });
   const { data: toggles, refetch } = api.toggle.get.useQuery({});
+
+  function createToggle() {
+    if (name === "") return;
+    void create({ name });
+  }
 
   return (
     <>
@@ -42,49 +48,51 @@ export default function Home() {
       >
         {isSignedIn ? (
           <div className="flex flex-col items-center justify-center gap-10">
-            <div>
-              <input
-                type="text"
-                placeholder="Feature Name..."
-                className="input input-bordered w-full max-w-xs"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <div>
+            <div className="flex flex-col gap-5">
+              <div className="flex w-full max-w-xs items-center justify-between gap-2">
+                <input
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") createToggle();
+                  }}
+                  type="text"
+                  placeholder="Feature Name..."
+                  className="input input-bordered w-full max-w-xs"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
                 <button
                   className="btn btn-primary"
                   disabled={createStatus === "pending" || name === ""}
-                  onClick={() => void create({ name })}
+                  onClick={createToggle}
                 >
                   Create
                 </button>
-                <button
-                  className="btn btn-secondary"
-                  disabled={toggles?.[0]?.id === undefined}
-                  onClick={() => {
-                    if (typeof toggles?.[0]?.id !== "string") return;
-                    void toggle({
-                      id: toggles?.[0]?.id,
-                      enabled: !toggles?.[0]?.enabled,
-                    });
-                  }}
-                >
-                  Toggle
-                </button>
-                <button
-                  className="btn btn-error"
-                  disabled={
-                    deleteStatus === "pending" || toggles?.[0]?.id === undefined
-                  }
-                  onClick={() => {
-                    if (typeof toggles?.[0]?.id !== "string") return;
-                    void deleteToggle({ id: toggles?.[0]?.id });
-                  }}
-                >
-                  Delete
-                </button>
               </div>
-              <pre>{JSON.stringify(toggles, null, 2)}</pre>
+              <div className="flex flex-col gap-2">
+                {toggles?.map((toggle) => {
+                  const { id, name, enabled } = toggle;
+                  return (
+                    <div key={toggle.id}>
+                      <Toggle
+                        label={name}
+                        color="primary"
+                        checked={enabled}
+                        onChange={() => {
+                          void updateToggle({
+                            id,
+                            enabled: !enabled,
+                          });
+                        }}
+                        onDelete={() => {
+                          if (confirm("Are you sure? This can't be reverted."))
+                            void deleteToggle({ id });
+                        }}
+                        disabled={false}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         ) : (
