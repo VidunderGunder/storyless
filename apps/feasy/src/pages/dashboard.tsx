@@ -9,7 +9,7 @@ import { Toggle } from "~/components/Toggle";
 export default function Home() {
   const { isSignedIn } = useAuth();
 
-  const [name, setName] = useState("Feature");
+  const [name, setName] = useState("");
 
   const { status: createStatus, mutateAsync: create } =
     api.toggle.create.useMutation({
@@ -31,6 +31,12 @@ export default function Home() {
     if (name === "") return;
     void create({ name });
   }
+
+  const disableCreate =
+    createStatus === "pending" ||
+    name === "" ||
+    !isSignedIn ||
+    toggles?.some((t) => t.name === name);
 
   return (
     <>
@@ -62,7 +68,7 @@ export default function Home() {
                 />
                 <button
                   className="btn btn-primary"
-                  disabled={createStatus === "pending" || name === ""}
+                  disabled={disableCreate}
                   onClick={createToggle}
                 >
                   Create
@@ -88,7 +94,7 @@ export default function Home() {
                           if (confirm("Are you sure? This can't be reverted."))
                             void deleteToggle({ id });
                         }}
-                        disabled={false}
+                        disabled={deleteStatus === "pending"}
                       />
                     </div>
                   );

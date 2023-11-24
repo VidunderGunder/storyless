@@ -68,7 +68,7 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
   ref,
 ) {
   const { copied, copy } = useClipboard({
-    timeout: 3000,
+    timeout: 2000,
   });
 
   return (
@@ -89,7 +89,11 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
             />
             <span className="label-text">{label}</span>
           </label>
-          <button className="btn btn-circle btn-sm" onClick={onDelete}>
+          <button
+            className="btn btn-circle btn-sm"
+            disabled={disabled}
+            onClick={onDelete}
+          >
             <Icon icon="icomoon-free:bin" className="text-red-400" />
           </button>
         </div>
