@@ -99,14 +99,14 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
             copy(toggleId);
           }}
         >
-          <span className="px-[5px] opacity-75">ID:</span>
+          <span className="pl-[7px] pr-[3px] opacity-75">ID:</span>
           <div
             className={cn(
-              "badge badge-secondary text-xs",
+              "badge badge-secondary w-full text-xs",
               copied ? "badge-success" : "badge-secondary",
             )}
           >
-            {toggleId}
+            {copied ? "copied!" : toggleId}
           </div>
           <span className="btn btn-circle btn-sm">
             {copied ? (
