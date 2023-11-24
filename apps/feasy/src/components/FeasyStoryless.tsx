@@ -25,6 +25,7 @@ export function FeasyStoryless() {
                 "warning",
                 "error",
               ],
+              toggleId: ["lookin-good"],
             }}
           />
         ),
