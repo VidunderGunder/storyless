@@ -43,7 +43,6 @@ const server = new Elysia()
       tags: ["Index"],
     },
   })
-  // Create toggle endpoint
   .post(
     "/toggle",
     async ({ body }) => {
@@ -62,7 +61,6 @@ const server = new Elysia()
       },
     }
   )
-  // Delete toggle endpoint
   .delete(
     "/toggle",
     async ({ body }) => {
@@ -81,7 +79,6 @@ const server = new Elysia()
       },
     }
   )
-  // Update toggle endpoint
   .put(
     "/toggle",
     async ({ body }) => {
@@ -101,7 +98,6 @@ const server = new Elysia()
       },
     }
   )
-  // Get toggle endpoint
   .get(
     "/toggle",
     async ({ query }) => {
