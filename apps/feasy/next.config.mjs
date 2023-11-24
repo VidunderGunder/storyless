@@ -17,7 +17,7 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  transpilePackages: ["@feasy/drizzle"],
+  transpilePackages: ["@feasy/drizzle", "@storyless/ui", "@storyless/react"],
   experimental: {
     swcPlugins: [["@swc-jotai/react-refresh", {}]],
   },

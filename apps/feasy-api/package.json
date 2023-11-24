@@ -4,9 +4,17 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun --hot src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/bearer": "^0.7.0",
+    "@elysiajs/cors": "^0.7.2",
+    "@elysiajs/cron": "^0.7.0",
+    "@elysiajs/eden": "^0.7.4",
+    "@elysiajs/html": "^0.7.3",
+    "@elysiajs/jwt": "^0.7.0",
+    "@elysiajs/server-timing": "^0.7.1",
+    "@elysiajs/swagger": "^0.7.4",
     "@planetscale/database": "^1.11.0",
     "@t3-oss/env-core": "^0.7.1",
     "drizzle-orm": "^0.29.0",

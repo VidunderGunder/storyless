@@ -26,7 +26,9 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@storyless/react": ["../../packages/react-storyless/index.tsx"],
+      "@storyless/ui": ["../../packages/ui/index.tsx"]
     }
   },
   "include": [
@@ -36,8 +38,7 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
-    ".next/types/**/*.ts",
-    "../../packages/feasy-drizzle/schema/toggle.ts"
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

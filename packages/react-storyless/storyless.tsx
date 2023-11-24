@@ -49,6 +49,8 @@ function enableAppScrolling({ onEnable }: { onEnable?: () => void }): void {
   onEnable?.();
 }
 
+const sidebarWidth = 200;
+
 // eslint-disable-next-line import/no-named-as-default-member -- We want to export the component as default
 export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
   function Storyless(
@@ -113,6 +115,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
               top: 0,
               overflowY: "hidden",
               zIndex: 9999,
+              backdropFilter: "blur(4px)",
               ...style,
             }}
             {...props}
@@ -128,7 +131,8 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
             >
               <div
                 style={{
-                  width: "10rem",
+                  width: sidebarWidth,
+                  boxSizing: "border-box",
                   maxHeight: "100%",
                   borderRight: "1px solid rgba(255, 255, 255, 0.025)",
                   boxShadow: `
@@ -207,7 +211,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
                         inset 0 1px 0px 0px rgba(255, 255, 255, 0.05),
                         inset 0 -2px 0px 0px rgba(0, 0, 0, 0.75),
                         0 0 0 3.5px rgba(0, 0, 0, 0.25)
-                        `,
+                      `,
                       color: "rgba(255, 255, 255, 0.675)",
                       width: "100%",
                       padding: "0.675rem 0.75rem",
@@ -253,33 +257,43 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
           </div>
         ) : null}
         {show ? null : (
-          <button
-            onClick={handleOpen}
+          <div
             style={{
-              position: "fixed",
-              bottom: "min(max(0.5rem, 1.75vw), 2rem)",
-              left: "min(max(0.5rem, 2vw), 3rem)",
               backgroundColor: "#12191f",
-              color: "#fff",
-              border: "2px solid #fff",
-              borderRadius: "9999px",
-              padding: "0.75rem",
-              width: "9rem",
-              height: "fit-content",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
+              position: "fixed",
+              bottom: "0.5rem",
+              left: "0.5rem",
               zIndex: 9999,
-              fontSize: "0.875rem",
-              userSelect: "none",
-              fontFamily: fontFamilies,
+              width: sidebarWidth,
+              boxSizing: "border-box",
             }}
-            type="button"
-            {...buttonProps}
           >
-            Show Storyless
-          </button>
+            <button
+              onClick={handleOpen}
+              style={{
+                height: "fit-content",
+                width: "100%",
+                fontFamily: fontFamilies,
+                backgroundColor: "rgba(255, 255, 255, 0.01)",
+                boxShadow: `
+                  inset 0 1px 0px 0px rgba(255, 255, 255, 0.05),
+                  inset 0 -2px 0px 0px rgba(0, 0, 0, 0.75),
+                  0 0 0 3.5px rgba(0, 0, 0, 0.25)
+                `,
+                color: "rgba(255, 255, 255, 0.675)",
+                padding: "0.675rem 0.75rem",
+                borderRadius: "0.5rem",
+                fontSize: "0.75rem",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+              type="button"
+              {...buttonProps}
+            >
+              Show Storyless
+            </button>
+          </div>
         )}
       </>
     );

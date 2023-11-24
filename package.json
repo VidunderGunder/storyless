@@ -32,10 +32,10 @@
     "reset": "bun killports && bun clean && bun install",
     "reset:hard": "bun killports && bun clean && rm -rf bun.lockb && bun install",
     "pre-release": "turbo pre-release --filter='@storyless/scripts'",
+    "post-release": "turbo post-release --filter='@storyless/scripts'",
     "version-packages": "changeset version",
     "changeset": "changeset",
-    "post-release": "turbo post-release --filter='@storyless/scripts'",
-    "publish-packages": "bun i && turbo run build lint test --filter=@storyless/react && changeset && changeset version && changeset publish"
+    "publish-packages": "pre-release && bun i && turbo run build lint test --filter=@storyless/react && changeset && changeset version && changeset publish && post-release"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
@@ -49,5 +49,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "elysia-clerk": "^0.2.2"
+  }
 }

@@ -1,13 +1,20 @@
-import { Elysia } from "elysia";
-import { drizzle } from "drizzle-orm/planetscale-serverless";
-import { connect } from "@planetscale/database";
+import { join } from "node:path";
+import { Elysia, t } from "elysia";
 import { env } from "../env.mjs";
+import { connect } from "@planetscale/database";
+import { swagger } from "@elysiajs/swagger";
+import { drizzle } from "drizzle-orm/planetscale-serverless";
 import {
   createToggle,
   deleteToggle,
   updateToggle,
   getToggle,
 } from "@feasy/drizzle";
+import { html } from "@elysiajs/html";
+
+async function getFileAsText(filePath: string): Promise<string> {
+  return await Bun.file(join(import.meta.dir, filePath)).text();
+}
 
 const connection = connect({
   host: env.DATABASE_HOST,
@@ -16,12 +23,110 @@ const connection = connect({
 });
 const db = drizzle(connection);
 
-const app = new Elysia()
-  .get("/", () => "🦩 Hello")
-  .get("/toggle", async (req) => {
-    console.log("🦩 GET /toggle");
-    console.log("🦩 req", req);
+const server = new Elysia()
+  .use(
+    swagger({
+      documentation: {
+        tags: [
+          {
+            name: "Feature Toggle",
+            description: "Endpoints for toggle operations",
+          },
+        ],
+      },
+    })
+  )
+  .use(html())
+  .get("/", async () => await getFileAsText("index.html"), {
+    detail: {
+      summary: "Get index.html",
+      tags: ["Index"],
+    },
   })
+  // Create toggle endpoint
+  .post(
+    "/toggle",
+    async ({ body }) => {
+      const { name, userId } = body;
+      await createToggle({ db, name, userId });
+      return { message: "Toggle created successfully" };
+    },
+    {
+      body: t.Object({
+        name: t.String(),
+        userId: t.String(),
+      }),
+      detail: {
+        summary: "Create a new toggle",
+        tags: ["Toggle"],
+      },
+    }
+  )
+  // Delete toggle endpoint
+  .delete(
+    "/toggle",
+    async ({ body }) => {
+      const { id, userId } = body;
+      await deleteToggle({ db, id, userId });
+      return { message: "Toggle deleted successfully" };
+    },
+    {
+      body: t.Object({
+        id: t.String(),
+        userId: t.String(),
+      }),
+      detail: {
+        summary: "Delete a toggle",
+        tags: ["Toggle"],
+      },
+    }
+  )
+  // Update toggle endpoint
+  .put(
+    "/toggle",
+    async ({ body }) => {
+      const { id, enabled, userId } = body;
+      await updateToggle({ db, id, enabled, userId });
+      return { message: "Toggle updated successfully" };
+    },
+    {
+      body: t.Object({
+        id: t.String(),
+        enabled: t.Boolean(),
+        userId: t.String(),
+      }),
+      detail: {
+        summary: "Update a toggle",
+        tags: ["Toggle"],
+      },
+    }
+  )
+  // Get toggle endpoint
+  .get(
+    "/toggle",
+    async ({ query }) => {
+      const { id, userId } = query;
+      const toggles = await getToggle({ db, id, userId });
+      return { toggles };
+    },
+    {
+      query: t.Object({
+        id: t.Optional(t.String()),
+        userId: t.String(),
+      }),
+      detail: {
+        summary: "Get toggles",
+        tags: ["Toggle"],
+      },
+    }
+  )
   .listen(6969);
 
-console.log(`🦩 Feasy API is ready at ${app.server?.url}`);
+console.log(
+  [
+    `🦩 ${server.server?.url} <- Feasy API`,
+    `🦩 ${server.server?.url}swagger <- Swagger UI`,
+  ].join("\n")
+);
+
+export type Server = typeof server;
