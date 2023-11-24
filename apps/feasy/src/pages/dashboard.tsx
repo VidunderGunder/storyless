@@ -74,6 +74,7 @@ export default function Home() {
                   return (
                     <div key={toggle.id}>
                       <Toggle
+                        toggleId={id}
                         label={name}
                         color="primary"
                         checked={enabled}

@@ -97,8 +97,8 @@ export function Navigation({ className, ...props }: NavigationProps) {
           </div>
         ) : (
           <SignInButton mode="modal">
-            <button className="btn btn-ghost text-2xl">
-              <span className="inline sm:hidden">
+            <button className="btn btn-ghost text-xl">
+              <span className="inline text-2xl sm:hidden">
                 <Icon icon="line-md:account" />
               </span>
               <span className="hidden sm:flex">Sign In</span>
