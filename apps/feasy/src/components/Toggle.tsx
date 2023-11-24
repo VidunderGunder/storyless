@@ -89,7 +89,21 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
               disabled={disabled}
               onChange={onChange}
             />
-            <span className="label-text">{label}</span>
+            <span
+              className={cn(
+                "label-text font-bold text-inherit transition-all delay-100 duration-150",
+                checked
+                  ? "animate-[pulse_0.325s_ease-in-out] [animation-iteration-count:_1]"
+                  : "text-neutral-content opacity-75",
+                // css`
+                //   .animate-\[pulse_1s_ease-in-out_infinite\] {
+                //     animation: pulse 1s ease-in-out forward;
+                //   }
+                // `
+              )}
+            >
+              {label}
+            </span>
           </label>
           <button
             className="btn btn-circle btn-sm"

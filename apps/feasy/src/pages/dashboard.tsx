@@ -82,7 +82,6 @@ export default function Home() {
                       <Toggle
                         toggleId={id}
                         label={name}
-                        color="primary"
                         checked={enabled}
                         onChange={() => {
                           void updateToggle({
