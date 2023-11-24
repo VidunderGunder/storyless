@@ -1,7 +1,7 @@
 {
   "name": "@storyless/figma-to-svg",
   "license": "MIT",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "module": "index.ts",
   "main": "build/index.js",

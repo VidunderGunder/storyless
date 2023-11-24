@@ -1,0 +1,21 @@
+{
+  "name": "@feasy/api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts"
+  },
+  "dependencies": {
+    "@planetscale/database": "^1.11.0",
+    "@t3-oss/env-core": "^0.7.1",
+    "drizzle-orm": "^0.29.0",
+    "elysia": "latest",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "drizzle-kit": "^0.20.4"
+  },
+  "module": "src/index.js"
+}

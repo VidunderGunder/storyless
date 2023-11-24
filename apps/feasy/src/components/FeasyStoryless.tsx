@@ -1,5 +1,6 @@
 import { Combinations, Storyless } from "@storyless/react";
 import { Toggle } from "./Toggle";
+import { APIPlayground } from "./APIPlayground";
 
 export function FeasyStoryless() {
   return (
@@ -13,7 +14,7 @@ export function FeasyStoryless() {
             component={Toggle}
             componentBackgroundColor="#111729"
             propsToCombine={{
-              checked: [false, true],
+              defaultChecked: [false, true],
               label: ["Peace 🕊️"],
               color: [
                 "primary",
@@ -30,6 +31,7 @@ export function FeasyStoryless() {
             }}
           />
         ),
+        API: <APIPlayground />,
       }}
     />
   );

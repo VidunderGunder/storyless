@@ -5,9 +5,12 @@ import {
   createTRPCRouter,
   protectedProcedure,
 } from "~/server/api/trpc";
-import { toggles } from "~/server/db/schema";
-import { nanoid } from "nanoid";
-import { sql } from "drizzle-orm";
+import {
+  createToggle,
+  deleteToggle,
+  updateToggle,
+  getToggle,
+} from "@feasy/drizzle";
 import { TRPCError } from "@trpc/server";
 
 /**
@@ -27,45 +30,43 @@ function strictUserId(ctx: TRPCContext): string {
 export const toggle = createTRPCRouter({
   create: protectedProcedure
     .input(z.object({ name: z.string().min(1) }))
-    .mutation(async ({ ctx, input }) => {
+    .mutation(async ({ ctx, input: { name } }) => {
       const userId = strictUserId(ctx);
-      await ctx.db.execute(sql`
-        INSERT INTO ${toggles} (id, name, createdById)
-        VALUES (${nanoid()}, ${input.name}, ${userId})
-      `);
+      return await createToggle({
+        db: ctx.db,
+        name,
+        userId,
+      });
     }),
   delete: protectedProcedure
     .input(z.object({ id: z.string().min(1) }))
     .mutation(async ({ ctx, input: { id } }) => {
       const userId = strictUserId(ctx);
-      await ctx.db.execute(sql`
-        DELETE FROM ${toggles}
-        WHERE id = ${id}
-        AND createdById = ${userId}
-      `);
+      return await deleteToggle({
+        db: ctx.db,
+        id,
+        userId,
+      });
     }),
   update: protectedProcedure
     .input(z.object({ id: z.string().min(1), enabled: z.boolean() }))
-    .mutation(async ({ ctx, input }) => {
+    .mutation(async ({ ctx, input: { id, enabled } }) => {
       const userId = strictUserId(ctx);
-      await ctx.db
-        .update(toggles)
-        .set({ enabled: input.enabled })
-        .where(sql`id = ${input.id} AND createdById = ${userId}`)
-        .execute();
+      return await updateToggle({
+        db: ctx.db,
+        id,
+        enabled,
+        userId,
+      });
     }),
   get: protectedProcedure
     .input(z.object({ id: z.string().min(1).optional() }))
-    .query(async ({ ctx, input }) => {
-      const { id } = input ?? {};
-      if (typeof id === "string") {
-        const userId = strictUserId(ctx);
-        return await ctx.db
-          .select()
-          .from(toggles)
-          .where(sql`id = ${id} AND createdById = ${userId}`)
-          .execute();
-      }
-      return await ctx.db.select().from(toggles).execute();
+    .query(async ({ ctx, input: { id } }) => {
+      const userId = strictUserId(ctx);
+      return await getToggle({
+        db: ctx.db,
+        id,
+        userId,
+      });
     }),
 });

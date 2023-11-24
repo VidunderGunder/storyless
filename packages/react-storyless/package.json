@@ -1,6 +1,6 @@
 {
   "name": "@storyless/react",
-  "version": "0.0.20",
+  "version": "0.0.22",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "MIT",
@@ -38,7 +38,8 @@
     "clean": "rm -rf build node_modules .turbo tsconfig.dts.tsbuildinfo",
     "build:dts": "tsc --project ./tsconfig.dts.json",
     "build:js": "bun run build.ts",
-    "build": "bun build:dts & bun build:js"
+    "build": "bun build:dts & bun build:js",
+    "dev": "bun --watch build.ts && tsc --watch --project ./tsconfig.dts.json"
   },
   "devDependencies": {
     "@turbo/gen": "^1.10.16",

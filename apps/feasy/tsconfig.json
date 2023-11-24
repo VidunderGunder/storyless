@@ -36,7 +36,8 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "../../packages/feasy-drizzle/schema/toggle.ts"
   ],
   "exclude": ["node_modules"]
 }

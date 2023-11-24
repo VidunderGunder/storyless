@@ -1,5 +1,11 @@
 # @storyless/figma-to-svg
 
+## 0.0.9
+
+### Patch Changes
+
+- House cleaning
+
 ## 0.0.8
 
 ### Patch Changes

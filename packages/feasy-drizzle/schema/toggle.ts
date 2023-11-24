@@ -1,4 +1,4 @@
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import {
   index,
   mysqlTableCreator,
@@ -15,7 +15,7 @@ import {
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
 export const mysqlTable = mysqlTableCreator(
-  (name) => `feasy-t3-drizzle_${name}`,
+  (name) => `feasy-t3-drizzle_${name}`
 );
 
 export const toggles = mysqlTable(
@@ -33,7 +33,7 @@ export const toggles = mysqlTable(
   (toggle) => ({
     nameIdx: index("name_idx").on(toggle.name),
     createdByIdIdx: index("createdById_idx").on(toggle.createdById),
-  }),
+  })
 );
 
 export const users = mysqlTable("user", {
@@ -47,24 +47,6 @@ export const users = mysqlTable("user", {
   image: varchar("image", { length: 255 }),
 });
 
-export const sessions = mysqlTable(
-  "session",
-  {
-    sessionToken: varchar("sessionToken", { length: 255 })
-      .notNull()
-      .primaryKey(),
-    userId: varchar("userId", { length: 255 }).notNull(),
-    expires: timestamp("expires", { mode: "date" }).notNull(),
-  },
-  (session) => ({
-    userIdIndex: index("userId_idx").on(session.userId),
-  }),
-);
-
-export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users, { fields: [sessions.userId], references: [users.id] }),
-}));
-
 export const verificationTokens = mysqlTable(
   "verificationToken",
   {
@@ -74,5 +56,5 @@ export const verificationTokens = mysqlTable(
   },
   (vt) => ({
     compoundKey: primaryKey(vt.identifier, vt.token),
-  }),
+  })
 );

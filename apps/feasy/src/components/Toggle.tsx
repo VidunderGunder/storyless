@@ -24,9 +24,9 @@ export type ToggleProps = {
   onDelete?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   label?: string;
   disabled?: boolean;
-  checked?: boolean;
   toggleId?: string;
-} & Omit<ComponentPropsWithoutRef<"div">, "color" | "onChange"> &
+} & Pick<ComponentPropsWithoutRef<"input">, "checked" | "defaultChecked"> &
+  Omit<ComponentPropsWithoutRef<"div">, "color" | "onChange"> &
   VariantProps<typeof toggleVariants>;
 
 /**
@@ -60,7 +60,8 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
     toggleId,
     color,
     label,
-    checked = false,
+    checked,
+    defaultChecked,
     disabled,
     onDelete,
     ...props
@@ -83,6 +84,7 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
                   color,
                 }),
               )}
+              defaultChecked={defaultChecked}
               checked={checked}
               disabled={disabled}
               onChange={onChange}

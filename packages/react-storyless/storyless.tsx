@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useIsMounted, usePersistentState } from "./hooks";
 
 export type StorylessProps = {
@@ -7,6 +7,47 @@ export type StorylessProps = {
   wrapper?: (props: { children: React.ReactNode }) => JSX.Element;
   buttonProps?: React.ComponentPropsWithoutRef<"button">;
 } & Omit<React.ComponentPropsWithoutRef<"div">, "childen">;
+
+const originalScrollPosition = { x: 0, y: 0 };
+
+/**
+ * Disables scrolling on any app Storyless is imported into.
+ * Fixes the position of the content to prevent scrolling.
+ */
+function disableAppScrolling({ onDisable }: { onDisable?: () => void }): void {
+  // Store the current scroll position
+  originalScrollPosition.x =
+    window.pageXOffset || document.documentElement.scrollLeft;
+  originalScrollPosition.y =
+    window.pageYOffset || document.documentElement.scrollTop;
+
+  // Fix the position of the content
+  document.documentElement.style.position = "fixed";
+  document.documentElement.style.top = `-${originalScrollPosition.y}px`;
+  document.documentElement.style.left = `-${originalScrollPosition.x}px`;
+  document.documentElement.style.overflow = "hidden"; // For HTML
+  document.body.style.overflow = "hidden"; // For Body
+
+  onDisable?.();
+}
+
+/**
+ * Re-enables original scrolling on any app Storyless is imported into.
+ * Unfixes the position of the content and restores original scroll.
+ */
+function enableAppScrolling({ onEnable }: { onEnable?: () => void }): void {
+  // Unfix the position of the content
+  document.documentElement.style.position = "";
+  document.documentElement.style.top = "";
+  document.documentElement.style.left = "";
+  document.documentElement.style.overflow = ""; // For HTML
+  document.body.style.overflow = ""; // For Body
+
+  // Restore the original scroll position
+  window.scrollTo(originalScrollPosition.x, originalScrollPosition.y);
+
+  onEnable?.();
+}
 
 // eslint-disable-next-line import/no-named-as-default-member -- We want to export the component as default
 export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
@@ -16,6 +57,8 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
   ) {
     const Wrapper = wrapper;
     const isMounted = useIsMounted();
+    const [y, setY] = useState(0);
+    const [x, setX] = useState(0);
     const [show, setShow] = usePersistentState<boolean>(
       "storyless-show",
       false
@@ -24,8 +67,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
       keyof typeof components | undefined
     >("storyless-selected-component", Object.keys(components)[0] ?? undefined);
 
-    // eslint-disable-next-line import/no-named-as-default-member -- We want to export the component as default
-    React.useEffect(() => {
+    useEffect(() => {
       const handleKeyDown: typeof window.onkeydown = (event) => {
         if (event.key === "Escape") setShow(false);
       };
@@ -36,6 +78,25 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
         window.removeEventListener("keydown", handleKeyDown);
       };
     }, [setShow]);
+
+    function handleOpen(): void {
+      setShow(true);
+      disableAppScrolling({
+        onDisable() {
+          setY(window.scrollY);
+          setX(window.scrollX);
+        },
+      });
+    }
+
+    function handleClose(): void {
+      setShow(false);
+      enableAppScrolling({
+        onEnable() {
+          window.scrollTo(x, y);
+        },
+      });
+    }
 
     if (!isMounted) return null;
 
@@ -138,9 +199,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
                   }}
                 >
                   <button
-                    onClick={() => {
-                      setShow(false);
-                    }}
+                    onClick={handleClose}
                     style={{
                       fontFamily: fontFamilies,
                       backgroundColor: "rgba(255, 255, 255, 0.01)",
@@ -195,9 +254,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
         ) : null}
         {show ? null : (
           <button
-            onClick={() => {
-              setShow((prev) => !prev);
-            }}
+            onClick={handleOpen}
             style={{
               position: "fixed",
               bottom: "min(max(0.5rem, 1.75vw), 2rem)",

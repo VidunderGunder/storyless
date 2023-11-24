@@ -12,6 +12,8 @@
     "@storyless/scripts",
     "@storyless/docs",
     "@feasy/web",
+    "@feasy/api",
+    "@feasy/drizzle",
     "nextjs-app-router",
     "nextjs-pages-router",
     "@storyless/ui",
