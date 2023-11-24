@@ -14,7 +14,7 @@ export function FeasyStoryless() {
             componentBackgroundColor="#111729"
             propsToCombine={{
               checked: [false, true],
-              label: ["World Peace 🕊️"],
+              label: ["Peace 🕊️"],
               color: [
                 "primary",
                 "secondary",
