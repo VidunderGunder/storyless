@@ -94,17 +94,20 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
           </button>
         </div>
         <button
-          className="btn"
+          className="btn-sm flex w-full items-center justify-between gap-3 px-[5px]"
           onClick={() => {
             copy(toggleId);
           }}
         >
+          <span className="opacity-75">ID:</span>
           <div className="badge badge-secondary text-xs">{toggleId}</div>
-          {copied ? (
-            <Icon icon="fluent:checkmark-circle-16-filled" fontSize={20} />
-          ) : (
-            <Icon icon="fluent:copy-16-filled" fontSize={20} />
-          )}
+          <span className="">
+            {copied ? (
+              <Icon icon="fluent:checkmark-circle-16-filled" fontSize={20} />
+            ) : (
+              <Icon icon="fluent:copy-16-filled" fontSize={20} />
+            )}
+          </span>
         </button>
       </div>
     </div>
