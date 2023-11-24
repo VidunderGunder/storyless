@@ -73,7 +73,7 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
 
   return (
     <div ref={ref} {...props}>
-      <div className="flex flex-col gap-2 rounded-3xl border border-primary-content p-2 shadow">
+      <div className="flex flex-col gap-2 rounded-3xl border border-primary-content p-2 shadow-lg">
         <div className="flex items-center justify-between ">
           <label className="label flex w-fit cursor-pointer justify-start gap-2">
             <input
@@ -94,14 +94,21 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
           </button>
         </div>
         <button
-          className="btn-sm flex w-full items-center justify-between gap-3 px-[5px]"
+          className="btn-sm flex w-full items-center justify-between gap-3 px-0"
           onClick={() => {
             copy(toggleId);
           }}
         >
-          <span className="opacity-75">ID:</span>
-          <div className="badge badge-secondary text-xs">{toggleId}</div>
-          <span className="">
+          <span className="px-[5px] opacity-75">ID:</span>
+          <div
+            className={cn(
+              "badge badge-secondary text-xs",
+              copied ? "badge-success" : "badge-secondary",
+            )}
+          >
+            {toggleId}
+          </div>
+          <span className="btn btn-circle btn-sm">
             {copied ? (
               <Icon icon="fluent:checkmark-circle-16-filled" fontSize={20} />
             ) : (
