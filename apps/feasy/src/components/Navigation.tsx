@@ -37,9 +37,15 @@ export function Navigation({ className, ...props }: NavigationProps) {
         <NavLink
           icon="fa6-solid:house"
           href="/"
-          className={cn("btn btn-ghost gap-2 text-xl")}
+          className="btn btn-ghost gap-2 text-[1.5rem] font-extrabold"
         >
-          Home
+          <span className="flex flex-row gap-2">
+            <Icon
+              icon="fluent-emoji:flamingo"
+              className="relative bottom-[1.5px]"
+            />
+            <span className="relative bottom-[1.5px]">Feasy</span>
+          </span>
         </NavLink>
         <NavLink
           icon="bi:github"
