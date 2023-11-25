@@ -62,7 +62,7 @@ export async function updateToggle({
   await db
     .update(toggles)
     .set({ enabled })
-    .where(sql`id = ${id} AND createdById = ${userId}`)
+    .where(sql`id = ${id} AND userId = ${userId}`)
     .execute();
 }
 
