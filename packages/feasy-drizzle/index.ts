@@ -44,10 +44,19 @@ export async function createToggle({
   `);
 }
 
-export async function deleteToggle({ db, id }: { db: DB; id: string }) {
+export async function deleteToggle({
+  db,
+  id,
+  userId,
+}: {
+  db: DB;
+  id: string;
+  userId: string;
+}) {
   await db.execute(sql`
     DELETE FROM ${toggles}
     WHERE id = ${id}
+    AND createdById = ${userId}
   `);
 }
 
@@ -55,15 +64,17 @@ export async function updateToggle({
   db,
   id,
   enabled,
+  userId,
 }: {
   db: DB;
   id: string;
   enabled: boolean;
+  userId: string;
 }) {
   await db
     .update(toggles)
     .set({ enabled })
-    .where(sql`id = ${id}`)
+    .where(sql`id = ${id} AND createdById = ${userId}`)
     .execute();
 }
 
