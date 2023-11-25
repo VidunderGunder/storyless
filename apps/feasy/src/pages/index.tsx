@@ -25,8 +25,7 @@ export default function Home() {
             checked ? "min-h-[70vh]" : "min-h-screen",
           )}
           style={{
-            backgroundImage:
-              "url(https://cdn.pixabay.com/photo/2023/10/10/12/36/lofi-8306349_1280.jpg)",
+            backgroundImage: "url(/lofi-girl.jpg)",
           }}
         >
           <div className="hero-overlay bg-opacity-60"></div>

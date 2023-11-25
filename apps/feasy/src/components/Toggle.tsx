@@ -87,10 +87,10 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
     <div ref={ref} {...props}>
       <div
         className={cn(
-          "flex flex-col gap-2 rounded-3xl border border-primary-content p-2 shadow-lg transition-all delay-100 duration-150",
+          "flex flex-col gap-2 rounded-3xl border border-primary-content bg-base-200 p-2 shadow-lg transition-all delay-100 duration-150",
           checked
-            ? "bg-[#51527711] [box-shadow:_0px_0px_0px_4px_#51527707]"
-            : "[box-shadow:_0px_0px_0px_4px_#51527700]",
+            ? "border-blue-950 bg-base-100 [box-shadow:_0px_0px_0px_4px_#51527733]"
+            : "border-primary-content [box-shadow:_0px_0px_0px_4px_#51527700]",
         )}
       >
         <div className="flex items-center justify-between ">
@@ -113,11 +113,6 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
                 checked
                   ? "animate-[pulse_0.325s_ease-in-out] [animation-iteration-count:_1]"
                   : "text-neutral-content opacity-75",
-                // css`
-                //   .animate-\[pulse_1s_ease-in-out_infinite\] {
-                //     animation: pulse 1s ease-in-out forward;
-                //   }
-                // `
               )}
             >
               {label}

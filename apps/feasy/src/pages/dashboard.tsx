@@ -64,21 +64,26 @@ export default function Home() {
 
       <main
         className={cn(
-          "flex min-h-screen flex-col items-center justify-center",
+          "flex min-h-screen flex-col items-center justify-center bg-cover bg-scroll bg-bottom bg-no-repeat",
           padNavTW,
         )}
+        style={{
+          backgroundImage: `url('/cityscape.webp')`,
+        }}
       >
+        <div className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full bg-gray-900 opacity-60" />
+
         {isSignedIn ? (
-          <div className="flex flex-col items-center justify-center gap-10">
+          <div className="z-10 flex flex-col items-center justify-center gap-1">
             <div className="flex flex-col gap-5">
-              <div className="flex w-full max-w-xs items-center justify-between gap-2">
+              <div className="flex w-full items-center justify-stretch gap-2">
                 <input
                   onKeyDown={(e) => {
                     if (e.key === "Enter") createToggle();
                   }}
                   type="text"
                   placeholder="Feature Name..."
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
