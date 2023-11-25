@@ -6,9 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
     "clean": "rm -rf .turbo node_modules",
-    "push": "dotenv drizzle-kit push:mysql",
-    "studio": "dotenv drizzle-kit studio",
-    "generate": "drizzle-kit generate:mysql",
+    "db:push": "dotenv drizzle-kit push:mysql",
+    "db:studio": "dotenv drizzle-kit studio",
+    "db:generate": "drizzle-kit generate:mysql",
     "lint": "oxlint ."
   },
   "dependencies": {
