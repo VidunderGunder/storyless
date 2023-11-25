@@ -57,25 +57,45 @@ export async function updateToggle({
     .execute();
 }
 
+/**
+ * Get a single toggle, all toggles for a user or all toggles for an organization
+ */
 export async function getToggle({
   db,
   id,
   userId,
 }: {
   db: DB;
-  id: string | undefined;
-  userId: string;
-}) {
+} & (
+  | {
+      id: string;
+      userId?: undefined;
+      organizationId?: undefined;
+    }
+  | {
+      id?: undefined;
+      userId: string;
+      organizationId?: undefined;
+    }
+  | {
+      id?: undefined;
+      userId?: undefined;
+      organizationId: string;
+    }
+)) {
   if (typeof id === "string") {
     return await db
       .select()
       .from(toggles)
-      .where(sql`id = ${id} AND createdById = ${userId}`)
+      .where(sql`id = ${id}`)
       .execute();
   }
-  return await db
-    .select()
-    .from(toggles)
-    .where(sql`createdById = ${userId}`)
-    .execute();
+  if (typeof userId === "string") {
+    return await db
+      .select()
+      .from(toggles)
+      .where(sql`createdById = ${userId}`)
+      .execute();
+  }
+  throw new Error("Must provide id or userId");
 }

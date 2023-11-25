@@ -4,13 +4,9 @@ import { env } from "../env.mjs";
 import { connect } from "@planetscale/database";
 import { swagger } from "@elysiajs/swagger";
 import { drizzle } from "drizzle-orm/planetscale-serverless";
-import {
-  createToggle,
-  deleteToggle,
-  updateToggle,
-  getToggle,
-} from "@feasy/drizzle";
+import { getToggle } from "@feasy/drizzle";
 import { html } from "@elysiajs/html";
+import packageJson from "../package.json";
 
 async function getFileAsText(filePath: string): Promise<string> {
   return await Bun.file(join(import.meta.dir, filePath)).text();
@@ -27,95 +23,51 @@ const server = new Elysia()
   .use(
     swagger({
       documentation: {
-        tags: [
-          {
-            name: "Feature Toggle",
-            description: "Endpoints for toggle operations",
-          },
-        ],
+        externalDocs: {
+          url: "https://github.com/VidunderGunder/storyless",
+          description: "GitHub",
+        },
+        info: {
+          title: "🦩 Feasy API",
+          description: packageJson.description,
+          version: packageJson.version,
+        },
       },
     })
-  )
-  .use(html())
-  .get("/", async () => await getFileAsText("index.html"), {
-    detail: {
-      summary: "Get index.html",
-      tags: ["Index"],
-    },
-  })
-  .post(
-    "/toggle",
-    async ({ body }) => {
-      const { name, userId } = body;
-      await createToggle({ db, name, userId });
-      return { message: "Toggle created successfully" };
-    },
-    {
-      body: t.Object({
-        name: t.String(),
-        userId: t.String(),
-      }),
-      detail: {
-        summary: "Create a new toggle",
-        tags: ["Toggle"],
-      },
-    }
-  )
-  .delete(
-    "/toggle",
-    async ({ body }) => {
-      const { id, userId } = body;
-      await deleteToggle({ db, id, userId });
-      return { message: "Toggle deleted successfully" };
-    },
-    {
-      body: t.Object({
-        id: t.String(),
-        userId: t.String(),
-      }),
-      detail: {
-        summary: "Delete a toggle",
-        tags: ["Toggle"],
-      },
-    }
-  )
-  .put(
-    "/toggle",
-    async ({ body }) => {
-      const { id, enabled, userId } = body;
-      await updateToggle({ db, id, enabled, userId });
-      return { message: "Toggle updated successfully" };
-    },
-    {
-      body: t.Object({
-        id: t.String(),
-        enabled: t.Boolean(),
-        userId: t.String(),
-      }),
-      detail: {
-        summary: "Update a toggle",
-        tags: ["Toggle"],
-      },
-    }
   )
   .get(
     "/toggle",
     async ({ query }) => {
-      const { id, userId } = query;
-      const toggles = await getToggle({ db, id, userId });
-      return { toggles };
+      const { id, userId, organizationId } = query;
+      if (!id && !userId && !organizationId)
+        throw new Error("Must provide either id or userId");
+      if (id) return await getToggle({ db, id });
+      if (userId) return await getToggle({ db, userId });
+      if (organizationId) return await getToggle({ db, organizationId });
+      return [];
     },
     {
       query: t.Object({
         id: t.Optional(t.String()),
-        userId: t.String(),
+        userId: t.Optional(t.String()),
+        organizationId: t.Optional(t.String()),
       }),
       detail: {
-        summary: "Get toggles",
+        summary:
+          "Get a single toggle, all user toggles or all organization toggles",
         tags: ["Toggle"],
+        description: `You can provide either an id, userId or organizationId. The endpoint returns the first match in this order: \`id\` -> \`userId\` -> \`organizationId\`.
+        `,
       },
     }
   )
+  .use(html())
+  .get("/", async () => await getFileAsText("index.html"), {
+    detail: {
+      summary: "Get API landing page",
+      tags: ["Index"],
+    },
+  })
   .listen(6969);
 
 console.log(

@@ -6,8 +6,24 @@ import { useState, type ComponentPropsWithoutRef } from "react";
 import { api } from "~/utils/api";
 import { Toggle } from "~/components/Toggle";
 
+type IDs = ComponentPropsWithoutRef<typeof Toggle>["ids"];
+
 export default function Home() {
-  const { isSignedIn } = useAuth();
+  const { isSignedIn, orgId, userId } = useAuth();
+
+  const clerkIds: IDs =
+    ([
+      {
+        label: "orgId",
+        value: orgId,
+        color: "primary",
+      },
+      {
+        label: "userId",
+        value: userId,
+        color: "secondary",
+      },
+    ].filter((id) => typeof id.value === "string") as IDs) ?? [];
 
   const [name, setName] = useState("");
 
@@ -42,7 +58,7 @@ export default function Home() {
     <>
       <Head>
         <title>Feasy</title>
-        <meta name="description" content="Heckin' Easy Feature Toggles" />
+        <meta name="description" content="Feature Toggles Made Easy" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -80,7 +96,15 @@ export default function Home() {
                   return (
                     <div key={toggle.id}>
                       <Toggle
-                        toggleId={id}
+                        ids={[
+                          {
+                            label: "id",
+                            value: id,
+                            color: "success",
+                          },
+                          ...clerkIds,
+                        ]}
+                        color="success"
                         label={name}
                         checked={enabled}
                         onChange={() => {

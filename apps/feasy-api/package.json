@@ -1,5 +1,6 @@
 {
   "name": "@feasy/api",
+  "description": "Feasy Feature Toggles Application Interface",
   "version": "0.0.0",
   "private": true,
   "scripts": {

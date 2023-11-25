@@ -262,9 +262,9 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
               backgroundColor: "#12191f",
               position: "fixed",
               bottom: "0.5rem",
+              width: "fit-content",
               left: "0.5rem",
               zIndex: 9999,
-              width: sidebarWidth,
               boxSizing: "border-box",
             }}
           >
@@ -272,7 +272,6 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
               onClick={handleOpen}
               style={{
                 height: "fit-content",
-                width: "100%",
                 fontFamily: fontFamilies,
                 backgroundColor: "rgba(255, 255, 255, 0.01)",
                 boxShadow: `
@@ -281,7 +280,7 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
                   0 0 0 3.5px rgba(0, 0, 0, 0.25)
                 `,
                 color: "rgba(255, 255, 255, 0.675)",
-                padding: "0.675rem 0.75rem",
+                padding: "0.675rem 2.15rem",
                 borderRadius: "0.5rem",
                 fontSize: "0.75rem",
                 whiteSpace: "nowrap",

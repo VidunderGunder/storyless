@@ -63,10 +63,15 @@ export const toggle = createTRPCRouter({
     .input(z.object({ id: z.string().min(1).optional() }))
     .query(async ({ ctx, input: { id } }) => {
       const userId = strictUserId(ctx);
+      if (id === undefined) {
+        return await getToggle({
+          db: ctx.db,
+          userId,
+        });
+      }
       return await getToggle({
         db: ctx.db,
         id,
-        userId,
       });
     }),
 });
