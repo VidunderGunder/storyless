@@ -4,20 +4,12 @@ Feasy is a cutting-edge feature toggle service designed for agile and dynamic so
 
 With Feasy, feature toggles are heckin' easy.
 
-## 🔑 Key Features
-
-- **Gradual Rollout Control**: Fine-tune feature releases with controlled rollout percentages.
-- **Environment Segmentation**: Apply feature toggles to different environments (development, staging, production).
-- **Immediate Rollback**: Quickly revert features in case of issues.
-- **Simple Integration**: Easily integrate with your existing development workflows.
-
 ## 🚀 Getting Started
 
-To get started with Feasy, follow these steps:
+Make sure you're signed in, then navigate to the [Feasy Dashboard](https://feasy.vercel.app/dashboard).
 
-1. Wait for it to be released
-2. That's it for now
+Here you create your new feature toggle.
 
 ## Contributing
 
-We welcome contributions to Feasy! Create an issue or create a pull request to get our attention. For more information, don't see our non-existent [contributing guidelines](#).
+We welcome contributions to Feasy! Just create an issue or create a pull request and we'll have a look.
