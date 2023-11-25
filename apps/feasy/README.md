@@ -1,6 +1,6 @@
 # 🦩 Feasy - Feature Toggle Service
 
-Feasy is a cutting-edge feature toggle service designed for agile and dynamic software development teams. It simplifies the process of rolling out new features and safely phasing out old ones.
+Feasy is a super simple service designed for agile and dynamic software development teams. It simplifies the process of rolling out new features and safely phasing out old ones.
 
 With Feasy, feature toggles are heckin' easy.
 
