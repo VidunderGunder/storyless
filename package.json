@@ -51,6 +51,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@sinclair/typebox": "^0.31.28",
     "elysia-clerk": "^0.2.2"
   }
 }

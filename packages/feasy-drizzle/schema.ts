@@ -24,7 +24,8 @@ export const toggles = mysqlTable(
     id: varchar("id", { length: 255 }).primaryKey(),
     name: varchar("name", { length: 255 }).notNull(),
     enabled: boolean("enabled").notNull().default(false),
-    createdById: varchar("createdById", { length: 255 }).notNull(),
+    userId: varchar("userId", { length: 255 }).notNull(),
+    orgId: varchar("orgId", { length: 255 }),
     createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -32,7 +33,8 @@ export const toggles = mysqlTable(
   },
   (toggle) => ({
     nameIdx: index("name_idx").on(toggle.name),
-    createdByIdIdx: index("createdById_idx").on(toggle.createdById),
+    userIdx: index("userId_idx").on(toggle.userId),
+    orgIdx: index("orgId_idx").on(toggle.orgId),
   })
 );
 
@@ -46,15 +48,3 @@ export const users = mysqlTable("user", {
   }).default(sql`CURRENT_TIMESTAMP(3)`),
   image: varchar("image", { length: 255 }),
 });
-
-export const verificationTokens = mysqlTable(
-  "verificationToken",
-  {
-    identifier: varchar("identifier", { length: 255 }).notNull(),
-    token: varchar("token", { length: 255 }).notNull(),
-    expires: timestamp("expires", { mode: "date" }).notNull(),
-  },
-  (vt) => ({
-    compoundKey: primaryKey(vt.identifier, vt.token),
-  })
-);

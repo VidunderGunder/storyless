@@ -1,11 +1,10 @@
 import { type Config } from "drizzle-kit";
-
-import { env } from "~/env.mjs";
+import { env } from "./env.mjs";
 
 export default {
-  schema: "./src/server/db/schema.ts",
+  schema: "./schema.ts",
+  out: "./generated",
   driver: "mysql2",
-  out: "./src/server/db/generated",
   dbCredentials: {
     uri: env.DATABASE_URL ?? "",
   },

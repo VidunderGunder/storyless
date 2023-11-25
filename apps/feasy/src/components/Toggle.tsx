@@ -82,14 +82,13 @@ export const Toggle = forwardRef<HTMLDivElement, ToggleProps>(function Toggle(
   },
   ref,
 ) {
-  const col = "#296392";
   return (
     <div ref={ref} {...props}>
       <div
         className={cn(
           "flex flex-col gap-2 rounded-3xl border border-primary-content bg-base-200 p-2 shadow-lg transition-all delay-100 duration-150",
           checked
-            ? "border-blue-950 bg-base-100 [box-shadow:_0px_0px_0px_4px_#51527733]"
+            ? "border-blue-950 bg-base-100 [box-shadow:_0px_0px_0px_2px_#51527733]"
             : "border-primary-content [box-shadow:_0px_0px_0px_4px_#51527700]",
         )}
       >

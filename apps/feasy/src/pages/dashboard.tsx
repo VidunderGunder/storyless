@@ -131,7 +131,7 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center gap-10">
+          <div className="z-10 flex flex-col items-center justify-center gap-10 rounded-2xl bg-base-200 p-10">
             <article className="prose text-center">
               <h2>{`👮‍♂️ Hmm... Your not signed in`}</h2>
 
