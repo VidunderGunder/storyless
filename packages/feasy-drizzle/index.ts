@@ -3,18 +3,6 @@ import { nanoid } from "nanoid";
 import { PlanetScaleDatabase } from "drizzle-orm/planetscale-serverless";
 import * as schema from "./schema";
 export * as schema from "./schema";
-import { Client } from "@planetscale/database";
-import { drizzle } from "drizzle-orm/planetscale-serverless";
-import { env } from "./env.mjs";
-
-export const db = drizzle(
-  new Client({
-    url: env.DATABASE_URL,
-  }).connection(),
-  {
-    schema,
-  }
-);
 
 const { toggles } = schema;
 
