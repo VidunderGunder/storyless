@@ -44,7 +44,7 @@ export async function deleteToggle({
   await db.execute(sql`
     DELETE FROM ${toggles}
     WHERE id = ${id}
-    AND createdById = ${userId}
+    AND userId = ${userId}
   `);
 }
 
