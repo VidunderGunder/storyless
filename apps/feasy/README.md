@@ -44,7 +44,6 @@ Alternatively, you can pass a `userId` or `ordId` as a query parameter, and Feas
 The response will be an array of JSON objects with your to toggles:
 
 ```json
-// response
 [
   {
     "id": "somefeaturetoggle",
