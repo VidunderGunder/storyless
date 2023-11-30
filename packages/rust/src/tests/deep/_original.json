@@ -1,0 +1,16 @@
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "oxlint": "latest"
+  }
+}

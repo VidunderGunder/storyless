@@ -1,17 +1,17 @@
 {
-  "name": "@storyless/figma-to-svg",
+  "name": "@storyless/json-switcheroo",
   "license": "MIT",
-  "version": "0.0.9",
+  "version": "0.0.0",
   "private": false,
   "module": "index.ts",
   "main": "build/index.js",
   "types": "build/index.d.ts",
-  "description": "CLI Tool for Figma to SVGs",
+  "description": "CLI Tool for overriding JSON files",
   "author": "Kristian Gunder Kramås <kristiankramas@outlook.com> (https://github.com/VidunderGunder)",
   "repository": {
     "type": "git",
     "url": "https://github.com/VidunderGunder/storyless.git",
-    "directory": "packages/figma-to-svg"
+    "directory": "packages/json-switcheroo"
   },
   "bin": {
     "@storyless/figma-to-svg": "./build/index.js"
@@ -28,7 +28,7 @@
     "build/**"
   ],
   "scripts": {
-    "clean": "rm -rf node_modules .turbo",
+    "clean": "rm -rf node_modules .turbo build",
     "lint": "oxlint .",
     "build:dts": "tsc --project ./tsconfig.release.json",
     "build:js": "bun build ./index.ts --outdir ./build --target node && bun run post-build.ts",

@@ -22,5 +22,3 @@ if (!fileText.includes("return createRequire(import.meta.url)(id);")) {
 }
 
 await Bun.write(file, fileText);
-
-// bun build ./index.ts --outdir ./build --target node

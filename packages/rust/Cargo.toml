@@ -1,0 +1,8 @@
+[package]
+name = "json-switcheroo"
+version = "0.0.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0"

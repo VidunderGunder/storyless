@@ -1,237 +1,26 @@
-![Storyless](packages/react-storyless/hero.png)
-
-# Storyless
-
-**[👉 LIVE DEMO](https://storyless.vercel.app/)**
-
-For when design system powerhouses like [Storybook](https://storybook.com/) is just too much.
+# 🐉 Storyless
 
 Storyless is a UI DevTool that lets you build and test components in isolation inside of your app.
 
+For when design system powerhouses like [Storybook](https://storybook.com/) is just too much.
+
 Direct interoperability with your app and main build tools means hard-to-integrate features like authentication, fetching, state management, themes, etc. will just work when you need them.
 
-> [!CAUTION]  
-> Storyless is currently in alpha and is not recommended for production use.
+**[👉 LIVE DEMO](https://storyless.vercel.app/)**
 
-## 🚀 Getting Started
+![Storyless](packages/react-storyless/button.png)
 
-Install using your project's package manager:
+## 🚀 Get Started
 
-```
-npm i @storyless/react
-yarn add @storyless/react
-pnpm i @storyless/react
-bun i @storyless/react
-{the-new-thing} {add-package-command} @storyless/react
-```
+### [📖 Storyless (React)](https://github.com/VidunderGunder/storyless/tree/main/packages/react-storyless#readme)
 
-Then drop it in your app (we're using [Next.js](https://nextjs.org/) as an example here):
+Complimentary tools, on the house:
 
-```tsx
-import { Storyless } from "@storyless/react";
+[🦩 Feasy – Feature Toogles](https://github.com/VidunderGunder/storyless/tree/main/apps/feasy#readme)  
+[🦘 JSON Switcheroo – CLI Tool](https://github.com/VidunderGunder/storyless/tree/main/packages/json-switcheroo#readme)  
+[🥷 Figma to SVG – CLI Tool](https://github.com/VidunderGunder/storyless/tree/main/packages/figma-to-svg#readme)
 
-function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Component {...pageProps} />
-      <Storyless
-        components={{
-          Hello: <h1>Hello World!</h1>,
-        }}
-      />
-    </>
-  );
-}
-```
-
-![Hello](packages/react-storyless/hello.png)
-
-### 🎭 Combinations
-
-We've added a nifty `<Combinations />` component to help you test your components with different props:
-
-```tsx
-import { Storyless, Combinations } from "@storyless/react";
-import { Button } from "./ButtonExample";
-
-function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Component {...pageProps} />
-      <Storyless
-        components={{
-          Hello: <h1>Hello World!</h1>,
-          // 🗑️ Delete this Button component if copy-pasting
-          Button: (
-            <Combinations
-              component={Button}
-              propsToCombine={{
-                color: ["#57799F", "#43577E", "#313851", "#D4D195", "#A7C2D1"],
-                size: ["lg", "sm"],
-                square: [false, true],
-                disabled: [false, true],
-                children: ["Button"],
-              }}
-            />
-        }}
-      />
-    </>
-  );
-}
-```
-
-![Button](packages/react-storyless/button.png)
-
-> _Here's the `<Combinations />` documentation:_
->
-> Display all combinations of props for a component.
->
-> Main props:
->
-> - `component` - The component to display.
-> - `propsToCombine` - The props to display all combinations for.
-> - `componentProps` - Props to pass to all instances of the component.
-> - `columns` - Override the number of columns to display the combinations in.
-> - `componentBackgroundColor` - Override the background color of the combinations.
->
-> @example
->
-> ```tsx
-> <AllCombinations
->   component={Button} // props => <Button {...props} />
->   propsToCombine={{
->     color: ["slate", "emerald", "sky", "rose"],
->     size: ["lg", "sm"],
->     square: [false, true],
->     disabled: [false, true],
->     children: ["Button"],
->   }}
->   backgroundColor="#13191f"
->   columns={2} // Auto-calculated by default
-> />
-> ```
-
-If you want to customize the preview window, you can replace the original Wrapper by passing a `wrapper` prop to your `<Storyless />` component. Here's a style agnostic starter wrapper you can use:
-
-```tsx
-import { Storyless, Combinations } from "@storyless/react";
-import { Button } from "./ButtonExample";
-
-function Wrapper({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div
-      style={{
-        borderRadius: "0.5rem",
-        width: "100%",
-        height: "100%",
-        maxWidth: "100%",
-        display: "grid",
-        placeItems: "center",
-        backgroundColor: "rgba(239, 239, 239, 0.1)",
-        boxShadow: `
-          inset 0 1px 0px 0px rgba(255, 255, 255, 0.1),
-          inset 0 -2px 0px 0px rgba(0, 0, 0, 0.125),
-          0 1px 0 7px rgba(0, 0, 0, 0.1)
-        `,
-        backdropFilter: "blur(30px)",
-        padding: "1rem 2rem",
-        margin: 0,
-      }}
-    >
-      {children}
-    </div>
-  );
-}
-
-function App({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Component {...pageProps} />
-      <Storyless
-        wrapper={Wrapper}
-        components={{
-          Hello: <h1>Hello World!</h1>,
-          // 🗑️ Delete this Button component if copy-pasting
-          Button: (
-            <Combinations
-              component={Button}
-              propsToCombine={{
-                color: ["#57799F", "#43577E", "#313851", "#D4D195", "#A7C2D1"],
-                size: ["lg", "sm"],
-                square: [false, true],
-                disabled: [false, true],
-                children: ["Button"],
-              }}
-            />
-        }}
-      />
-    </>
-  );
-}
-```
-
-That's it – now go nuts 🥜🐿️
-
-_And don't worry, Storyless is automatically removed from your production bundle._
-
-# 🥷 [Figma to SVG](https://github.com/VidunderGunder/storyless/tree/main/packages/figma-to-svg#readme)
-
-Figma to SVG is a CLI tool that allows you to download SVGs from a specific frame in Figma
-
-_it probably works for entire files too, but that's not our use case – so feel free to try it out and let us know!_
-
-## 📋 You'll need
-
-1. A Figma API token (see the guide [here](https://www.figma.com/developers/api#access-tokens))
-2. A Figma file URL (you can get one by opening a file in Figma, selecting a frame and copying the URL)
-3. Optionally, a path to save the SVGs to (defaults to `./svgs/`)
-
-## 🚀 Usage
-
-Prepare your icons and copy the frame's URL:
-
-![Figma frame URL](./packages/figma-to-svg/frame.png)
-
-Then, run the CLI:
-
-```bash
-npx @storyless/figma-to-svg # npm
-yarn dlx @storyless/figma-to-svg # yarn
-pnpx @storyless/figma-to-svg # pnpm
-bunx @storyless/figma-to-svg # bun
-```
-
-![Figma to SVG CLI](./packages/figma-to-svg/cli.png)
-
-You can also pass parameters to the CLI, to skip the prompts:
-
-```bash
-bunx @storyless/figma-to-svg --url "https://www.figma.com/file/yourfileidhere/Project-Name?node-id=69%3A420&mode=dev" --token "figd_23eredgfEegdf-0910g2ojsDjjek-kPbbzmmo6twXG4" --out "./some/folder/"
-```
-
-> [!NOTE]  
-> The example uses `bunx`, but you can also use `npx`, `yarn dlx`, `pnpx` or any other package runner.
-
-> [!TIP]  
-> If the command fails, try specifying the exact version of the package, e.g. `bunx @storyless/figma-to-svg@x.x.x`
->
-> Find the latest version [here](https://www.npmjs.com/package/@storyless/figma-to-svg?activeTab=versions)
-
-## ⚛️ SVGR
-
-If you want to turn these into React components, you can use [SVGR](https://react-svgr.com/).
-
-Here's an example command to get you started:
-
-```bash
-bunx @svgr/cli --replace-attr-values=#000=currentColor --out-dir svgr --ext tsx --typescript -- svgs
-```
-
-## 🚀 Getting Started (for Contributors)
+## 🚀 Get Started (for Contributors)
 
 _Note that all installs may require restarting the terminal – and in some cases a complete reboot – to work properly_
 
@@ -268,11 +57,17 @@ This Turborepo includes the following packages & apps:
 ### Apps and Packages
 
 - 📂 **apps**
-  - 📖 **docs** - _Next.js app for Storyless docs._
-  - ...A bunch of framework-specific examples
+  - 📖 **docs** - _Storyless docs (Next.js)_
+  - 🦩 **feasy** - _Feasy Feature Toggling Service (Next.js)_
+  - ~~🦩 **feasy-api** - _Unused backend prototype for Feasy_~~
+  - ▲ **nextjs-app-router** - _Next.js app (app router) for testing_
+  - ▲ **nextjs-pages-router** - _Next.js app (pages router) for testing_
 - 📂 **packages**
-  - 📚 **react-storyless** - _React (and Next.js) library for Storyless_
-  - 📚 **ui** - _Shared UI components for the monorepo_
+  - 📖 **react-storyless** - _React (and Next.js) library for Storyless_
+  - 🦩 **feasy-drizzle** - _Library to do Feasy Database operations_
+  - 🥷 **figma-to-svg** - _CLI tool to convert Figma designs to SVGs_
+  - 🎨 **ui** - _Shared UI components for the monorepo_
+  - 🧙‍♂️ **scripts** - _Monorepo scripts_
   - 🧙‍♂️ **tsconfig** - _Reusable TypeScript configurations_
   - 🧙‍♂️ **eslint-config-storyless** - _Reusable ESLint configurations_
 

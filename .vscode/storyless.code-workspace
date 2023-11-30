@@ -1,0 +1,36 @@
+{
+  "folders": [
+    {
+      "name": "~",
+      "path": ".."
+    },
+    {
+      "name": "🦩 Feasy",
+      "path": "../apps/feasy"
+    },
+    {
+      "name": "🦩 Feasy (Drizzle)",
+      "path": "../packages/feasy-drizzle"
+    },
+    {
+      "name": "📖 Storyless (App)",
+      "path": "../apps/docs"
+    },
+    {
+      "name": "📖 Storyless (React)",
+      "path": "../apps/docs"
+    },
+    {
+      "name": "🦘 JSON Switcheroo (TS)",
+      "path": "../packages/json-switcheroo"
+    },
+    {
+      "name": "🦘 JSON Switcheroo (Rust)",
+      "path": "../packages/rust"
+    },
+    {
+      "name": "🥷 Figma to SVG",
+      "path": "../packages/figma-to-svg"
+    }
+  ]
+}
