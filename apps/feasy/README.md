@@ -35,9 +35,9 @@ Copy the ID of the feature toggle by clicking the copy button, we'll need this l
 
 Feasy is a REST API, so you can use it in any application that can make HTTP requests.
 
-To fetch the status of a feature toggle, make a GET request to `https://feasy.vercel.app/api/toggles`, with the ID of the feature toggle as a query parameter.
+To fetch the status of a feature toggle, make a GET request to `https://feasy.vercel.app/api/toggle`, with the ID of the feature toggle as a query parameter.
 
-For example, if the ID of your feature toggle is `123`, you would make a GET request to `https://feasy.vercel.app/api/toggles?id=123`.
+For example, if the ID of your feature toggle is `123`, you would make a GET request to `https://feasy.vercel.app/api/toggle?id=123`.
 
 Alternatively, you can pass a `userId` or `ordId` as a query parameter, and Feasy will return the status of all feature toggles that apply to that user or organization.
 
