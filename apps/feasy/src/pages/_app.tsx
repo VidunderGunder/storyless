@@ -2,6 +2,8 @@ import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 import { FeasyStoryless } from "~/components/FeasyStoryless";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
+
 import { Analytics } from "@vercel/analytics/react";
 // import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "~/styles/globals.css";
@@ -12,6 +14,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider
       appearance={{
+        baseTheme: dark,
         variables: {
           colorBackground: "#1d253f",
           colorPrimary: "#4ba3e3",
