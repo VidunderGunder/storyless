@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.24
+
+### Patch Changes
+
+- Button border radius fix
+
 ## 0.0.23
 
 ### Patch Changes

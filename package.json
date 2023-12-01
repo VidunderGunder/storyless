@@ -19,7 +19,7 @@
     "start:nextjs-app-router": "turbo run start --filter='nextjs-app-router'",
     "start:@storyless/react": "turbo run start --filter='@storyless/react'",
     "start": "turbo run start --concurrency=20",
-    "dev:docs": "turbo run dev --filter='@storyless/docs' --filter='@storyless/react'",
+    "dev:storyless": "turbo run dev --filter='@storyless/docs' --filter='@storyless/react'",
     "dev:feasy": "turbo run dev --filter='@feasy/web' --filter='@feasy/api' --filter='@storyless/react'",
     "dev": "bun dev:docs",
     "lint": "turbo run lint",

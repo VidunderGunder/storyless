@@ -266,6 +266,8 @@ export const Storyless = React.forwardRef<HTMLDivElement, StorylessProps>(
               left: "0.5rem",
               zIndex: 9999,
               boxSizing: "border-box",
+              borderRadius: "0.5rem",
+              overflow: "hidden",
             }}
           >
             <button
