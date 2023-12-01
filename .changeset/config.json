@@ -10,6 +10,8 @@
   "ignore": [
     "@storyless/tsconfig",
     "@storyless/scripts",
+    "@storyless/json-switcheroo",
+    "@storyless/rust",
     "@storyless/docs",
     "@feasy/web",
     "@feasy/api",

@@ -35,7 +35,7 @@
     "post-release": "turbo post-release --filter='@storyless/scripts'",
     "version-packages": "changeset version",
     "changeset": "changeset",
-    "publish-packages": "pre-release && bun i && turbo run build lint test --filter=@storyless/react && changeset && changeset version && changeset publish && post-release"
+    "publish-packages": "bun pre-release && bun i && turbo run build lint test --filter=@storyless/react && changeset && changeset version && changeset publish && bun post-release"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

@@ -1,5 +1,11 @@
 # @storyless/react
 
+## 0.0.23
+
+### Patch Changes
+
+- Layout fix + New open button
+
 ## 0.0.22
 
 ### Patch Changes
