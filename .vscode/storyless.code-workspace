@@ -32,5 +32,8 @@
       "name": "🥷 Figma to SVG",
       "path": "../packages/figma-to-svg"
     }
-  ]
+  ],
+  "settings": {
+    "typescript.tsdk": "~/node_modules/typescript/lib"
+  }
 }

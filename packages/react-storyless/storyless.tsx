@@ -22,7 +22,7 @@ function disableAppScrolling({ onDisable }: { onDisable?: () => void }): void {
     window.pageYOffset || document.documentElement.scrollTop;
 
   // Fix the position of the content
-  document.documentElement.style.position = "fixed";
+  // document.documentElement.style.position = "fixed"; // Messed up layout...
   document.documentElement.style.top = `-${originalScrollPosition.y}px`;
   document.documentElement.style.left = `-${originalScrollPosition.x}px`;
   document.documentElement.style.overflow = "hidden"; // For HTML
@@ -37,7 +37,7 @@ function disableAppScrolling({ onDisable }: { onDisable?: () => void }): void {
  */
 function enableAppScrolling({ onEnable }: { onEnable?: () => void }): void {
   // Unfix the position of the content
-  document.documentElement.style.position = "";
+  // document.documentElement.style.position = ""; // Messed up layout...
   document.documentElement.style.top = "";
   document.documentElement.style.left = "";
   document.documentElement.style.overflow = ""; // For HTML
