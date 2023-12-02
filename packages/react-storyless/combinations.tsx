@@ -68,7 +68,7 @@ export function modulateGridCols(value: number, maxCols = 5): number {
   return modulateGridCols(Math.ceil(value / 2), maxCols);
 }
 
-const backgroundColor = "#fdfdfd";
+const backgroundColor = "#ffffff";
 const fontColor = "rgb(19, 24, 30)";
 
 /**
@@ -139,7 +139,7 @@ export function Combinations<C extends ComponentType>({
         gap: "1rem",
         padding: "1rem 3rem",
         gridTemplateColumns: `repeat(${_columns}, minmax(0, 1fr))`,
-        ...style,
+        ...(style !== undefined ? {} : style),
       }}
       {...props}
     >
