@@ -51,7 +51,7 @@ Here's an example command to get you started:
 bunx @svgr/cli --replace-attr-values=#000=currentColor --svgo-config=./svgo.config.cjs --out-dir svgr --ext tsx --typescript -- svgs
 ```
 
-Add this `svgo.config.cjs` to your root (or where you run the svgr command from) as well to have some ok defaults:
+Before running, add this `svgo.config.cjs` to your root (or where you run the svgr command from) as well to have some ok defaults:
 
 ```js
 module.exports = {
