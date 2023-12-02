@@ -48,5 +48,31 @@ If you want to turn these into React components, you can use [SVGR](https://reac
 Here's an example command to get you started:
 
 ```bash
-bunx @svgr/cli --replace-attr-values=#000=currentColor --out-dir svgr --ext tsx --typescript -- svgs
+bunx @svgr/cli --replace-attr-values=#000=currentColor --svgo-config=./svgo.config.cjs --out-dir svgr --ext tsx --typescript -- svgs
 ```
+
+Add this `svgo.config.cjs` to your root (or where you run the svgr command from) as well to have some ok defaults:
+
+```js
+module.exports = {
+  plugins: [
+    {
+      name: "preset-default",
+      params: {
+        overrides: {
+          // disable a default plugin
+          removeViewBox: false,
+
+          // customize the params of a default plugin
+          inlineStyles: {
+            onlyMatchedOnce: false,
+          },
+        },
+      },
+    },
+  ],
+};
+```
+
+- [Options for SVGR](https://react-svgr.com/docs/options/)
+- [More info on SVGO](https://github.com/svg/svgo/blob/main/README.md)
