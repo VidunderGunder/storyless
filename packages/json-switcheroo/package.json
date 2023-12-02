@@ -2,7 +2,7 @@
   "name": "@storyless/json-switcheroo",
   "license": "MIT",
   "version": "0.0.0",
-  "private": false,
+  "private": true,
   "module": "index.ts",
   "main": "build/index.js",
   "types": "build/index.d.ts",
