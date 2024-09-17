@@ -39,7 +39,7 @@ To fetch the status of a feature toggle, make a GET request to `https://feasy.ve
 
 For example, if the ID of your feature toggle is `123`, you would make a GET request to `https://feasy.vercel.app/api/toggle?id=123`.
 
-Alternatively, you can pass a `userId` or `ordId` as a query parameter, and Feasy will return the status of all feature toggles that apply to that user or organization.
+Alternatively, you can pass a `userId` or `orgId` as a query parameter, and Feasy will return the status of all feature toggles that apply to that user or organization.
 
 The response will be an array of JSON objects with your to toggles:
 
